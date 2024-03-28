@@ -18,7 +18,7 @@ public class ModFluidTypes {
     public static final ResourceLocation WATER_FLOW = new ResourceLocation("block/water_flow");
     public static final ResourceLocation SOAP_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "block/soapy_water");
     public static final ResourceLocation SOAP_RENDER_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/misc/soapy_water.png");
-    public static final ResourceLocation SUPER_SOAP_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "block/soapy_water");
+    public static final ResourceLocation SUPER_SOAP_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "block/super_soapy_water");
     public static final ResourceLocation SUPER_SOAP_RENDER_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/misc/super_soapy_water.png");
 
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, NosiphusFurnitureMod.MOD_ID);
