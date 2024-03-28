@@ -31,6 +31,7 @@ public class ShowerHeadBlockEntity extends BlockEntity {
                 double posX = (double) pos.getX() + 0.35D + (random.nextDouble() / 3);
                 double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);
                 level.addParticle(ModParticleTypes.SHOWER_PARTICLE.get(), posX, pos.getY(), posZ, 0.0D, 0.0D, 0.0D);
+                level.addParticle(ModParticleTypes.SHOWER_PARTICLE.get(), posX, pos.getY(), posZ, 0.0D, 0.0D, 0.0D);
             } else {
                 if(timer % 5 == 0) {
                     //
