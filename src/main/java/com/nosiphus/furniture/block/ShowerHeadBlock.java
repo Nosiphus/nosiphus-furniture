@@ -4,9 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
+import com.nosiphus.furniture.blockentity.ShowerHeadBlockEntity;
+import com.nosiphus.furniture.core.ModBlockEntities;
+import com.nosiphus.furniture.core.ModBlocks;
+import com.nosiphus.furniture.core.ModParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -14,6 +17,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -21,13 +28,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class ShowerHeadBlock extends FurnitureHorizontalBlock
+public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
-    private Random random = new Random();
+
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
@@ -77,20 +84,6 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock
         builder.add(ACTIVATED);
     }
 
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource randomSource) {
-
-        if(state.getValue(ACTIVATED)) {
-
-            double posX = (double) pos.getX() + 0.35D + (random.nextDouble() / 3);
-            double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);
-
-            level.addParticle(ParticleTypes.FALLING_WATER.getType(), posX, pos.getY(), posZ, 0.30000001192092896D, -0.2D, 0.30000001192092896D);
-            level.addParticle(ParticleTypes.FALLING_WATER.getType(), posX, pos.getY(), posZ, 0.30000001192092896D, -0.2D, 0.30000001192092896D);
-            level.addParticle(ParticleTypes.FALLING_WATER.getType(), posX, pos.getY(), posZ, 0.30000001192092896D, -0.2D, 0.30000001192092896D);
-
-        }
-    }
-
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if(state.getValue(ACTIVATED)) {
             level.setBlock(pos, state.setValue(ACTIVATED, Boolean.valueOf(false)), 2);
@@ -99,4 +92,17 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock
         }
         return InteractionResult.SUCCESS;
     }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new ShowerHeadBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, ModBlockEntities.SHOWER_HEAD.get(), ShowerHeadBlockEntity::tick);
+    }
+
 }

@@ -8,6 +8,7 @@ import com.nosiphus.furniture.client.menu.screen.WallCabinetMenuScreen;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.network.PacketHandler;
+import com.nosiphus.furniture.particle.ShowerParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -46,6 +48,7 @@ public class NosiphusFurnitureMod {
         ModFluidTypes.FLUID_TYPES.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
+        ModParticleTypes.PARTICLE_TYPES.register(eventBus);
         ModSounds.SOUNDS.register(eventBus);
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -92,6 +95,12 @@ public class NosiphusFurnitureMod {
             event.registerBlockEntityRenderer(ModBlockEntities.SINK.get(), SinkBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.TOILET.get(), ToiletBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.WATER_TANK.get(), WaterTankBlockEntityRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
+            Minecraft.getInstance().particleEngine.register(ModParticleTypes.SHOWER_PARTICLE.get(),
+                    ShowerParticle.Provider::new);
         }
 
     }
