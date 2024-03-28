@@ -43,6 +43,7 @@ public class NosiphusFurnitureMod {
         ModBlocks.BLOCKS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModFluids.FLUIDS.register(eventBus);
+        ModFluidTypes.FLUID_TYPES.register(eventBus);
         ModItems.ITEMS.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModSounds.SOUNDS.register(eventBus);
@@ -57,6 +58,8 @@ public class NosiphusFurnitureMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOAPY_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAPY_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SUPER_SOAPY_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SUPER_SOAPY_WATER.get(), RenderType.translucent());
             MenuScreens.register(ModMenuTypes.BIN.get(), BinMenuScreen::new);
             MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveMenuScreen::new);
             MenuScreens.register(ModMenuTypes.OVEN.get(), OvenMenuScreen::new);

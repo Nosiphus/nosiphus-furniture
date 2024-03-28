@@ -18,9 +18,9 @@ public class ModItems {
     public static final RegistryObject<Item> SOAP = register("soap",
             () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)));
     public static final RegistryObject<Item> SOAPY_WATER = register("soapy_water",
-            () -> new BucketItem(ModFluids.SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).stacksTo(1)));
     public static final RegistryObject<Item> SUPER_SOAPY_WATER = register("super_soapy_water",
-            () -> new BucketItem(ModFluids.SUPER_SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SUPER_SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).stacksTo(1)));
 
     //Methods
     private static RegistryObject<Item> register(String name, Supplier<Item> item)
