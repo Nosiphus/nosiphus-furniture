@@ -32,11 +32,18 @@ public class ShowerHeadBlockEntity extends BlockEntity {
                 double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);
                 level.addParticle(ModParticleTypes.SHOWER_PARTICLE.get(), posX, pos.getY(), posZ, 0.0D, 0.0D, 0.0D);
             } else {
-                Vec3i directionVec = state.getValue(ShowerHeadBlock.DIRECTION).getOpposite().getNormal();
-                double x = pos.getX() + 0.5D + directionVec.getX() / 2.0D;
-                double y = pos.getY() + 0.5D + directionVec.getY() / 2.0D;
-                double z = pos.getZ() + 0.5D + directionVec.getZ() / 2.0D;
-                level.playSound(null, x, y, z, ModSounds.BLOCK_SHOWER_RUNNING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                if(timer % 5 == 0) {
+                    //
+                }
+                if(timer >= 20) {
+                    Vec3i directionVec = state.getValue(ShowerHeadBlock.DIRECTION).getOpposite().getNormal();
+                    double x = pos.getX() + 0.5D + directionVec.getX() / 2.0D;
+                    double y = pos.getY() + 0.5D + directionVec.getY() / 2.0D;
+                    double z = pos.getZ() + 0.5D + directionVec.getZ() / 2.0D;
+                    level.playSound(null, x, y, z, ModSounds.BLOCK_SHOWER_RUNNING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    timer = 0;
+                }
+                timer++;
             }
         }
     }
