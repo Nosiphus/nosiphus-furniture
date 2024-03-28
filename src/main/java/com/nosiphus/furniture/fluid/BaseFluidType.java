@@ -4,6 +4,7 @@ import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -18,15 +19,17 @@ public class BaseFluidType extends FluidType {
     private final ResourceLocation stillTexture;
     private final ResourceLocation flowingTexture;
     private final ResourceLocation overlayTexture;
+    private final ResourceLocation screenOverlayTexture;
     private final int tintColor;
     private final Vector3f fogColor;
 
-    public BaseFluidType(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture,
+    public BaseFluidType(final ResourceLocation stillTexture, final ResourceLocation flowingTexture, final ResourceLocation overlayTexture, final ResourceLocation screenOverlayTexture,
                          final int tintColor, final Vector3f fogColor, final Properties properties) {
         super(properties);
         this.stillTexture = stillTexture;
         this.flowingTexture = flowingTexture;
         this.overlayTexture = overlayTexture;
+        this.screenOverlayTexture = screenOverlayTexture;
         this.tintColor = tintColor;
         this.fogColor = fogColor;
     }
@@ -45,6 +48,10 @@ public class BaseFluidType extends FluidType {
 
     public ResourceLocation getOverlayTexture() {
         return overlayTexture;
+    }
+
+    public ResourceLocation getRenderOverlayTexture() {
+        return screenOverlayTexture;
     }
 
     public Vector3f getFogColor() {
@@ -67,6 +74,11 @@ public class BaseFluidType extends FluidType {
             @Override
             public @Nullable ResourceLocation getOverlayTexture() {
                 return overlayTexture;
+            }
+
+            @Override
+            public @Nullable ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                return screenOverlayTexture;
             }
 
             @Override
