@@ -20,6 +20,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -38,7 +39,6 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityB
 {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
-
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
     public ShowerHeadBlock(Properties properties)
@@ -84,6 +84,11 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityB
     {
         super.createBlockStateDefinition(builder);
         builder.add(ACTIVATED);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
