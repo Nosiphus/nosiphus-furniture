@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nfm:item/super_soapy_water"
+    "layer0": "nfm:item/super_soapy_water_bucket"
   }
 }

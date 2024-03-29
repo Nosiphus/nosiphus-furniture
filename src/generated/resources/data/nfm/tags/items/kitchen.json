@@ -97,7 +97,7 @@
     "nfm:toaster_dark",
     "nfm:knife",
     "nfm:soap",
-    "nfm:soapy_water",
-    "nfm:super_soapy_water"
+    "nfm:soapy_water_bucket",
+    "nfm:super_soapy_water_bucket"
   ]
 }

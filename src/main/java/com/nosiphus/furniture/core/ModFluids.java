@@ -25,12 +25,12 @@ public class ModFluids {
     public static final ForgeFlowingFluid.Properties SOAPY_WATER_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.SOAPY_WATER_FLUID_TYPE, SOAPY_WATER, FLOWING_SOAPY_WATER)
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.SOAPY_WATER)
-            .bucket(ModItems.SOAPY_WATER);
+            .bucket(ModItems.SOAPY_WATER_BUCKET);
 
     public static final ForgeFlowingFluid.Properties SUPER_SOAPY_WATER_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.SUPER_SOAPY_WATER_FLUID_TYPE, SUPER_SOAPY_WATER, FLOWING_SUPER_SOAPY_WATER)
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.SUPER_SOAPY_WATER)
-            .bucket(ModItems.SUPER_SOAPY_WATER);
+            .bucket(ModItems.SUPER_SOAPY_WATER_BUCKET);
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);

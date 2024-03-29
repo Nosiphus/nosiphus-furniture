@@ -10,10 +10,10 @@
       "item": "nfm:soap"
     },
 	"W": {
-      "item": "nfm:soapy_water"
+      "item": "nfm:soapy_water_bucket"
     }
   },
   "result": {
-    "item": "nfm:super_soapy_water"
+    "item": "nfm:super_soapy_water_bucket"
   }
 }
