@@ -46,7 +46,6 @@ public class ShowerHeadBlockEntity extends BlockEntity {
                 }
             }
         }
-
     }
 
 }
