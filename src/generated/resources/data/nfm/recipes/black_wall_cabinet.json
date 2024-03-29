@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CHC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:black_concrete"
+    },
+	"H": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "nfm:black_wall_cabinet"
+  }
+}

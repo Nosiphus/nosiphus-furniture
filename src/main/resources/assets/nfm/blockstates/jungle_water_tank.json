@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "nfm:block/jungle_water_tank",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "nfm:block/jungle_water_tank",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "nfm:block/jungle_water_tank",
+            "y": 180
+        },
+        "facing=north": {
+            "model": "nfm:block/jungle_water_tank",
+            "y": 270
+        }
+    }
+}

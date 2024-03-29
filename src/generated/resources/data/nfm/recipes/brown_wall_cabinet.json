@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CHC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:brown_concrete"
+    },
+	"H": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "nfm:brown_wall_cabinet"
+  }
+}

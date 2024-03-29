@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -381,6 +382,40 @@ public class ModBlocks {
     public static final RegistryObject<Block> DESK_CABINET_BLACK_MODERN = register("black_modern_desk_cabinet",
             () -> new ModernDeskCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE), ModernDeskBlock.MaterialType.BLACK_CONCRETE));
 
+    //Wall Cabinets
+    public static final RegistryObject<Block> WALL_CABINET_WHITE = register("white_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_ORANGE = register("orange_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_MAGENTA = register("magenta_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_LIGHT_BLUE = register("light_blue_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_YELLOW = register("yellow_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_LIME = register("lime_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.LIME_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_PINK = register("pink_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.PINK_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_GRAY = register("gray_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_LIGHT_GRAY = register("light_gray_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_CYAN = register("cyan_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_PURPLE = register("purple_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_BLUE = register("blue_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_BROWN = register("brown_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_GREEN = register("green_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_RED = register("red_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.RED_CONCRETE)));
+    public static final RegistryObject<Block> WALL_CABINET_BLACK = register("black_wall_cabinet",
+            () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
+
     //Sofas
     public static final RegistryObject<Block> SOFA_WHITE_MODERN = register("white_modern_sofa",
             () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -638,6 +673,8 @@ public class ModBlocks {
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).noOcclusion()));
     public static final RegistryObject<Block> DOOR_BELL_MANGROVE = register("mangrove_door_bell",
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> DOOR_BELL_CHERRY = register("cherry_door_bell",
+            () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_WOOD).noOcclusion()));
     public static final RegistryObject<Block> DOOR_BELL_STRIPPED_OAK = register("stripped_oak_door_bell",
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).noOcclusion()));
     public static final RegistryObject<Block> DOOR_BELL_STRIPPED_SPRUCE = register("stripped_spruce_door_bell",
@@ -656,6 +693,8 @@ public class ModBlocks {
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STEM).noOcclusion()));
     public static final RegistryObject<Block> DOOR_BELL_STRIPPED_MANGROVE = register("stripped_mangrove_door_bell",
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_WOOD).noOcclusion()));
+    public static final RegistryObject<Block> DOOR_BELL_STRIPPED_CHERRY = register("stripped_cherry_door_bell",
+            () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_WOOD).noOcclusion()));
 
     //Inflatable Castles
     public static final RegistryObject<Block> INFLATABLE_CASTLE_WHITE = register("white_inflatable_castle",
@@ -727,6 +766,42 @@ public class ModBlocks {
     public static final RegistryObject<Block> CUP_BLACK = register("black_cup",
             () -> new CupBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_STAINED_GLASS)));
 
+    //Bird Baths
+    public static final RegistryObject<Block> BIRD_BATH_STONE = register("stone_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> BIRD_BATH_ANDESITE = register("andesite_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> BIRD_BATH_DIORITE = register("diorite_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.DIORITE)));
+    public static final RegistryObject<Block> BIRD_BATH_GRANITE = register("granite_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.GRANITE)));
+    public static final RegistryObject<Block> BIRD_BATH_BLACKSTONE = register("blackstone_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
+    public static final RegistryObject<Block> BIRD_BATH_DEEPSLATE = register("deepslate_bird_bath",
+            () -> new BirdBathBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+
+    //Water Tanks
+    public static final RegistryObject<Block> OAK_WATER_TANK = register("oak_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> SPRUCE_WATER_TANK = register("spruce_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> BIRCH_WATER_TANK = register("birch_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> JUNGLE_WATER_TANK = register("jungle_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> ACACIA_WATER_TANK = register("acacia_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> DARK_OAK_WATER_TANK = register("dark_oak_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> CRIMSON_WATER_TANK = register("crimson_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> WARPED_WATER_TANK = register("warped_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> MANGROVE_WATER_TANK = register("mangrove_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+    public static final RegistryObject<Block> CHERRY_WATER_TANK = register("cherry_water_tank",
+            () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
+
     //Appliances
     public static final RegistryObject<Block> BIN_LIGHT = register("bin_light",
             () -> new BinBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
@@ -776,14 +851,26 @@ public class ModBlocks {
             () -> new ToiletBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
     public static final RegistryObject<Block> TOILET_DARK = register("toilet_dark",
             () -> new ToiletBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).noOcclusion()));
+    public static final RegistryObject<Block> WASHING_MACHINE_LIGHT = register("washing_machine_light",
+            () -> new WashingMachineBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
+    public static final RegistryObject<Block> WASHING_MACHINE_DARK = register("washing_machine_dark",
+            () -> new WashingMachineBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).noOcclusion()));
 
     //Festive
     public static final RegistryObject<Block> CANDLE = register("candle",
             () -> new CandleBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).lightLevel((getLightValueLit(13))).noOcclusion()));
+    public static final RegistryObject<Block> CHRISTMAS_TREE_BOTTOM = registerNoItem("christmas_tree_bottom",
+            () -> new ChristmasTreeBottomBlock(Block.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion(), () -> ModBlocks.CHRISTMAS_TREE));
     public static final RegistryObject<Block> CHRISTMAS_TREE = register("christmas_tree",
-            () -> new ChristmasTreeBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion()));
+            () -> new ChristmasTreeTopBlock(Block.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion(), () -> ModBlocks.CHRISTMAS_TREE_BOTTOM), block -> new BlockSupplierItem(new Item.Properties(), block.get(), ModBlocks.CHRISTMAS_TREE_BOTTOM));
     public static final RegistryObject<Block> WREATH = register("wreath",
             () -> new WreathBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion()));
+
+    //Fluid Blocks
+    public static final RegistryObject<LiquidBlock> SOAPY_WATER = registerLiquid("soapy_water",
+            () -> new LiquidBlock(ModFluids.SOAPY_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
+    public static final RegistryObject<LiquidBlock> SUPER_SOAPY_WATER = registerLiquid("super_soapy_water",
+            () -> new LiquidBlock(ModFluids.SUPER_SOAPY_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
     //Methods
     private static ToIntFunction<BlockState> getLightValueLit(int lightValue) {
@@ -815,6 +902,11 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerNoItem(String name, Supplier<Block> block)
+    {
+        return BLOCKS.register(name, block);
+    }
+
+    private static RegistryObject<LiquidBlock> registerLiquid(String name, Supplier<LiquidBlock> block)
     {
         return BLOCKS.register(name, block);
     }

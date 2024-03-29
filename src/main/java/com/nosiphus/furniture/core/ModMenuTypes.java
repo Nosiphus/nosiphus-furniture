@@ -2,6 +2,7 @@ package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.NosiphusFurnitureMod;
 import com.nosiphus.furniture.blockentity.BinBlockEntity;
+import com.nosiphus.furniture.blockentity.WallCabinetBlockEntity;
 import com.nosiphus.furniture.client.menu.*;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -23,6 +24,10 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE_MENU = registerMenuType((ID, inventory, extraData) -> new MicrowaveMenu(ID, inventory), "microwave_menu");
     public static final RegistryObject<MenuType<OvenMenu>> OVEN_MENU = registerMenuType((ID, inventory, extraData) -> new OvenMenu(ID, inventory), "oven_menu");
+    public static final RegistryObject<MenuType<WallCabinetMenu>> WALL_CABINET = register("wall_cabinet", (IContainerFactory<WallCabinetMenu>) (ID, inventory, data) -> {
+        WallCabinetBlockEntity wallCabinetBlockEntity = (WallCabinetBlockEntity) inventory.player.level().getBlockEntity(data.readBlockPos());
+        return new WallCabinetMenu(ID, inventory, wallCabinetBlockEntity);
+    });
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String key, MenuType.MenuSupplier<T> supplier)
     {

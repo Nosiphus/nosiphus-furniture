@@ -1,0 +1,7 @@
+{
+	"parent": "nfm:block/water_tank",
+	"textures": {
+		"0": "minecraft:block/acacia_log",
+        "1": "minecraft:block/acacia_planks"
+	}
+}

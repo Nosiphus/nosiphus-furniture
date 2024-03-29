@@ -5,8 +5,14 @@ import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.ShowerHeadBlockEntity;
+import com.nosiphus.furniture.core.ModBlockEntities;
+import com.nosiphus.furniture.core.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -15,6 +21,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -28,6 +36,7 @@ import java.util.List;
 
 public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
+
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
@@ -35,7 +44,7 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityB
     public ShowerHeadBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH).setValue(ACTIVATED, false));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
@@ -77,22 +86,27 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityB
         builder.add(ACTIVATED);
     }
 
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        if(state.getValue(ACTIVATED)) {
-            return new ShowerHeadBlockEntity(pos, state);
-        } else {
-            return null;
-        }
-    }
-
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if(state.getValue(ACTIVATED)) {
             level.setBlock(pos, state.setValue(ACTIVATED, Boolean.valueOf(false)), 2);
+            level.playSound(null,pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.6F);
         } else {
             level.setBlock(pos, state.setValue(ACTIVATED, Boolean.valueOf(true)), 2);
+            level.playSound(null,pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.5F);
         }
         return InteractionResult.SUCCESS;
     }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new ShowerHeadBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, ModBlockEntities.SHOWER_HEAD.get(), ShowerHeadBlockEntity::tick);
+    }
+
 }

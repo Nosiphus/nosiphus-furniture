@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "SCS",
+    "WWW"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+	"C": {
+      "item": "minecraft:cauldron"
+    },
+	"W": {
+      "item": "minecraft:mangrove_planks"
+    }
+  },
+  "result": {
+    "item": "nfm:mangrove_water_tank"
+  }
+}

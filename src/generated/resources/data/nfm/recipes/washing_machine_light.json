@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CPC",
+    "CFC"
+  ],
+  "key": {
+	"C": {
+      "item": "minecraft:white_concrete"
+    },
+	"P": {
+      "item": "minecraft:glass_pane"
+    },
+	"F": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "result": {
+    "item": "nfm:washing_machine_light"
+  }
+}

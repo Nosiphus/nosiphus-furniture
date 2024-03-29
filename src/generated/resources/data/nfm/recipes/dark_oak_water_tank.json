@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "SCS",
+    "WWW"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+	"C": {
+      "item": "minecraft:cauldron"
+    },
+	"W": {
+      "item": "minecraft:dark_oak_planks"
+    }
+  },
+  "result": {
+    "item": "nfm:dark_oak_water_tank"
+  }
+}

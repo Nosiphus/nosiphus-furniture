@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    " B ",
+    " N "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:cherry_log"
+    },
+	"B": {
+      "item": "minecraft:stone_button"
+    },
+	"N": {
+      "item": "minecraft:note_block"
+    }
+  },
+  "result": {
+    "item": "nfm:cherry_door_bell"
+  }
+}

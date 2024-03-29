@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:andesite"
+    }
+  },
+  "result": {
+    "item": "nfm:andesite_bird_bath"
+  }
+}

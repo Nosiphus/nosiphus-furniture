@@ -9,7 +9,7 @@
         "3": "minecraft:block/stone",
         "4": "minecraft:block/gray_stained_glass",
         "5": "cfm:block/mesh",
-        "6": "minecraft:block/anvil_base"
+        "6": "minecraft:block/anvil"
     },
 	"display": {
         "gui": {

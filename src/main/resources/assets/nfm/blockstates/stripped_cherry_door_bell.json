@@ -1,0 +1,34 @@
+{
+	"variants": {
+		"facing=north,activated=false": {
+			"model": "nfm:block/stripped_cherry_door_bell",
+			"y": 270
+		},
+		"facing=south,activated=false": {
+			"model": "nfm:block/stripped_cherry_door_bell",
+			"y": 90
+		},
+		"facing=east,activated=false": {
+			"model": "nfm:block/stripped_cherry_door_bell"
+		},
+		"facing=west,activated=false": {
+			"model": "nfm:block/stripped_cherry_door_bell",
+			"y": 180
+		},
+		"facing=north,activated=true": {
+			"model": "nfm:block/stripped_cherry_door_bell_pressed",
+			"y": 270
+		},
+		"facing=south,activated=true": {
+			"model": "nfm:block/stripped_cherry_door_bell_pressed",
+			"y": 90
+		},
+		"facing=east,activated=true": {
+			"model": "nfm:block/stripped_cherry_door_bell_pressed"
+		},
+		"facing=west,activated=true": {
+			"model": "nfm:block/stripped_cherry_door_bell_pressed",
+			"y": 180
+		}
+	}
+}

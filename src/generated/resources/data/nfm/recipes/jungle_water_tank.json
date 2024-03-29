@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "SCS",
+    "WWW"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+	"C": {
+      "item": "minecraft:cauldron"
+    },
+	"W": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "result": {
+    "item": "nfm:jungle_water_tank"
+  }
+}

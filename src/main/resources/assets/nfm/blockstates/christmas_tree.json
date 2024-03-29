@@ -1,8 +1,20 @@
 {
     "variants": {
-        "facing=north": {"model": "nfm:block/christmas_tree", "y": 270},
-        "facing=south": { "model": "nfm:block/christmas_tree", "y": 90},
-        "facing=east": { "model": "nfm:block/christmas_tree"},
-        "facing=west": { "model": "nfm:block/christmas_tree", "y": 180}
+        "facing=north": {
+            "model": "nfm:block/christmas_tree",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "nfm:block/christmas_tree",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "nfm:block/christmas_tree",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "nfm:block/christmas_tree",
+            "y": 180
+        }
     }
 }

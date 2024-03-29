@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "nfm:block/blackstone_bird_bath",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "nfm:block/blackstone_bird_bath",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "nfm:block/blackstone_bird_bath",
+            "y": 180
+        },
+        "facing=north": {
+            "model": "nfm:block/blackstone_bird_bath",
+            "y": 270
+        }
+    }
+}

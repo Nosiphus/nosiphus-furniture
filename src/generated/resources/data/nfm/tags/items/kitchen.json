@@ -89,10 +89,15 @@
     "nfm:dishwasher_dark",
     "nfm:microwave_light",
     "nfm:microwave_dark",
+	"nfm:oven_light",
+    "nfm:oven_dark",
     "nfm:oven_range_hood_light",
     "nfm:oven_range_hood_dark",
     "nfm:toaster_light",
     "nfm:toaster_dark",
-	"nfm:knife"
+	"nfm:knife",
+    "nfm:soap",
+    "nfm:soapy_water_bucket",
+    "nfm:super_soapy_water_bucket"
   ]
 }

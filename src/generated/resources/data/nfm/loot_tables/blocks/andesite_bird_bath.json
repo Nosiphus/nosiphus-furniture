@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"nfm:andesite_bird_bath"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

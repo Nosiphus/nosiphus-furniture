@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "nfm:block/washing_machine_dark",
+            "y": 0
+        },
+        "facing=south": {
+            "model": "nfm:block/washing_machine_dark",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "nfm:block/washing_machine_dark",
+            "y": 180
+        },
+        "facing=north": {
+            "model": "nfm:block/washing_machine_dark",
+            "y": 270
+        }
+    }
+}
