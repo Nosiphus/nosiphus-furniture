@@ -428,6 +428,9 @@
 	"container.nfm.oven": "Oven",
     "container.nfm.wall_cabinet": "Wall Cabinet",
 
+	"fluid_type.nfm.soapy_water": "Soapy Water",
+	"fluid_type.nfm.super_soapy_water": "Super Soapy Water",
+
 	"gui.button.nfm.bin.empty": "Empty",
 	"gui.button.nfm.dishwasher.start": "Start",
 	"gui.button.nfm.dishwasher.stop": "Stop",
