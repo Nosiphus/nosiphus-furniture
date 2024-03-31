@@ -14,9 +14,7 @@ public class ToolSlot extends Slot {
     }
 
     public boolean mayPlace(ItemStack stack) {
-        if(stack == null) {
-            return false;
-        }
+        if(stack == null) return false;
         Item item = stack.getItem();
         switch(toolType) {
             case 0:
