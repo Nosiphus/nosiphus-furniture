@@ -26,7 +26,7 @@ public class BinMenuScreen extends AbstractContainerScreen<BinMenu> {
     @Override
     protected void init() {
         super.init();
-        addRenderableWidget(new Button(this.getGuiLeft() + 128, this.getGuiTop() + 48, 40, 20, Component.translatable("gui.button.nfm.bin.empty"), button -> PacketHandler.getPlayChannel()
+        addRenderableWidget(new Button(this.getGuiLeft() + 128, this.getGuiTop() + 48, 40, 20, Component.translatable("gui.button.nfm.empty"), button -> PacketHandler.getPlayChannel()
                 .sendToServer(new C2SMessageEmptyBin(getMenu().getBlockEntity().getBlockPos()))));
     }
 
