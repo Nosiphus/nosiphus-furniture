@@ -58,22 +58,22 @@ public class MicrowaveBlock extends AbstractFurnaceBlock
 
     private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states)
     {
-        final VoxelShape[] TOP_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 7.0, 2.0, 13.0, 8.0, 12.0), Direction.WEST));
-        final VoxelShape[] LEFT_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 1.0, 13.0, 8.0, 2.0), Direction.WEST));
-        final VoxelShape[] BACK_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(12.0, 0.0, 2.0, 13.0, 8.0, 12.0), Direction.WEST));
-        final VoxelShape[] RIGHT_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 12.0, 13.0, 8.0, 15.0), Direction.WEST));
-        final VoxelShape[] BOTTOM_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 2.0, 13.0, 1.0, 12.0), Direction.WEST));
-        final VoxelShape[] TOP_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 6.0, 2.0, 4.0, 7.0, 11.0), Direction.WEST));
-        final VoxelShape[] LEFT_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 2.0, 2.0, 4.0, 6.0, 3.0), Direction.WEST));
-        final VoxelShape[] RIGHT_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 2.0, 10.0, 4.0, 6.0, 11.0), Direction.WEST));
-        final VoxelShape[] BOTTOM_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 2.0, 4.0, 2.0, 11.0), Direction.WEST));
-        final VoxelShape[] TOP_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 7.0, 1.0, 4.0, 8.0, 12.0), Direction.WEST));
-        final VoxelShape[] LEFT_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 1.0, 4.0, 7.0, 2.0), Direction.WEST));
-        final VoxelShape[] RIGHT_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 11.0, 4.0, 7.0, 12.0), Direction.WEST));
-        final VoxelShape[] BOTTOM_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 0.0, 1.0, 4.0, 1.0, 12.0), Direction.WEST));
-        final VoxelShape[] CONTROLS = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 0.0, 12.5, 4.0, 8.0, 15.0), Direction.WEST));
-        final VoxelShape[] GLASS = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.5, 2.0, 3.0, 3.6, 6.0, 10.0), Direction.WEST));
-        final VoxelShape[] PLATE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.25, 1.0, 3.0, 10.0, 2.0, 10.25), Direction.WEST));
+        final VoxelShape[] TOP_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 7.0, 2.0, 13.0, 8.0, 12.0), Direction.EAST));
+        final VoxelShape[] LEFT_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 1.0, 13.0, 8.0, 2.0), Direction.EAST));
+        final VoxelShape[] BACK_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(12.0, 0.0, 2.0, 13.0, 8.0, 12.0), Direction.EAST));
+        final VoxelShape[] RIGHT_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 12.0, 13.0, 8.0, 15.0), Direction.EAST));
+        final VoxelShape[] BOTTOM_SIDE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 2.0, 13.0, 1.0, 12.0), Direction.EAST));
+        final VoxelShape[] TOP_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 6.0, 2.0, 4.0, 7.0, 11.0), Direction.EAST));
+        final VoxelShape[] LEFT_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 2.0, 2.0, 4.0, 6.0, 3.0), Direction.EAST));
+        final VoxelShape[] RIGHT_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 2.0, 10.0, 4.0, 6.0, 11.0), Direction.EAST));
+        final VoxelShape[] BOTTOM_FRAME = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 2.0, 4.0, 2.0, 11.0), Direction.EAST));
+        final VoxelShape[] TOP_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 7.0, 1.0, 4.0, 8.0, 12.0), Direction.EAST));
+        final VoxelShape[] LEFT_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 1.0, 4.0, 7.0, 2.0), Direction.EAST));
+        final VoxelShape[] RIGHT_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 1.0, 11.0, 4.0, 7.0, 12.0), Direction.EAST));
+        final VoxelShape[] BOTTOM_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 0.0, 1.0, 4.0, 1.0, 12.0), Direction.EAST));
+        final VoxelShape[] CONTROLS = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.0, 0.0, 12.5, 4.0, 8.0, 15.0), Direction.EAST));
+        final VoxelShape[] GLASS = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(3.5, 2.0, 3.0, 3.6, 6.0, 10.0), Direction.EAST));
+        final VoxelShape[] PLATE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.25, 1.0, 3.0, 10.0, 2.0, 10.25), Direction.EAST));
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
         for (BlockState state : states) {
