@@ -11,7 +11,6 @@ public class SoapyWaterSlot extends Slot {
         super(container, index, x, y);
     }
 
-    @Override
     public boolean mayPlace(ItemStack stack) {
         if(stack == null) return false;
         return stack.getItem() == ModItems.SOAPY_WATER_BUCKET.get() || stack.getItem() == ModItems.SUPER_SOAPY_WATER_BUCKET.get();

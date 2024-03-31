@@ -13,7 +13,6 @@ public class ToolSlot extends Slot {
         this.toolType = toolType;
     }
 
-    @Override
     public boolean mayPlace(ItemStack stack) {
         if(stack == null) {
             return false;

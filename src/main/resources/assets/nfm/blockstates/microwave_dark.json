@@ -2,19 +2,19 @@
     "variants": {
         "facing=east": {
             "model": "nfm:block/microwave_dark",
-            "y": 0
+            "y": 180
         },
         "facing=south": {
             "model": "nfm:block/microwave_dark",
-            "y": 90
+            "y": 270
         },
         "facing=west": {
             "model": "nfm:block/microwave_dark",
-            "y": 180
+            "y": 0
         },
         "facing=north": {
             "model": "nfm:block/microwave_dark",
-            "y": 270
+            "y": 90
         }
     }
 }
