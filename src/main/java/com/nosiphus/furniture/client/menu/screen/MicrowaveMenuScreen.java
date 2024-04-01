@@ -3,6 +3,7 @@ package com.nosiphus.furniture.client.menu.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
 import com.nosiphus.furniture.client.menu.MicrowaveMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/microwave.png");
+    public MicrowaveBlockEntity blockEntity;
 
     public MicrowaveMenuScreen(MicrowaveMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
@@ -35,6 +37,10 @@ public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> 
         int startX = (this.width - this.imageWidth) / 2;
         int startY = (this.height - this.imageHeight) / 2;
         this.blit(poseStack, startX, startY, 0, 0, this.imageWidth, this.imageHeight);
+
+        //int percent = blockEntity.cookingProgress * 27 / 40;
+        //this.blit(poseStack, startX, startY, 120, 26, 176, 0, percent, 5);
+
     }
 
     @Override

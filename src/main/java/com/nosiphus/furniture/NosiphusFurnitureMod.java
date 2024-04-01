@@ -49,6 +49,8 @@ public class NosiphusFurnitureMod {
         ModItems.ITEMS.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModParticleTypes.PARTICLE_TYPES.register(eventBus);
+        ModRecipeSerializer.RECIPE_SERIALIZER.register(eventBus);
+        ModRecipeTypes.RECIPE_TYPES.register(eventBus);
         ModSounds.SOUNDS.register(eventBus);
         MinecraftForge.EVENT_BUS.register(this);
 
