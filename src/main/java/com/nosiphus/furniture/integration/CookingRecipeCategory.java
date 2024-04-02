@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
     public final static ResourceLocation UID = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "cooking");
@@ -22,7 +23,7 @@ public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
     private final IDrawable icon;
 
     public CookingRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
+        this.background = helper.createDrawable(TEXTURE, 22, 0, 132, 73);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.MICROWAVE_LIGHT.get()));
     }
 
@@ -48,7 +49,8 @@ public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, CookingRecipe cookingRecipe, IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 86, 15).addIngredients(cookingRecipe.getIngredients().get(0));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 86, 60).addItemStack(cookingRecipe.getResultItem());
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 43, 20).addIngredients(cookingRecipe.getIngredients().get(0));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.CATALYST, 104, 40).addItemStack(new ItemStack(Items.REDSTONE_BLOCK));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 43, 43).addItemStack(cookingRecipe.getResultItem());
     }
 }
