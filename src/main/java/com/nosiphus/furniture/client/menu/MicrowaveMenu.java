@@ -1,11 +1,13 @@
 package com.nosiphus.furniture.client.menu;
 
 import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
+import com.nosiphus.furniture.core.ModBlocks;
 import com.nosiphus.furniture.core.ModMenuTypes;
 import com.nosiphus.furniture.core.ModRecipeTypes;
 import com.nosiphus.furniture.inventory.MicrowaveSlot;
 import com.nosiphus.furniture.inventory.RedstoneSlot;
 import com.nosiphus.furniture.recipe.CookingRecipe;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,6 +16,9 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -21,13 +26,25 @@ import java.util.List;
 public class MicrowaveMenu extends AbstractContainerMenu {
 
     protected final MicrowaveBlockEntity blockEntity;
+    private final Level level;
+    private final ContainerData data;
 
-    public MicrowaveMenu(int ID, Inventory inventory, MicrowaveBlockEntity blockEntity) {
-        super(ModMenuTypes.MICROWAVE.get(), ID);
-        this.blockEntity = blockEntity;
+    public MicrowaveMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
+        this(id, inventory, inventory.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+    }
 
-        this.addSlot(new MicrowaveSlot(blockEntity, 0, 65, 43));
-        this.addSlot(new RedstoneSlot(blockEntity, 1, 126, 40));
+    public MicrowaveMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.MICROWAVE.get(), id);
+        checkContainerSize(inventory, 3);
+        blockEntity = (MicrowaveBlockEntity) entity;
+        this.level = inventory.player.level;
+        this.data = data;
+
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 126, 40));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 65, 43));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 65, 20));
+        });
 
         for(int i = 0; i < 3; i++)
         {
@@ -42,11 +59,19 @@ public class MicrowaveMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(inventory, i, i * 18 + 8, 150));
         }
 
+        addDataSlots(data);
     }
 
-    @Override
-    public boolean stillValid(Player player) {
-        return this.blockEntity.stillValid(player);
+    public boolean isCrafting() {
+        return data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        int progressBarSize = 5;
+
+        return maxProgress != 0 && progress != 0 ? progress * progressBarSize / maxProgress : 0;
     }
 
     @Override
@@ -83,12 +108,8 @@ public class MicrowaveMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public void removed(Player player) {
-        super.removed(player);
-    }
-
-    public MicrowaveBlockEntity getBlockEntity() {
-        return blockEntity;
+    public boolean stillValid(Player player) {
+        return this.blockEntity.stillValid(player);
     }
 
 }

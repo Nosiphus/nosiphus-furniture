@@ -41,6 +41,14 @@ public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> 
         //int percent = blockEntity.cookingProgress * 27 / 40;
         //this.blit(poseStack, startX, startY, 120, 26, 176, 0, percent, 5);
 
+        renderProgressBar(poseStack, startX, startY);
+
+    }
+
+    private void renderProgressBar(PoseStack poseStack, int x, int y) {
+        if(menu.isCrafting()) {
+            blit(poseStack, x + 120, y + 26, 176, 0, 5, menu.getScaledProgress());
+        }
     }
 
     @Override

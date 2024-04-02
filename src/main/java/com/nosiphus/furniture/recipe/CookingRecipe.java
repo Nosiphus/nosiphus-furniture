@@ -1,64 +1,125 @@
 package com.nosiphus.furniture.recipe;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.nosiphus.furniture.NosiphusFurnitureMod;
-import com.nosiphus.furniture.core.ModBlocks;
-import com.nosiphus.furniture.core.ModRecipeSerializer;
-import com.nosiphus.furniture.core.ModRecipeTypes;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-public class CookingRecipe extends AbstractCookingRecipe {
+public class CookingRecipe implements Recipe<SimpleContainer> {
 
-    public CookingRecipe(ResourceLocation id, String group, Ingredient ingredient, ItemStack result, float experience, int cookingtime) {
-        super(ModRecipeTypes.COOKING.get(), id, group, ingredient, result, experience, cookingtime);
+    private final ResourceLocation id;
+    private final ItemStack output;
+    private final NonNullList<Ingredient> recipeItems;
+
+    public CookingRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
+        this.id = id;
+        this.output = output;
+        this.recipeItems = recipeItems;
     }
 
     @Override
-    public ItemStack getToastSymbol() {
-        return new ItemStack(ModBlocks.MICROWAVE_LIGHT.get());
+    public boolean matches(SimpleContainer container, Level level) {
+        if(level.isClientSide()) {
+            return false;
+        }
+        return recipeItems.get(0).test(container.getItem(1));
     }
 
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    @Override
+    public ItemStack assemble(SimpleContainer container) {
+        return output;
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getResultItem() {
+        return output.copy();
+    }
+
+    @Override
+    public ResourceLocation getId() {
+        return id;
+    }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializer.COOKING.get();
+        return Serializer.INSTANCE;
+    }
+
+    @Override
+    public RecipeType<?> getType() {
+        return Type.INSTANCE;
+    }
+
+    public static class Type implements RecipeType<CookingRecipe> {
+        private Type() {}
+        public static final Type INSTANCE = new Type();
+        public static final String ID = "cooking";
     }
 
     public static class Serializer implements RecipeSerializer<CookingRecipe> {
-
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "cooking");
 
-        public CookingRecipe fromJson(ResourceLocation resourceLocation, JsonObject jsonObject) {
-            String group = GsonHelper.getAsString(jsonObject, "group", "");
-            Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(jsonObject, "item"));
-            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "result"));
-            float experience = GsonHelper.getAsFloat(jsonObject, "experience", 0.0F);
-            int cookingtime = GsonHelper.getAsInt(jsonObject, "cookingtime", 0);
-            return new CookingRecipe(resourceLocation, group, ingredient, result, experience, cookingtime);
+        @Override
+        public CookingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe) {
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "output"));
+            JsonArray ingredients = GsonHelper.getAsJsonArray(serializedRecipe, "ingredients");
+            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
+
+            for (int i = 0; i < inputs.size(); i++) {
+                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+            }
+
+            return new CookingRecipe(recipeId, output, inputs);
         }
 
-        public CookingRecipe fromNetwork(ResourceLocation resourceLocation, FriendlyByteBuf friendlyByteBuf) {
-            String group = friendlyByteBuf.readUtf();
-            Ingredient ingredient = Ingredient.fromNetwork(friendlyByteBuf);
-            ItemStack result = friendlyByteBuf.readItem();
-            float experience = friendlyByteBuf.readFloat();
-            int cookingtime = friendlyByteBuf.readVarInt();
-            return new CookingRecipe(resourceLocation, group, ingredient, result, experience, cookingtime);
+        @Override
+        public @Nullable CookingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf friendlyByteBuf) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(friendlyByteBuf.readInt(), Ingredient.EMPTY);
+
+            for (int i = 0; i < inputs.size(); i++) {
+                inputs.set(i, Ingredient.fromNetwork(friendlyByteBuf));
+            }
+
+            ItemStack output = friendlyByteBuf.readItem();
+            return new CookingRecipe(recipeId, output, inputs);
         }
 
+        @Override
         public void toNetwork(FriendlyByteBuf friendlyByteBuf, CookingRecipe cookingRecipe) {
-            friendlyByteBuf.writeUtf(cookingRecipe.group);
-            cookingRecipe.ingredient.toNetwork(friendlyByteBuf);
-            friendlyByteBuf.writeItem(cookingRecipe.result);
-            friendlyByteBuf.writeFloat(cookingRecipe.experience);
-            friendlyByteBuf.writeVarInt(cookingRecipe.cookingTime);
+            friendlyByteBuf.writeInt(cookingRecipe.getIngredients().size());
+
+            for (Ingredient ingredient : cookingRecipe.getIngredients()) {
+                ingredient.toNetwork(friendlyByteBuf);
+            }
+
+            friendlyByteBuf.writeItemStack(cookingRecipe.getResultItem(), false);
         }
     }
+
+
+
+
+
+
+
 
 }

@@ -24,10 +24,7 @@ public class ModMenuTypes {
         BinBlockEntity binBlockEntity = (BinBlockEntity) inventory.player.level.getBlockEntity(data.readBlockPos());
         return new BinMenu(ID, inventory, binBlockEntity);
     });
-    public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE = register("microwave", (IContainerFactory<MicrowaveMenu>) (ID, inventory, data) -> {
-        MicrowaveBlockEntity microwaveBlockEntity = (MicrowaveBlockEntity) inventory.player.level.getBlockEntity(data.readBlockPos());
-        return new MicrowaveMenu(ID, inventory, microwaveBlockEntity);
-    });
+    public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE = registerMenuType(MicrowaveMenu::new, "microwave");
     public static final RegistryObject<MenuType<OvenMenu>> OVEN = registerMenuType((ID, inventory, extraData) -> new OvenMenu(ID, inventory), "oven");
     public static final RegistryObject<MenuType<WallCabinetMenu>> WALL_CABINET = register("wall_cabinet", (IContainerFactory<WallCabinetMenu>) (ID, inventory, data) -> {
         WallCabinetBlockEntity wallCabinetBlockEntity = (WallCabinetBlockEntity) inventory.player.level.getBlockEntity(data.readBlockPos());
