@@ -35,8 +35,8 @@ import org.apache.logging.log4j.Logger;
 @Mod(NosiphusFurnitureMod.MOD_ID)
 public class NosiphusFurnitureMod {
 
-    public static final Logger LOGGER = LogManager.getLogger("nfm");
-    public static final CreativeModeTab GROUP = new NosiphusFurnitureModTab("nfm");
+    public static final Logger LOGGER = LogManager.getLogger(NosiphusFurnitureMod.MOD_ID);
+    public static final CreativeModeTab GROUP = new NosiphusFurnitureModTab(NosiphusFurnitureMod.MOD_ID);
     public static final String MOD_ID = "nfm";
 
     public NosiphusFurnitureMod() {
@@ -56,7 +56,7 @@ public class NosiphusFurnitureMod {
 
     }
 
-    @Mod.EventBusSubscriber(modid = "nfm", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = NosiphusFurnitureMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientHandler {
 
         @SubscribeEvent
@@ -107,7 +107,7 @@ public class NosiphusFurnitureMod {
 
     }
 
-    @Mod.EventBusSubscriber(modid = "nfm", bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = NosiphusFurnitureMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class CommonHandler {
 
         @SubscribeEvent
