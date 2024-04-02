@@ -153,10 +153,15 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private static void craftItem(MicrowaveBlockEntity blockEntity) {
-
+        Level level = blockEntity.level;
+        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
+        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
+        }
+        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
         if(hasRecipe(blockEntity)) {
             blockEntity.itemHandler.extractItem(1, 1, false);
-            blockEntity.itemHandler.setStackInSlot(2, new ItemStack(Items.COOKED_SALMON,
+            blockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
                     blockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
             blockEntity.resetProgress();
         }
@@ -170,12 +175,12 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasRawInFirstSlot = blockEntity.itemHandler.getStackInSlot(1).getItem() == Items.SALMON;
+        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
 
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRawInFirstSlot && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, new ItemStack(Items.COOKED_SALMON, 1));
+        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory) &&
+                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack itemStack) {
