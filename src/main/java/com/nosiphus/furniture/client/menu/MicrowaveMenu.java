@@ -41,9 +41,8 @@ public class MicrowaveMenu extends AbstractContainerMenu {
         this.data = data;
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 126, 40));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 65, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 65, 20));
+            this.addSlot(new RedstoneSlot(iItemHandler, 0, 126, 40));
+            this.addSlot(new MicrowaveSlot(iItemHandler, 1, 65, 43));
         });
 
         for(int i = 0; i < 3; i++)
@@ -69,7 +68,7 @@ public class MicrowaveMenu extends AbstractContainerMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);
-        int progressBarSize = 5;
+        int progressBarSize = 27;
 
         return maxProgress != 0 && progress != 0 ? progress * progressBarSize / maxProgress : 0;
     }

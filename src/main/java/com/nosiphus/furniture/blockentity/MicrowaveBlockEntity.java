@@ -32,7 +32,7 @@ import java.util.Optional;
 
 public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -73,7 +73,7 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public int getContainerSize() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -161,8 +161,8 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
         if(hasRecipe(blockEntity)) {
             blockEntity.itemHandler.extractItem(1, 1, false);
-            blockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
+            blockEntity.itemHandler.setStackInSlot(1, new ItemStack(recipe.get().getResultItem().getItem(),
+                    blockEntity.itemHandler.getStackInSlot(1).getCount() + 1));
             blockEntity.resetProgress();
         }
     }
@@ -179,16 +179,7 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
 
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory) &&
-                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());
-    }
-
-    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack itemStack) {
-        return inventory.getItem(2).getItem() == itemStack.getItem() || inventory.getItem(2).isEmpty();
-    }
-
-    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
+        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
     }
 
     public boolean stillValid(Player player) {
