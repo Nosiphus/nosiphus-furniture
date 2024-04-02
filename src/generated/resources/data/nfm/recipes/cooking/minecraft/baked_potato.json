@@ -1,0 +1,11 @@
+{
+  "type": "nfm:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    }
+  ],
+  "output": {
+    "item": "minecraft:baked_potato"
+  }
+}

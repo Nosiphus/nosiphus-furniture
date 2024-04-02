@@ -1,0 +1,11 @@
+{
+  "type": "nfm:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:mutton"
+    }
+  ],
+  "output": {
+    "item": "minecraft:cooked_mutton"
+  }
+}

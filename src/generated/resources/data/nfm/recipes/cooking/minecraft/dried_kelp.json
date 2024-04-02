@@ -1,0 +1,11 @@
+{
+  "type": "nfm:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "output": {
+    "item": "minecraft:dried_kelp"
+  }
+}
