@@ -35,7 +35,7 @@ public class MicrowaveMenu extends AbstractContainerMenu {
 
     public MicrowaveMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.MICROWAVE.get(), id);
-        checkContainerSize(inventory, 3);
+        checkContainerSize(inventory, 2);
         blockEntity = (MicrowaveBlockEntity) entity;
         this.level = inventory.player.level;
         this.data = data;
