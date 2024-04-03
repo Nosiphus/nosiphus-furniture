@@ -45,7 +45,7 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
     private int progress2 = 0;
     private int progress3 = 0;
     private int progress4 = 0;
-    private int maxProgress = 100;
+    private int maxProgress = 3;
 
     public OvenBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.OVEN.get(), pos, state);
@@ -144,161 +144,80 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, OvenBlockEntity blockEntity) {
-        if (level != null) {
-            if (level.isClientSide()) {
+        if(level != null) {
+            if(level.isClientSide()) {
                 return;
             }
 
-            if(hasRecipe1(blockEntity) || hasRecipe2(blockEntity) || hasRecipe3(blockEntity) || hasRecipe4(blockEntity)) {
-                if (hasRecipe1(blockEntity)) {
-                    blockEntity.progress1++;
-                    setChanged(level, pos, state);
-                    if (blockEntity.progress1 >= blockEntity.maxProgress) {
-                        craftItem1(blockEntity);
-                    }
-                } else if (hasRecipe2(blockEntity)) {
-                    blockEntity.progress2++;
-                    setChanged(level, pos, state);
-                    if (blockEntity.progress2 >= blockEntity.maxProgress) {
-                        craftItem2(blockEntity);
-                    }
-                } else if (hasRecipe3(blockEntity)) {
-                    blockEntity.progress3++;
-                    setChanged(level, pos, state);
-                    if (blockEntity.progress3 >= blockEntity.maxProgress) {
-                        craftItem3(blockEntity);
-                    }
-                } else if (hasRecipe4(blockEntity)) {
-                    blockEntity.progress4++;
-                    setChanged(level, pos, state);
-                    if (blockEntity.progress4 >= blockEntity.maxProgress) {
-                        craftItem4(blockEntity);
-                    }
-                } else {
-                    blockEntity.resetProgress1();
-                    blockEntity.resetProgress2();
-                    blockEntity.resetProgress3();
-                    blockEntity.resetProgress4();
-                    setChanged(level, pos, state);
+            if(hasRecipe(blockEntity, 1)) {
+                blockEntity.progress1++;
+                setChanged(level, pos, state);
+                if(blockEntity.progress1 >= blockEntity.maxProgress) {
+                    craftItem(blockEntity, 1);
                 }
+            } else if(hasRecipe(blockEntity, 3)) {
+                blockEntity.progress2++;
+                setChanged(level, pos, state);
+                if(blockEntity.progress2 >= blockEntity.maxProgress) {
+                    craftItem(blockEntity, 3);
+                }
+            } else {
+                blockEntity.resetProgress(1);
+                blockEntity.resetProgress(3);
+                setChanged(level, pos, state);
             }
         }
     }
 
-    private void resetProgress1() {
-        this.progress1 = 0;
-    }
-
-    private void resetProgress2() {
-        this.progress2 = 0;
-    }
-
-    private void resetProgress3() {
-        this.progress3 = 0;
-    }
-
-    private void resetProgress4() {
-        this.progress4 = 0;
-    }
-
-    private static void craftItem1(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(1));
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        if (hasRecipe1(blockEntity)) {
-            blockEntity.itemHandler.extractItem(1, 1, false);
-            blockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
-            blockEntity.resetProgress1();
+    private void resetProgress(int inputSlot) {
+        if (inputSlot == 1) {
+            this.progress1 = 0;
+        } else if (inputSlot == 3) {
+            this.progress2 = 0;
+        } else if (inputSlot == 5) {
+            this.progress3 = 0;
+        } else if (inputSlot == 7) {
+            this.progress4 = 0;
         }
     }
 
-    private static void craftItem2(OvenBlockEntity blockEntity) {
+    private static void craftItem(OvenBlockEntity blockEntity, int inputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(3));
+        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
+        }
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        if (hasRecipe2(blockEntity)) {
-            blockEntity.itemHandler.extractItem(3, 1, false);
-            blockEntity.itemHandler.setStackInSlot(4, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(4).getCount() + 1));
-            blockEntity.resetProgress2();
+        if (hasRecipe(blockEntity, inputSlot)) {
+            blockEntity.itemHandler.extractItem(inputSlot, 1, false);
+            blockEntity.itemHandler.setStackInSlot(inputSlot + 1, new ItemStack(recipe.get().getResultItem().getItem(),
+                    blockEntity.itemHandler.getStackInSlot(inputSlot + 1).getCount() + 1));
+            blockEntity.resetProgress(inputSlot);
         }
     }
 
-    private static void craftItem3(OvenBlockEntity blockEntity) {
+    private static boolean hasRecipe(OvenBlockEntity blockEntity, int inputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(5));
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        if (hasRecipe3(blockEntity)) {
-            blockEntity.itemHandler.extractItem(5, 1, false);
-            blockEntity.itemHandler.setStackInSlot(6, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(6).getCount() + 1));
-            blockEntity.resetProgress3();
-        }
-    }
 
-    private static void craftItem4(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(7));
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        if (hasRecipe4(blockEntity)) {
-            blockEntity.itemHandler.extractItem(7, 1, false);
-            blockEntity.itemHandler.setStackInSlot(8, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(8).getCount() + 1));
-            blockEntity.resetProgress4();
+        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
-    }
-
-    private static boolean hasRecipe1(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(1));
 
         boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
 
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
+        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory, inputSlot + 1) &&
+                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem(), inputSlot + 1);
     }
 
-    private static boolean hasRecipe2(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(3));
-
-        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
-
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack, int outputSlot) {
+        return inventory.getItem(outputSlot).getItem() == stack.getItem() || inventory.getItem(outputSlot).isEmpty();
     }
 
-    private static boolean hasRecipe3(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(5));
-
-        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
-
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
-    }
-
-    private static boolean hasRecipe4(OvenBlockEntity blockEntity) {
-        Level level = blockEntity.level;
-        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(7));
-
-        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
-
-        Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory, int outputSlot) {
+        return inventory.getItem(outputSlot).getMaxStackSize() > inventory.getItem(outputSlot).getCount();
     }
 
     public boolean stillValid(Player player) {
