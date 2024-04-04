@@ -149,50 +149,49 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
                 return;
             }
 
-            if(hasRecipe(blockEntity, 1)) {
+            if(hasRecipe(blockEntity, 1, 2)) {
                 blockEntity.progress1++;
                 setChanged(level, pos, state);
                 if(blockEntity.progress1 >= blockEntity.maxProgress) {
-                    craftItem(blockEntity, 1);
+                    craftItem(blockEntity, 1, 2);
                 }
             } else {
                 blockEntity.resetProgress(1);
                 setChanged(level, pos, state);
             }
 
-            if(hasRecipe(blockEntity, 3)) {
+            if(hasRecipe(blockEntity, 3, 4)) {
                 blockEntity.progress2++;
                 setChanged(level, pos, state);
                 if(blockEntity.progress2 >= blockEntity.maxProgress) {
-                    craftItem(blockEntity, 3);
+                    craftItem(blockEntity, 3, 4);
                 }
             } else {
                 blockEntity.resetProgress(3);
                 setChanged(level, pos, state);
             }
 
-            if(hasRecipe(blockEntity, 5)) {
+            if(hasRecipe(blockEntity, 5, 6)) {
                 blockEntity.progress3++;
                 setChanged(level, pos, state);
                 if(blockEntity.progress3 >= blockEntity.maxProgress) {
-                    craftItem(blockEntity, 5);
+                    craftItem(blockEntity, 5, 6);
                 }
             } else {
                 blockEntity.resetProgress(5);
                 setChanged(level, pos, state);
             }
 
-            if(hasRecipe(blockEntity, 7)) {
+            if(hasRecipe(blockEntity, 7, 8)) {
                 blockEntity.progress4++;
                 setChanged(level, pos, state);
                 if(blockEntity.progress4 >= blockEntity.maxProgress) {
-                    craftItem(blockEntity, 7);
+                    craftItem(blockEntity, 7, 8);
                 }
             } else {
                 blockEntity.resetProgress(7);
                 setChanged(level, pos, state);
             }
-
         }
     }
 
@@ -208,39 +207,38 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-    private static void craftItem(OvenBlockEntity blockEntity, int inputSlot) {
+    private static void craftItem(OvenBlockEntity blockEntity, int inputSlot, int outputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(inputSlot, blockEntity.itemHandler.getStackInSlot(inputSlot));
-        inventory.setItem(inputSlot + 1, blockEntity.itemHandler.getStackInSlot(inputSlot + 1));
+        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(inputSlot));
+        inventory.setItem(2, blockEntity.itemHandler.getStackInSlot(outputSlot));
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        if (hasRecipe(blockEntity, inputSlot)) {
+        if (hasRecipe(blockEntity, inputSlot, outputSlot)) {
             blockEntity.itemHandler.extractItem(inputSlot, 1, false);
-            blockEntity.itemHandler.setStackInSlot(inputSlot + 1, new ItemStack(recipe.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(inputSlot + 1).getCount() + 1));
+            blockEntity.itemHandler.setStackInSlot(outputSlot, new ItemStack(recipe.get().getResultItem().getItem(),
+                    blockEntity.itemHandler.getStackInSlot(outputSlot).getCount() + 1));
+            System.out.println("craftItem run using input slot value of " + inputSlot);
             blockEntity.resetProgress(inputSlot);
         }
     }
 
-    private static boolean hasRecipe(OvenBlockEntity blockEntity, int inputSlot) {
+    private static boolean hasRecipe(OvenBlockEntity blockEntity, int inputSlot, int outputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        inventory.setItem(inputSlot, blockEntity.itemHandler.getStackInSlot(inputSlot));
-        inventory.setItem(inputSlot + 1, blockEntity.itemHandler.getStackInSlot(inputSlot + 1));
+        inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(inputSlot));
+        inventory.setItem(2, blockEntity.itemHandler.getStackInSlot(outputSlot));
         boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
-
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory, inputSlot + 1) &&
-                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem(), inputSlot + 1);
+        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory, outputSlot) &&
+                canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem());
     }
 
-    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack, int outputSlot) {
-        return inventory.getItem(outputSlot).getItem() == stack.getItem() || inventory.getItem(outputSlot).isEmpty();
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
+        return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory, int outputSlot) {
-        return inventory.getItem(outputSlot).getMaxStackSize() > inventory.getItem(outputSlot).getCount();
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 
     public boolean stillValid(Player player) {
