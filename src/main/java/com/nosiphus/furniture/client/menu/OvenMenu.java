@@ -75,10 +75,31 @@ public class OvenMenu extends AbstractContainerMenu {
     }
 
     public int getScaledProgress1() {
-        int progress1 = this.data.get(0);
+        int progress = this.data.get(0);
         int maxProgress = this.data.get(4);
         int progressFireSize = 14;
-        return maxProgress != 0 && progress1 != 0 ? progress1 * progressFireSize / maxProgress : 0;
+        return maxProgress != 0 && progress != 0 ? progress * progressFireSize / maxProgress : 0;
+    }
+
+    public int getScaledProgress2() {
+        int progress = this.data.get(1);
+        int maxProgress = this.data.get(4);
+        int progressFireSize = 14;
+        return maxProgress != 0 && progress != 0 ? progress * progressFireSize / maxProgress : 0;
+    }
+
+    public int getScaledProgress3() {
+        int progress = this.data.get(2);
+        int maxProgress = this.data.get(4);
+        int progressFireSize = 14;
+        return maxProgress != 0 && progress != 0 ? progress * progressFireSize / maxProgress : 0;
+    }
+
+    public int getScaledProgress4() {
+        int progress = this.data.get(3);
+        int maxProgress = this.data.get(4);
+        int progressFireSize = 14;
+        return maxProgress != 0 && progress != 0 ? progress * progressFireSize / maxProgress : 0;
     }
 
     @Override
