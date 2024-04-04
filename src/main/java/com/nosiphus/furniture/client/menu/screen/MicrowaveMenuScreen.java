@@ -41,7 +41,7 @@ public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> 
     }
 
     private void renderProgressBar(PoseStack poseStack, int x, int y) {
-        if(menu.isCrafting()) {
+        if(menu.isCooking()) {
             blit(poseStack, x + 120, y + 26, 176, 0, menu.getScaledProgress(), 5);
         }
     }

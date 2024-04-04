@@ -58,8 +58,27 @@ public class OvenMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
-    public boolean isCrafting() {
+    public boolean isCooking1() {
         return data.get(0) > 0;
+    }
+
+    public boolean isCooking2() {
+        return data.get(1) > 0;
+    }
+
+    public boolean isCooking3() {
+        return data.get(2) > 0;
+    }
+
+    public boolean isCooking4() {
+        return data.get(3) > 0;
+    }
+
+    public int getScaledProgress1() {
+        int progress1 = this.data.get(0);
+        int maxProgress = this.data.get(4);
+        int progressFireSize = 14;
+        return maxProgress != 0 && progress1 != 0 ? progress1 * progressFireSize / maxProgress : 0;
     }
 
     @Override

@@ -61,7 +61,7 @@ public class MicrowaveMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
-    public boolean isCrafting() {
+    public boolean isCooking() {
         return data.get(0) > 0;
     }
 
