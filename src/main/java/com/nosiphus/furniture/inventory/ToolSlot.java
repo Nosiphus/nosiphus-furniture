@@ -3,13 +3,15 @@ package com.nosiphus.furniture.inventory;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
-public class ToolSlot extends Slot {
+public class ToolSlot extends SlotItemHandler {
 
     private int toolType;
 
-    public ToolSlot(Container container, int index, int x, int y, int toolType) {
-        super(container, index, x, y);
+    public ToolSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition, int toolType) {
+        super(itemHandler, index, xPosition, yPosition);
         this.toolType = toolType;
     }
 
