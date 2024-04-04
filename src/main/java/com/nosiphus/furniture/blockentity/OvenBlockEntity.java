@@ -155,17 +155,44 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
                 if(blockEntity.progress1 >= blockEntity.maxProgress) {
                     craftItem(blockEntity, 1);
                 }
-            } else if(hasRecipe(blockEntity, 3)) {
+            } else {
+                blockEntity.resetProgress(1);
+                setChanged(level, pos, state);
+            }
+
+            if(hasRecipe(blockEntity, 3)) {
                 blockEntity.progress2++;
                 setChanged(level, pos, state);
                 if(blockEntity.progress2 >= blockEntity.maxProgress) {
                     craftItem(blockEntity, 3);
                 }
             } else {
-                blockEntity.resetProgress(1);
                 blockEntity.resetProgress(3);
                 setChanged(level, pos, state);
             }
+
+            if(hasRecipe(blockEntity, 5)) {
+                blockEntity.progress3++;
+                setChanged(level, pos, state);
+                if(blockEntity.progress3 >= blockEntity.maxProgress) {
+                    craftItem(blockEntity, 5);
+                }
+            } else {
+                blockEntity.resetProgress(5);
+                setChanged(level, pos, state);
+            }
+
+            if(hasRecipe(blockEntity, 7)) {
+                blockEntity.progress4++;
+                setChanged(level, pos, state);
+                if(blockEntity.progress4 >= blockEntity.maxProgress) {
+                    craftItem(blockEntity, 7);
+                }
+            } else {
+                blockEntity.resetProgress(7);
+                setChanged(level, pos, state);
+            }
+
         }
     }
 
@@ -184,9 +211,8 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
     private static void craftItem(OvenBlockEntity blockEntity, int inputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
-            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
-        }
+        inventory.setItem(inputSlot, blockEntity.itemHandler.getStackInSlot(inputSlot));
+        inventory.setItem(inputSlot + 1, blockEntity.itemHandler.getStackInSlot(inputSlot + 1));
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
         if (hasRecipe(blockEntity, inputSlot)) {
             blockEntity.itemHandler.extractItem(inputSlot, 1, false);
@@ -199,11 +225,8 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
     private static boolean hasRecipe(OvenBlockEntity blockEntity, int inputSlot) {
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-
-        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
-            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
-        }
-
+        inventory.setItem(inputSlot, blockEntity.itemHandler.getStackInSlot(inputSlot));
+        inventory.setItem(inputSlot + 1, blockEntity.itemHandler.getStackInSlot(inputSlot + 1));
         boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
 
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
