@@ -45,7 +45,7 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
     private int progress2 = 0;
     private int progress3 = 0;
     private int progress4 = 0;
-    private int maxProgress = 3;
+    private int maxProgress = 100;
 
     public OvenBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.OVEN.get(), pos, state);
@@ -217,7 +217,6 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
             blockEntity.itemHandler.extractItem(inputSlot, 1, false);
             blockEntity.itemHandler.setStackInSlot(outputSlot, new ItemStack(recipe.get().getResultItem().getItem(),
                     blockEntity.itemHandler.getStackInSlot(outputSlot).getCount() + 1));
-            System.out.println("craftItem run using input slot value of " + inputSlot);
             blockEntity.resetProgress(inputSlot);
         }
     }
@@ -248,6 +247,5 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
             return !(player.distanceToSqr((double)this.worldPosition.getX() + 0.5D, (double)this.worldPosition.getY() + 0.5D, (double)this.worldPosition.getZ() + 0.5D) > 64.0D);
         }
     }
-
 
 }
