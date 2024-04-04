@@ -43,25 +43,25 @@ public class OvenMenuScreen extends AbstractContainerScreen<OvenMenu> {
 
     private void renderProgressFire1(PoseStack poseStack, int x, int y) {
         if (menu.isCooking1()) {
-            blit(poseStack, x + 54, y + 55, 176, 0, 14, menu.getScaledProgress1());
+            blit(poseStack, x + 54, y + 55 + (14 - menu.getScaledProgress1()), 176, (14 - menu.getScaledProgress1()), 14, menu.getScaledProgress1());
         }
     }
 
     private void renderProgressFire2(PoseStack poseStack, int x, int y) {
         if (menu.isCooking2()) {
-            blit(poseStack, x + 72, y + 55, 176, 0, 14, menu.getScaledProgress2());
+            blit(poseStack, x + 72, y + 55 + (14 - menu.getScaledProgress2()), 176, (14 - menu.getScaledProgress2()), 14, menu.getScaledProgress2());
         }
     }
 
     private void renderProgressFire3(PoseStack poseStack, int x, int y) {
         if (menu.isCooking3()) {
-            blit(poseStack, x + 90, y + 55, 176, 0, 14, menu.getScaledProgress3());
+            blit(poseStack, x + 90, y + 55 + (14 - menu.getScaledProgress3()), 176, (14 - menu.getScaledProgress3()), 14, menu.getScaledProgress3());
         }
     }
 
     private void renderProgressFire4(PoseStack poseStack, int x, int y) {
         if (menu.isCooking4()) {
-            blit(poseStack, x + 108, y + 55, 176, 0, 14, menu.getScaledProgress4());
+            blit(poseStack, x + 108, y + 55 + (14 - menu.getScaledProgress4()), 176, (14 - menu.getScaledProgress4()), 14, menu.getScaledProgress4());
         }
     }
 
