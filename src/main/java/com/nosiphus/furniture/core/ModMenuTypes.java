@@ -2,8 +2,12 @@ package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.NosiphusFurnitureMod;
 import com.nosiphus.furniture.blockentity.BinBlockEntity;
+import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
 import com.nosiphus.furniture.blockentity.WallCabinetBlockEntity;
-import com.nosiphus.furniture.client.menu.*;
+import com.nosiphus.furniture.client.menu.BinMenu;
+import com.nosiphus.furniture.client.menu.MicrowaveMenu;
+import com.nosiphus.furniture.client.menu.OvenMenu;
+import com.nosiphus.furniture.client.menu.WallCabinetMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -20,7 +24,6 @@ public class ModMenuTypes {
         BinBlockEntity binBlockEntity = (BinBlockEntity) inventory.player.level.getBlockEntity(data.readBlockPos());
         return new BinMenu(ID, inventory, binBlockEntity);
     });
-    public static final RegistryObject<MenuType<DishwasherMenu>> DISHWASHER = registerMenuType(DishwasherMenu::new, "dishwasher");
     public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE = registerMenuType(MicrowaveMenu::new, "microwave");
     public static final RegistryObject<MenuType<OvenMenu>> OVEN = registerMenuType(OvenMenu::new, "oven");
     public static final RegistryObject<MenuType<WallCabinetMenu>> WALL_CABINET = register("wall_cabinet", (IContainerFactory<WallCabinetMenu>) (ID, inventory, data) -> {
