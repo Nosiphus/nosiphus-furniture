@@ -50,13 +50,14 @@ public class NosiphusFurnitureMod {
         ModItems.ITEMS.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModParticleTypes.PARTICLE_TYPES.register(eventBus);
+        ModRecipeSerializer.RECIPE_SERIALIZER.register(eventBus);
+        ModRecipeTypes.RECIPE_TYPES.register(eventBus);
         ModSounds.SOUNDS.register(eventBus);
-        eventBus.addListener(this::onDataSetup);
         MinecraftForge.EVENT_BUS.register(this);
 
     }
 
-    @Mod.EventBusSubscriber(modid = "nfm", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = NosiphusFurnitureMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientHandler {
 
         @SubscribeEvent
@@ -65,9 +66,9 @@ public class NosiphusFurnitureMod {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAPY_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SUPER_SOAPY_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SUPER_SOAPY_WATER.get(), RenderType.translucent());
-            MenuScreens.register(ModMenuTypes.BIN_MENU.get(), BinMenuScreen::new);
-            MenuScreens.register(ModMenuTypes.MICROWAVE_MENU.get(), MicrowaveMenuScreen::new);
-            MenuScreens.register(ModMenuTypes.OVEN_MENU.get(), OvenMenuScreen::new);
+            MenuScreens.register(ModMenuTypes.BIN.get(), BinMenuScreen::new);
+            MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveMenuScreen::new);
+            MenuScreens.register(ModMenuTypes.OVEN.get(), OvenMenuScreen::new);
             MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetMenuScreen::new);
             MinecraftForge.EVENT_BUS.register(new CreativeScreenEvents());
         }
@@ -107,21 +108,11 @@ public class NosiphusFurnitureMod {
 
     }
 
-    @Mod.EventBusSubscriber(modid = "nfm", bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = NosiphusFurnitureMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class CommonHandler {
 
         @SubscribeEvent
-        public static void onCommonSetup(FMLCommonSetupEvent event) {
-
-            PacketHandler.init();
-
-        }
-
-    }
-
-    private void onDataSetup(GatherDataEvent event) {
-
-        DataGenerator generator = event.getGenerator();
+        public static void onCommonSetup(FMLCommonSetupEvent event) { PacketHandler.init(); }
 
     }
 

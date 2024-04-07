@@ -28,7 +28,7 @@
         "sounds": [ "nfm:block/shower/running" ]
     },
 	"block.toilet.fart": {
-        "subtitle": "subtitle.nfm.toilet_fart",
+        "subtitle": "subtitle.nfm.fart",
         "sounds": [ "nfm:block/toilet/fart" ]
     },
 	"block.toilet.flush": {

@@ -12,7 +12,7 @@ public class BinMenu extends AbstractContainerMenu {
     protected final BinBlockEntity blockEntity;
 
     public BinMenu(int ID, Inventory inventory, BinBlockEntity blockEntity) {
-        super(ModMenuTypes.BIN_MENU.get(), ID);
+        super(ModMenuTypes.BIN.get(), ID);
         this.blockEntity = blockEntity;
         blockEntity.startOpen(inventory.player);
 

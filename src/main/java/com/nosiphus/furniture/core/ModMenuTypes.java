@@ -17,13 +17,12 @@ public class ModMenuTypes {
 
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, NosiphusFurnitureMod.MOD_ID);
 
-    public static final RegistryObject<MenuType<BinMenu>> BIN_MENU = register("bin", (IContainerFactory<BinMenu>) (ID, inventory, data) -> {
+    public static final RegistryObject<MenuType<BinMenu>> BIN = register("bin", (IContainerFactory<BinMenu>) (ID, inventory, data) -> {
         BinBlockEntity binBlockEntity = (BinBlockEntity) inventory.player.level().getBlockEntity(data.readBlockPos());
         return new BinMenu(ID, inventory, binBlockEntity);
     });
-
-    public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE_MENU = registerMenuType((ID, inventory, extraData) -> new MicrowaveMenu(ID, inventory), "microwave_menu");
-    public static final RegistryObject<MenuType<OvenMenu>> OVEN_MENU = registerMenuType((ID, inventory, extraData) -> new OvenMenu(ID, inventory), "oven_menu");
+    public static final RegistryObject<MenuType<MicrowaveMenu>> MICROWAVE = registerMenuType(MicrowaveMenu::new, "microwave");
+    public static final RegistryObject<MenuType<OvenMenu>> OVEN = registerMenuType(OvenMenu::new, "oven");
     public static final RegistryObject<MenuType<WallCabinetMenu>> WALL_CABINET = register("wall_cabinet", (IContainerFactory<WallCabinetMenu>) (ID, inventory, data) -> {
         WallCabinetBlockEntity wallCabinetBlockEntity = (WallCabinetBlockEntity) inventory.player.level().getBlockEntity(data.readBlockPos());
         return new WallCabinetMenu(ID, inventory, wallCabinetBlockEntity);
