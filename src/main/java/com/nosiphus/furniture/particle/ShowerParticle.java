@@ -79,5 +79,4 @@ public class ShowerParticle extends TextureSheetParticle {
 
     }
 
-
 }

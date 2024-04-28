@@ -115,11 +115,4 @@ public class CookingRecipe implements Recipe<SimpleContainer> {
         }
     }
 
-
-
-
-
-
-
-
 }
