@@ -655,23 +655,23 @@ public class ModBlocks {
             () -> new BarStoolBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Chopping Boards
-    public static final RegistryObject<Block> OAK_CHOPPING_BOARD = register("oak_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_OAK = register("oak_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<Block> SPRUCE_CHOPPING_BOARD = register("spruce_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_SPRUCE = register("spruce_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_PLANKS)));
-    public static final RegistryObject<Block> BIRCH_CHOPPING_BOARD = register("birch_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_BIRCH = register("birch_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_PLANKS)));
-    public static final RegistryObject<Block> JUNGLE_CHOPPING_BOARD = register("jungle_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_JUNGLE = register("jungle_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_PLANKS)));
-    public static final RegistryObject<Block> ACACIA_CHOPPING_BOARD = register("acacia_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_ACACIA = register("acacia_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_PLANKS)));
-    public static final RegistryObject<Block> DARK_OAK_CHOPPING_BOARD = register("dark_oak_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_DARK_OAK = register("dark_oak_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_PLANKS)));
-    public static final RegistryObject<Block> CRIMSON_CHOPPING_BOARD = register("crimson_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_CRIMSON = register("crimson_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)));
-    public static final RegistryObject<Block> WARPED_CHOPPING_BOARD = register("warped_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_WARPED = register("warped_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
-    public static final RegistryObject<Block> MANGROVE_CHOPPING_BOARD = register("mangrove_chopping_board",
+    public static final RegistryObject<Block> CHOPPING_BOARD_MANGROVE = register("mangrove_chopping_board",
             () -> new ChoppingBoardBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)));
 
     //Electronics
