@@ -155,6 +155,10 @@
     "nfm:black_cup",
 	"nfm:soap",
     "nfm:soapy_water_bucket",
-    "nfm:super_soapy_water_bucket"
+    "nfm:super_soapy_water_bucket",
+	"nfm:sausage",
+	"nfm:cooked_sausage",
+	"nfm:kebab",
+	"nfm:cooked_kebab"
   ]
 }

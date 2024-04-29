@@ -1,0 +1,9 @@
+{
+  "type": "cfm:grill_cooking",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "nfm:sausage"
+  },
+  "result": "nfm:cooked_sausage"
+}

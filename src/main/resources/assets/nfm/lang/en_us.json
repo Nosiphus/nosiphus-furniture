@@ -480,7 +480,11 @@
 	"gui.tag_filter.nfm.items": "Items",
 
 	"item.nfm.bread_slice": "Bread Slice",
+	"item.nfm.cooked_kebab": "Cooked Kebab",
+	"item.nfm.cooked_sausage": "Cooked Sausage",
 	"item.nfm.knife": "Knife",
+	"item.nfm.kebab": "Raw Kebab",
+	"item.nfm.sausage": "Raw Sausage",
 	"item.nfm.soap": "Soap",
 	"item.nfm.soapy_water_bucket": "Soapy Water Bucket",
 	"item.nfm.super_soapy_water_bucket": "Super Soapy Water Bucket",

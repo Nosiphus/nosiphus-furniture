@@ -21,6 +21,34 @@ public class ModItems {
                             .saturationMod(0.2f)
                             .alwaysEat()
                             .build())));
+    public static final RegistryObject<Item> COOKED_KEBAB = register("cooked_kebab",
+            () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> COOKED_SAUSAGE = register("cooked_sausage",
+            () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> KEBAB = register("kebab",
+            () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(1)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> SAUSAGE = register("sausage",
+            () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(1)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
     public static final RegistryObject<Item> TOAST = register("toast",
             () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)
                     .food(new FoodProperties.Builder()

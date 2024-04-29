@@ -50,6 +50,10 @@
 	"nfm:dark_oak_water_tank",
 	"nfm:crimson_water_tank",
 	"nfm:warped_water_tank",
-	"nfm:mangrove_water_tank"
+	"nfm:mangrove_water_tank",
+	"nfm:sausage",
+	"nfm:cooked_sausage",
+	"nfm:kebab",
+	"nfm:cooked_kebab"
   ]
 }
