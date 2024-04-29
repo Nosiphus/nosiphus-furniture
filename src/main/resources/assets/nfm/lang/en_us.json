@@ -314,6 +314,16 @@
     "block.nfm.green_bar_stool": "Green Bar Stool",
     "block.nfm.red_bar_stool": "Red Bar Stool",
     "block.nfm.black_bar_stool": "Black Bar Stool",
+
+	"block.nfm.oak_chopping_board": "Oak Chopping Board",
+	"block.nfm.spruce_chopping_board": "Spruce Chopping Board",
+	"block.nfm.birch_chopping_board": "Birch Chopping Board",
+	"block.nfm.jungle_chopping_board": "Jungle Chopping Board",
+	"block.nfm.acacia_chopping_board": "Acacia Chopping Board",
+	"block.nfm.dark_oak_chopping_board": "Dark Oak Chopping Board",
+	"block.nfm.crimson_chopping_board": "Crimson Chopping Board",
+	"block.nfm.warped_chopping_board": "Warped Chopping Board",
+	"block.nfm.mangrove_chopping_board": "Mangrove Chopping Board",
 	
 	"block.nfm.white_laptop": "White Laptop (Removed)",
     "block.nfm.orange_laptop": "Orange Laptop (Removed)",
@@ -468,11 +478,13 @@
 	"gui.tag_filter.nfm.festive": "Festive",
 	"gui.tag_filter.nfm.lighting": "Lighting",
 	"gui.tag_filter.nfm.items": "Items",
-	
+
+	"item.nfm.bread_slice": "Bread Slice",
 	"item.nfm.knife": "Knife",
 	"item.nfm.soap": "Soap",
 	"item.nfm.soapy_water_bucket": "Soapy Water Bucket",
 	"item.nfm.super_soapy_water_bucket": "Super Soapy Water Bucket",
+	"item.nfm.toast": "Toast",
 
 	"subtitle.nfm.close_bin": "Bin closing",
 	"subtitle.nfm.close_cabinet": "Cabinet closing",

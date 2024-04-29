@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+	"nfm:bread_slice",
+	"nfm:toast",
 	"nfm:knife",
 	"nfm:soap",
 	"nfm:soapy_water_bucket",
