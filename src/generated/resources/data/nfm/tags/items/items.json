@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+	"nfm:knife",
+	"nfm:soap",
+	"nfm:soapy_water_bucket",
+	"nfm:super_soapy_water_bucket"
+  ]
+}

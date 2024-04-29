@@ -1,16 +1,10 @@
 {
   "replace": false,
   "values": [
-    "nfm:shower_head_light",
-    "nfm:shower_head_dark",
-    "nfm:shower_light",
-    "nfm:shower_dark",
-    "nfm:sink_light",
-    "nfm:sink_dark",
     "nfm:toilet_light",
     "nfm:toilet_dark",
-	"nfm:washing_machine_light",
-	"nfm:washing_machine_dark",
+	"nfm:sink_light",
+    "nfm:sink_dark",
 	"nfm:white_wall_cabinet",
     "nfm:orange_wall_cabinet",
     "nfm:magenta_wall_cabinet",
@@ -26,6 +20,12 @@
     "nfm:brown_wall_cabinet",
     "nfm:green_wall_cabinet",
     "nfm:red_wall_cabinet",
-    "nfm:black_wall_cabinet"
+    "nfm:black_wall_cabinet",
+	"nfm:shower_light",
+    "nfm:shower_dark",
+	"nfm:shower_head_light",
+    "nfm:shower_head_dark",
+	"nfm:bin_light",
+    "nfm:bin_dark"
   ]
 }

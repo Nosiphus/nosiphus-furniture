@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WGW",
+    " C "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:light_blue_wool"
+    },
+	"G": {
+      "item": "minecraft:glowstone"
+    },
+	"C": {
+      "item": "minecraft:gray_concrete"
+    }
+  },
+  "result": {
+    "item": "nfm:light_blue_lamp",
+	"count": 2
+  }
+}

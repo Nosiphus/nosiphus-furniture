@@ -484,6 +484,40 @@ public class ModBlocks {
     public static final RegistryObject<Block> TELEVISION_STAND_BLACK = register("black_television_stand",
             () -> new TelevisionStandBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
+    //Lamps
+    public static final RegistryObject<Block> LAMP_WHITE = register("white_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_ORANGE = register("orange_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_MAGENTA = register("magenta_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_LIGHT_BLUE = register("light_blue_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_YELLOW = register("yellow_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_LIME = register("lime_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.LIME_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_PINK = register("pink_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.PINK_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_GRAY = register("gray_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_LIGHT_GRAY = register("light_gray_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_CYAN = register("cyan_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_PURPLE = register("purple_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_BLUE = register("blue_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_BROWN = register("brown_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_GREEN = register("green_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_RED = register("red_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.RED_WOOL).lightLevel((getLightValueLit(15)))));
+    public static final RegistryObject<Block> LAMP_BLACK = register("black_lamp",
+            () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_WOOL).lightLevel((getLightValueLit(15)))));
+
     //Kitchen Counters
     public static final RegistryObject<Block> KITCHEN_COUNTER_WHITE_MODERN = register("white_modern_kitchen_counter",
             () -> new KitchenCounterBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));

@@ -7,6 +7,7 @@ import com.nosiphus.furniture.NosiphusFurnitureMod;
 import com.nosiphus.furniture.client.gui.widget.button.TagButton;
 import com.nosiphus.furniture.common.ModTags;
 import com.nosiphus.furniture.core.ModBlocks;
+import com.nosiphus.furniture.core.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -263,10 +264,13 @@ public class CreativeScreenEvents
                 new TagFilter(ModTags.Items.GENERAL, new ItemStack(ModBlocks.CHAIR_WHITE_MODERN.get())),
                 new TagFilter(ModTags.Items.STORAGE, new ItemStack(ModBlocks.CABINET_WHITE_MODERN.get())),
                 new TagFilter(ModTags.Items.BEDROOM, new ItemStack(ModBlocks.DESK_WHITE_MODERN.get())),
+                new TagFilter(ModTags.Items.OUTDOORS, new ItemStack(ModBlocks.INFLATABLE_CASTLE_WHITE.get())),
                 new TagFilter(ModTags.Items.KITCHEN, new ItemStack(ModBlocks.KITCHEN_COUNTER_WHITE_MODERN.get())),
                 new TagFilter(ModTags.Items.BATHROOM, new ItemStack(ModBlocks.TOILET_LIGHT.get())),
-                new TagFilter(ModTags.Items.OUTDOORS, new ItemStack(ModBlocks.INFLATABLE_CASTLE_WHITE.get())),
-                new TagFilter(ModTags.Items.FESTIVE, new ItemStack(ModBlocks.WREATH.get()))
+                new TagFilter(ModTags.Items.ELECTRONICS, new ItemStack(ModBlocks.DOOR_BELL_OAK.get())),
+                new TagFilter(ModTags.Items.FESTIVE, new ItemStack(ModBlocks.WREATH.get())),
+                new TagFilter(ModTags.Items.LIGHTING, new ItemStack(ModBlocks.LAMP_WHITE.get())),
+                new TagFilter(ModTags.Items.ITEMS, new ItemStack(ModItems.KNIFE.get()))
         };
 
         ForgeRegistries.ITEMS.getValues().stream()

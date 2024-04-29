@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "nfm:candle",
     "nfm:christmas_tree",
+	"nfm:candle",
 	"nfm:wreath"
   ]
 }
