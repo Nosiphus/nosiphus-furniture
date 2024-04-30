@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
+import com.nosiphus.furniture.blockentity.ChoppingBoardBlockEntity;
 import com.nosiphus.furniture.core.ModItems;
 import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -80,6 +82,33 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
             }
         }
         super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        if(!level.isClientSide() && result.getDirection() == Direction.UP) {
+            if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
+                ItemStack stack = player.getItemInHand(hand);
+                if(!stack.isEmpty()) {
+                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(stack);
+                    if(blockEntity.addItem(stack, this.getPosition(result, pos)))
+                    {
+                        if(!player.getAbilities().instabuild)
+                        {
+                            stack.shrink(1);
+                        }
+                    } else {
+                        blockEntity.removeItem(this.getPosition(result, pos));
+                    }
+                }
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    private int getPosition(BlockHitResult hit, BlockPos pos) {
+        int position = 0;
+        return position;
     }
 
     @Nullable

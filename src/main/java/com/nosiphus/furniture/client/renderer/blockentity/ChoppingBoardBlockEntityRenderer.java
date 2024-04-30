@@ -18,22 +18,22 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
     @Override
     public void render(ChoppingBoardBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource source, int light, int overlay) {
         NonNullList<ItemStack> choppingBoard = blockEntity.getChoppingBoard();
-        for(int j = 0; j < choppingBoard.size(); j++) {
-            ItemStack stack = choppingBoard.get(j);
+            ItemStack stack = choppingBoard.get(0);
             if(!stack.isEmpty()) {
+
                 poseStack.pushPose();
 
-                poseStack.translate(0.5, 1.0, 0.5);
-                poseStack.mulPose(Vector3f.XP.rotationDegrees(90F));
-                poseStack.translate(-0.2 + 0.4 * (j % 2), -0.2 + 0.4 * (j / 2), 0.0);
-                poseStack.scale(0.375F, 0.375F, 0.375F);
-                poseStack.mulPose(Vector3f.ZP.rotationDegrees(90F * blockEntity.getRotations()[j]));
+                float xOffset = 0.0F;
+                float zOffset = 0.0F;
 
+                poseStack.translate(0.5F + xOffset, 0.02F, 0.3F + zOffset);
+                poseStack.mulPose(Vector3f.XP.rotation(0.1F * -90F));
+                poseStack.mulPose(Vector3f.ZP.rotation(180F));
+                poseStack.scale(0, -0.15F, 0);
                 Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, poseStack, source, 0);
+                
                 poseStack.popPose();
             }
-        }
     }
-
 
 }
