@@ -89,6 +89,10 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
         if(!level.isClientSide() && result.getDirection() == Direction.UP) {
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
                 ItemStack stack = player.getItemInHand(hand);
+                if(stack.getItem() == ModItems.KNIFE.get()) {
+                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(stack);
+                    blockEntity.chopItem(stack, this.getPosition(result, pos));
+                }
                 if(!stack.isEmpty()) {
                     Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(stack);
                     if(blockEntity.addItem(stack, this.getPosition(result, pos)))
@@ -100,6 +104,8 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                     } else {
                         blockEntity.removeItem(this.getPosition(result, pos));
                     }
+                } else {
+                    blockEntity.removeItem(this.getPosition(result, pos));
                 }
             }
         }

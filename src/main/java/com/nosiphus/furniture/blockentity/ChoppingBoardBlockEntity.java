@@ -87,6 +87,26 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         return this.choppingBoard.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.CHOPPING.get(), new SimpleContainer(input), this.level);
     }
 
+    public void chopItem(ItemStack stack, int position) {
+        if(!this.choppingBoard.get(position).isEmpty()) {
+
+            Optional<ChoppingRecipe> recipe = findMatchingRecipe(stack);
+
+            double posX = worldPosition.getX() + 0.5;
+            double posY = worldPosition.getY() + 0.4;
+            double posZ = worldPosition.getZ() + 0.5;
+
+            ItemEntity itemEntity = new ItemEntity(this.level, posX + 0.5, posY + 0.2, posZ + 0.5, recipe.get().getResultItem().copy());
+            this.level.addFreshEntity(itemEntity);
+
+            this.choppingBoard.set(position, ItemStack.EMPTY);
+
+            CompoundTag compoundTag = new CompoundTag();
+            this.writeItem(compoundTag);
+            BlockEntityUtil.sendUpdatePacket(this, compoundTag);
+        }
+    }
+
     @Override
     public int getContainerSize() {
         return this.choppingBoard.size();
