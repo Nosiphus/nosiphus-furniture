@@ -12,7 +12,6 @@ public class ModRecipeTypes {
 
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, NosiphusFurnitureMod.MOD_ID);
 
-    public static final RegistryObject<RecipeType<ChoppingRecipe>> CHOPPING = register("chopping");
     public static final RegistryObject<RecipeType<CookingRecipe>> COOKING = register("cooking");
 
     private static <T extends Recipe<?>> RegistryObject<RecipeType<T>> register(String name)
