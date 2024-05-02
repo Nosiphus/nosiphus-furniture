@@ -1,7 +1,6 @@
 package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.NosiphusFurnitureMod;
-import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import com.nosiphus.furniture.recipe.CookingRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
