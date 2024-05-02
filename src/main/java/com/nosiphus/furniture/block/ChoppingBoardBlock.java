@@ -88,18 +88,15 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         if(!level.isClientSide() && result.getDirection() == Direction.UP) {
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
-                ItemStack stack = player.getItemInHand(hand);
-                if(stack.getItem() == ModItems.KNIFE.get()) {
-                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(stack);
-                    blockEntity.chopItem(stack, this.getPosition(result, pos));
-                }
-                if(!stack.isEmpty()) {
-                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(stack);
-                    if(blockEntity.addItem(stack, this.getPosition(result, pos)))
-                    {
-                        if(!player.getAbilities().instabuild)
-                        {
-                            stack.shrink(1);
+                ItemStack heldItem = player.getItemInHand(hand);
+                ItemStack choppingItem = blockEntity.getItem(0);
+                Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(choppingItem);
+                if(heldItem.getItem() == ModItems.KNIFE.get()) {
+                    blockEntity.chopItem(recipe.get().getResultItem(), this.getPosition(result, pos));
+                } else if (!heldItem.isEmpty()) {
+                    if(blockEntity.addItem(heldItem, this.getPosition(result, pos))) {
+                        if(!player.getAbilities().instabuild) {
+                            heldItem.shrink(1);
                         }
                     } else {
                         blockEntity.removeItem(this.getPosition(result, pos));

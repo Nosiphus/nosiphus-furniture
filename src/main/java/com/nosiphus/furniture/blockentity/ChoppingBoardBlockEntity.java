@@ -88,23 +88,18 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
     }
 
     public void chopItem(ItemStack stack, int position) {
-        if(!this.choppingBoard.get(position).isEmpty()) {
+        double posX = worldPosition.getX() + 0.5;
+        double posY = worldPosition.getY() + 0.4;
+        double posZ = worldPosition.getZ() + 0.5;
 
-            Optional<ChoppingRecipe> recipe = findMatchingRecipe(stack);
+        ItemEntity itemEntity = new ItemEntity(this.level, posX + 0.5, posY + 0.2, posZ + 0.5, stack);
+        this.level.addFreshEntity(itemEntity);
 
-            double posX = worldPosition.getX() + 0.5;
-            double posY = worldPosition.getY() + 0.4;
-            double posZ = worldPosition.getZ() + 0.5;
+        this.choppingBoard.set(position, ItemStack.EMPTY);
 
-            ItemEntity itemEntity = new ItemEntity(this.level, posX + 0.5, posY + 0.2, posZ + 0.5, recipe.get().getResultItem().copy());
-            this.level.addFreshEntity(itemEntity);
-
-            this.choppingBoard.set(position, ItemStack.EMPTY);
-
-            CompoundTag compoundTag = new CompoundTag();
-            this.writeItem(compoundTag);
-            BlockEntityUtil.sendUpdatePacket(this, compoundTag);
-        }
+        CompoundTag compoundTag = new CompoundTag();
+        this.writeItem(compoundTag);
+        BlockEntityUtil.sendUpdatePacket(this, compoundTag);
     }
 
     @Override
