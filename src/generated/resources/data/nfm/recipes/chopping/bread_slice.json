@@ -1,0 +1,11 @@
+{
+  "type": "nfm:chopping",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "output": {
+    "item": "nfm:bread_slice"
+  }
+}
