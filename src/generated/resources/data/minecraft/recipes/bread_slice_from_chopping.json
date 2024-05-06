@@ -1,0 +1,10 @@
+{
+  "type": "nfm:chopping",
+  "cookingtime": 0,
+  "experience": 0,
+  "ingredient": {
+    "item": "minecraft:bread"
+  },
+  "result": "nfm:bread_slice",
+  "count": 6
+}

@@ -60,8 +60,18 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         return false;
     }
 
-    public void chopItem() {
+    public void chopItem(ItemStack stack) {
+        double posX = worldPosition.getX() + 0.3 + 0.4 * (1 % 2);
+        double posY = worldPosition.getY() + 1.0;
+        double posZ = worldPosition.getZ() + 0.3 + 0.4 * (1 / 2);
 
+        ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, stack.copy());
+        this.level.addFreshEntity(entity);
+        this.choppingBoard.set(0, ItemStack.EMPTY);
+
+        CompoundTag compoundTag = new CompoundTag();
+        this.writeItem(compoundTag);
+        BlockEntityUtil.sendUpdatePacket(this, compoundTag);
     }
 
     public void removeItem() {

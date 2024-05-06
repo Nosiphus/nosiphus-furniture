@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -90,7 +89,10 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
                 ItemStack stack = player.getItemInHand(hand);
                 if(stack.getItem() == ModItems.KNIFE.get()) {
-                    blockEntity.chopItem();
+                    Optional<ChoppingRecipe> toBeChoppedItem = blockEntity.findMatchingRecipe(blockEntity.getChoppingBoard().get(0));
+                    ChoppingRecipe choppingRecipe = toBeChoppedItem.get();
+                    ItemStack choppedItem = choppingRecipe.getResultItem();
+                    blockEntity.chopItem(choppedItem);
                 } else if (!stack.isEmpty()) {
                     Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(stack);
                     if(optional.isPresent()) {
