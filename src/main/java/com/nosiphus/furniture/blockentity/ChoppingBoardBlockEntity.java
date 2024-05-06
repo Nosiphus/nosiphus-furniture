@@ -44,15 +44,15 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         return this.choppingBoard;
     }
 
-    public boolean addItem(ItemStack stack, int position) {
-        if(this.choppingBoard.get(position).isEmpty()) {
+    public boolean addItem(ItemStack stack) {
+        if(this.choppingBoard.get(0).isEmpty()) {
             ItemStack copy = stack.copy();
             copy.setCount(1);
-            this.choppingBoard.set(position, copy);
+            this.choppingBoard.set(0, copy);
 
             Level level = this.getLevel();
             if(level != null) {
-
+                //Play Sound Code here
             }
 
             return true;
@@ -60,22 +60,20 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         return false;
     }
 
-    private void resetPosition(int position) {
-        CompoundTag compoundTag = new CompoundTag();
-        this.writeItem(compoundTag);
-        BlockEntityUtil.sendUpdatePacket(this, compoundTag);
+    public void chopItem() {
+
     }
 
-    public void removeItem(int position) {
-        if(!this.choppingBoard.get(position).isEmpty()) {
-            double posX = worldPosition.getX() + 0.5;
-            double posY = worldPosition.getY() + 0.4;
-            double posZ = worldPosition.getZ() + 0.5;
+    public void removeItem() {
+        if(!this.choppingBoard.get(0).isEmpty()) {
+            double posX = worldPosition.getX() + 0.3 + 0.4 * (1 % 2);
+            double posY = worldPosition.getY() + 1.0;
+            double posZ = worldPosition.getZ() + 0.3 + 0.4 * (1 / 2);
 
-            ItemEntity itemEntity = new ItemEntity(this.level, posX + 0.5, posY + 0.2, posZ + 0.5, this.choppingBoard.get(position).copy());
-            this.level.addFreshEntity(itemEntity);
+            ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, this.choppingBoard.get(0).copy());
+            this.level.addFreshEntity(entity);
 
-            this.choppingBoard.set(position, ItemStack.EMPTY);
+            this.choppingBoard.set(0, ItemStack.EMPTY);
 
             CompoundTag compoundTag = new CompoundTag();
             this.writeItem(compoundTag);
@@ -85,22 +83,6 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
 
     public Optional<ChoppingRecipe> findMatchingRecipe(ItemStack input) {
         return this.choppingBoard.stream().noneMatch(ItemStack::isEmpty) ? Optional.empty() : this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.CHOPPING.get(), new SimpleContainer(input), this.level);
-    }
-
-    public void chopItem(ItemStack stack, int position) {
-
-        double posX = worldPosition.getX() + 0.5;
-        double posY = worldPosition.getY() + 0.4;
-        double posZ = worldPosition.getZ() + 0.5;
-
-        ItemEntity itemEntity = new ItemEntity(this.level, posX + 0.5, posY + 0.2, posZ + 0.5, stack);
-        this.level.addFreshEntity(itemEntity);
-
-        this.choppingBoard.set(position, ItemStack.EMPTY);
-
-        CompoundTag compoundTag = new CompoundTag();
-        this.writeItem(compoundTag);
-        BlockEntityUtil.sendUpdatePacket(this, compoundTag);
     }
 
     @Override
@@ -140,16 +122,15 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
     @Override
     public void setItem(int index, ItemStack stack) {
         NonNullList<ItemStack> inventory = this.choppingBoard;
-        int finalIndex = index;
         Optional<ChoppingRecipe> optional = this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.CHOPPING.get(), new SimpleContainer(stack), this.level);
         if(optional.isPresent()) {
-            ChoppingRecipe recipe = optional.get();
-            this.resetPosition(finalIndex);
+            CompoundTag compoundTag = new CompoundTag();
+            this.writeItem(compoundTag);
+            BlockEntityUtil.sendUpdatePacket(this, compoundTag);
         }
 
         inventory.set(index, stack);
-        if(stack.getCount() > this.getMaxStackSize())
-        {
+        if(stack.getCount() > this.getMaxStackSize()) {
             stack.setCount(this.getMaxStackSize());
         }
 

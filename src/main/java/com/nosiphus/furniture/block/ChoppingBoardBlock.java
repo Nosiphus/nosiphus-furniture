@@ -86,36 +86,27 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if(!level.isClientSide() && result.getDirection() == Direction.UP) {
+        if(!level.isClientSide()) {
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
-                ItemStack heldItem = player.getItemInHand(hand);
-                ItemStack choppingItem = blockEntity.getItem(0);
-                if(heldItem.getItem() == ModItems.KNIFE.get()) {
-                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(choppingItem);
-
-                    blockEntity.chopItem(choppingItem, this.getPosition(result, pos));
-                } else if (!heldItem.isEmpty()) {
-                    Optional<ChoppingRecipe> recipe = blockEntity.findMatchingRecipe(heldItem);
-                    if(recipe.isPresent()) {
-                        if(blockEntity.addItem(heldItem, this.getPosition(result, pos))) {
+                ItemStack stack = player.getItemInHand(hand);
+                if(stack.getItem() == ModItems.KNIFE.get()) {
+                    blockEntity.chopItem();
+                } else if (!stack.isEmpty()) {
+                    Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(stack);
+                    if(optional.isPresent()) {
+                        if(blockEntity.addItem(stack)) {
                             if(!player.getAbilities().instabuild) {
-                                heldItem.shrink(1);
+                                stack.shrink(1);
                             }
                         }
-                    } else {
-                        blockEntity.removeItem(this.getPosition(result, pos));
                     }
-                } else {
-                    blockEntity.removeItem(this.getPosition(result, pos));
+                }
+                else {
+                    blockEntity.removeItem();
                 }
             }
         }
         return InteractionResult.SUCCESS;
-    }
-
-    private int getPosition(BlockHitResult hit, BlockPos pos) {
-        int position = 0;
-        return position;
     }
 
     @Nullable
