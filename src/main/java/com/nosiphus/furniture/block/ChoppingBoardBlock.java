@@ -89,13 +89,13 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
                 ItemStack stack = player.getItemInHand(hand);
                 if(stack.getItem() == ModItems.KNIFE.get()) {
-                    Optional<ChoppingRecipe> toBeChoppedItem = blockEntity.findMatchingRecipe(blockEntity.getChoppingBoard().get(0));
-                    ChoppingRecipe choppingRecipe = toBeChoppedItem.get();
-                    ItemStack choppedItem = choppingRecipe.getResultItem();
-                    blockEntity.chopItem(choppedItem);
-                } else if (!stack.isEmpty()) {
-                    Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(stack);
+                    Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(blockEntity.getItem(0));
                     if(optional.isPresent()) {
+                        blockEntity.chopItem(optional.get().getResultItem());
+                    }
+                } else if (!stack.isEmpty()) {
+                    Optional<ChoppingRecipe> optional1 = blockEntity.findMatchingRecipe(stack);
+                    if(optional1.isPresent()) {
                         if(blockEntity.addItem(stack)) {
                             if(!player.getAbilities().instabuild) {
                                 stack.shrink(1);
