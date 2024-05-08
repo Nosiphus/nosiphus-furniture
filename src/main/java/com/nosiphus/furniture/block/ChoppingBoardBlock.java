@@ -127,7 +127,7 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock //implements En
     {
         super.createBlockStateDefinition(builder);
     }
-    
+
      */
 
 }
