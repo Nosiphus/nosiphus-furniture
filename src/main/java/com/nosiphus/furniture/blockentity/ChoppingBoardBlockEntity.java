@@ -30,6 +30,16 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
     public static final int[] ALL_SLOTS = new int[]{0};
     public static final int[] CHOPPING_SLOT = new int[]{0};
 
+    private ItemStack food = null;
+
+    public void setFood(ItemStack food) {
+        this.food = food;
+    }
+
+    public ItemStack getFood() {
+        return food;
+    }
+
     private final NonNullList<ItemStack> choppingBoard = NonNullList.withSize(1, ItemStack.EMPTY);
 
     protected ChoppingBoardBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -72,6 +82,25 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         CompoundTag compoundTag = new CompoundTag();
         this.writeItem(compoundTag);
         BlockEntityUtil.sendUpdatePacket(this, compoundTag);
+    }
+
+    public boolean chopFood() {
+        if(food != null) {
+            Optional<ChoppingRecipe> optional = findMatchingRecipe(food);
+            if(optional.isPresent()) {
+                if(!level.isClientSide()) {
+                    ItemEntity entity = new ItemEntity(level, getBlockPos().getX() + 0.5, getBlockPos().getY() + 0.2, getBlockPos().getZ() + 0.5, optional.get().getResultItem().copy());
+                    this.level.addFreshEntity(entity);
+                    //sound
+                }
+                setFood(null);
+                CompoundTag compoundTag = new CompoundTag();
+                this.writeItem(compoundTag);
+                BlockEntityUtil.sendUpdatePacket(this, compoundTag);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void removeItem() {
@@ -176,7 +205,7 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
         this.writeItem(compoundTag);
     }
 
-    private CompoundTag writeItem(CompoundTag compoundTag) {
+    public CompoundTag writeItem(CompoundTag compoundTag) {
         ItemStackHelper.saveAllItems("ChoppingBoard", compoundTag, this.choppingBoard, true);
         return compoundTag;
     }
