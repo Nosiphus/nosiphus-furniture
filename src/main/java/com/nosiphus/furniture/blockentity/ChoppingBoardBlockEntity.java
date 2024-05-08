@@ -30,16 +30,6 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
     public static final int[] ALL_SLOTS = new int[]{0};
     public static final int[] CHOPPING_SLOT = new int[]{0};
 
-    private ItemStack food = null;
-
-    public void setFood(ItemStack food) {
-        this.food = food;
-    }
-
-    public ItemStack getFood() {
-        return food;
-    }
-
     private final NonNullList<ItemStack> choppingBoard = NonNullList.withSize(1, ItemStack.EMPTY);
 
     protected ChoppingBoardBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -71,36 +61,13 @@ public class ChoppingBoardBlockEntity extends BlockEntity implements WorldlyCont
     }
 
     public void chopItem(ItemStack stack) {
-        double posX = worldPosition.getX() + 0.3 + 0.4 * (1 % 2);
-        double posY = worldPosition.getY() + 1.0;
-        double posZ = worldPosition.getZ() + 0.3 + 0.4 * (1 / 2);
-
-        ItemEntity entity = new ItemEntity(this.level, posX, posY + 0.1, posZ, stack.copy());
+        ItemEntity entity = new ItemEntity(level, getBlockPos().getX() + 0.5, getBlockPos().getY() + 0.2, getBlockPos().getZ() + 0.5, stack.copy());
         this.level.addFreshEntity(entity);
         this.choppingBoard.set(0, ItemStack.EMPTY);
 
         CompoundTag compoundTag = new CompoundTag();
         this.writeItem(compoundTag);
         BlockEntityUtil.sendUpdatePacket(this, compoundTag);
-    }
-
-    public boolean chopFood() {
-        if(food != null) {
-            Optional<ChoppingRecipe> optional = findMatchingRecipe(food);
-            if(optional.isPresent()) {
-                if(!level.isClientSide()) {
-                    ItemEntity entity = new ItemEntity(level, getBlockPos().getX() + 0.5, getBlockPos().getY() + 0.2, getBlockPos().getZ() + 0.5, optional.get().getResultItem().copy());
-                    this.level.addFreshEntity(entity);
-                    //sound
-                }
-                setFood(null);
-                CompoundTag compoundTag = new CompoundTag();
-                this.writeItem(compoundTag);
-                BlockEntityUtil.sendUpdatePacket(this, compoundTag);
-                return true;
-            }
-        }
-        return false;
     }
 
     public void removeItem() {
