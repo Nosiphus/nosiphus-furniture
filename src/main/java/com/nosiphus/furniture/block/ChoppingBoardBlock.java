@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements EntityBlock
+public class ChoppingBoardBlock extends FurnitureHorizontalBlock //implements EntityBlock
 {
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
@@ -70,6 +70,8 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
     public VoxelShape getOcclusionShape(BlockState state, BlockGetter reader, BlockPos pos) {
         return SHAPES.get(state);
     }
+
+    /*
 
     @Override
     public RenderShape getRenderShape(BlockState state) {
@@ -125,5 +127,7 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
     {
         super.createBlockStateDefinition(builder);
     }
+    
+     */
 
 }
