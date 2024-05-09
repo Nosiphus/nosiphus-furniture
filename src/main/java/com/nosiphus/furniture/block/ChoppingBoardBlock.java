@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ChoppingBoardBlock extends FurnitureHorizontalBlock //implements EntityBlock
+public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
@@ -71,46 +71,50 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock //implements En
         return SHAPES.get(state);
     }
 
-    /*
-
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
-                Containers.dropContents(level, pos, blockEntity.getChoppingBoard());
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-    @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if(!level.isClientSide()) {
-            if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
-                ItemStack stack = player.getItemInHand(hand);
-                if(stack.getItem() == ModItems.KNIFE.get()) {
-                    Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(blockEntity.getItem(0));
-                    if(optional.isPresent()) {
-                        blockEntity.chopItem(optional.get().getResultItem());
-                    }
-                } else if (!stack.isEmpty()) {
-                    Optional<ChoppingRecipe> optional1 = blockEntity.findMatchingRecipe(stack);
-                    if(optional1.isPresent()) {
-                        if(blockEntity.addItem(stack)) {
-                            if(!player.getAbilities().instabuild) {
-                                stack.shrink(1);
-                            }
+        ItemStack heldItem = player.getItemInHand(hand);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if(blockEntity instanceof ChoppingBoardBlockEntity) {
+            ChoppingBoardBlockEntity choppingBoardBlockEntity = (ChoppingBoardBlockEntity) blockEntity;
+            if(!heldItem.isEmpty()) {
+                Optional<ChoppingRecipe> optional = choppingBoardBlockEntity.findMatchingRecipe(heldItem);
+                if(optional.isPresent()) {
+                    if(choppingBoardBlockEntity.getFood() == null) {
+                        choppingBoardBlockEntity.setFood(new ItemStack(heldItem.getItem(), 1, heldItem.getTag()));
+                        BlockEntityUtil.sendUpdatePacket(blockEntity);
+                        if(!player.getAbilities().instabuild) {
+                            heldItem.shrink(1);
                         }
+                        return InteractionResult.SUCCESS;
+                    } else {
+                        if(!level.isClientSide()) {
+                            ItemEntity foodEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, choppingBoardBlockEntity.getFood());
+                            level.addFreshEntity(foodEntity);
+                            choppingBoardBlockEntity.setFood(null);
+                            BlockEntityUtil.sendUpdatePacket(blockEntity);
+                        }
+                        return InteractionResult.SUCCESS;
                     }
+                } else if(heldItem.getItem() == ModItems.KNIFE.get() && choppingBoardBlockEntity.getFood() != null) {
+                    if(choppingBoardBlockEntity.chopFood()) {
+                        heldItem.setDamageValue(heldItem.getDamageValue() - 1);
+                    }
+                    return InteractionResult.SUCCESS;
                 }
-                else {
-                    blockEntity.removeItem();
+            }
+            if(choppingBoardBlockEntity.getFood() != null) {
+                if(!level.isClientSide()) {
+                    ItemEntity foodEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, choppingBoardBlockEntity.getFood());
+                    level.addFreshEntity(foodEntity);
                 }
+                choppingBoardBlockEntity.setFood(null);
+                BlockEntityUtil.sendUpdatePacket(blockEntity);
             }
         }
         return InteractionResult.SUCCESS;
@@ -127,7 +131,5 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock //implements En
     {
         super.createBlockStateDefinition(builder);
     }
-
-     */
 
 }

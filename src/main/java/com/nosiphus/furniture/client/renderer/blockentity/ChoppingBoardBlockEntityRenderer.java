@@ -18,11 +18,7 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
 
     @Override
     public void render(ChoppingBoardBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource source, int light, int overlay) {
-        NonNullList<ItemStack> choppingBoard = blockEntity.getChoppingBoard();
-        ItemStack stack = choppingBoard.get(0);
-        if(!stack.isEmpty()) {
 
-        }
     }
 
 }
