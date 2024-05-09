@@ -23,32 +23,10 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
         if(stack != null) {
 
             poseStack.pushPose();
-
-            float xOffset = 0.0F;
-            float zOffset = 0.0F;
-
-            switch(rotationData)
-            {
-                case 0:
-                    zOffset -= 0.1F;
-                    break;
-                case 1:
-                    xOffset += 0.3F;
-                    zOffset += 0.2F;
-                    break;
-                case 2:
-                    zOffset += 0.5F;
-                    break;
-                case 3:
-                    xOffset -= 0.3F;
-                    zOffset += 0.2F;
-                    break;
-            }
-
-            poseStack.translate(0.5F + xOffset, 0.02F, 0.3F + zOffset);
-            poseStack.mulPose(Vector3f.XP.rotation(rotationData * -90F));
-            poseStack.mulPose(Vector3f.ZP.rotation(180));
-            poseStack.translate(0, -0.15, 0);
+            poseStack.translate(0.5, 0.0625, 0.5);
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(90F));
+            poseStack.scale(0.375F, 0.375F, 0.375F);
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(rotationData * 90F));
             Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, poseStack, source, 0);
             poseStack.popPose();
 
