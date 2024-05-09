@@ -4,6 +4,7 @@ import com.mrcrayfish.furniture.util.BlockEntityUtil;
 import com.mrcrayfish.furniture.util.ItemStackHelper;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.core.ModRecipeTypes;
+import com.nosiphus.furniture.core.ModSounds;
 import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +15,7 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -67,7 +69,7 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
                 if(!level.isClientSide()) {
                     ItemEntity itemEntity = new ItemEntity(level, worldPosition.getX() + 0.5, worldPosition.getY() + 0.2, worldPosition.getZ() + 0.5, optional.get().getResultItem().copy());
                     level.addFreshEntity(itemEntity);
-                    //play sound code
+                    level.playSound(null, worldPosition.getX() + 0.5, worldPosition.getY(), worldPosition.getZ() + 0.5, ModSounds.BLOCK_CHOPPING_BOARD_KNIFE_CHOP.get(), SoundSource.BLOCKS, 1.0F, 0.5F);
                 }
                 setFood(null);
                 CompoundTag compoundTag = new CompoundTag();
