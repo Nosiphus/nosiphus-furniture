@@ -62,6 +62,10 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
         return food;
     }
 
+    public NonNullList<ItemStack> getFoodStack() {
+        return foodStack;
+    }
+
     public boolean chopFood() {
         if(food != null) {
             Optional<ChoppingRecipe> optional = findMatchingRecipe(food);

@@ -11,6 +11,7 @@ import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -106,7 +107,7 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                     }
                 } else if(heldItem.getItem() == ModItems.KNIFE.get() && choppingBoardBlockEntity.getFood() != null) {
                     if(choppingBoardBlockEntity.chopFood()) {
-                        heldItem.setDamageValue(heldItem.getDamageValue() - 1);
+                        heldItem.setDamageValue(heldItem.getDamageValue() + 1);
                     }
                     return InteractionResult.SUCCESS;
                 }
@@ -123,6 +124,16 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
             }
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if(state.getBlock() != newState.getBlock()) {
+            if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
+                Containers.dropContents(level, pos, blockEntity.getFoodStack());
+            }
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
     }
 
     @Nullable
