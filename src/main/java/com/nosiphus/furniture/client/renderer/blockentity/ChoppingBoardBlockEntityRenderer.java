@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 
 public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<ChoppingBoardBlockEntity> {
@@ -24,6 +23,7 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
             poseStack.pushPose();
             poseStack.translate(0.5, 0.02, 0.3);
             poseStack.mulPose(Vector3f.XP.rotation(90F));
+            poseStack.translate(0, -0.15, 0);
             Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.FIXED, light, overlay, poseStack, source, 0);
             poseStack.popPose();
 

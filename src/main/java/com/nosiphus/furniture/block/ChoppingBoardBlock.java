@@ -11,7 +11,6 @@ import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -87,7 +86,9 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                 if(optional.isPresent()) {
                     if(choppingBoardBlockEntity.getFood() == null) {
                         choppingBoardBlockEntity.setFood(new ItemStack(heldItem.getItem(), 1, heldItem.getTag()));
-                        BlockEntityUtil.sendUpdatePacket(blockEntity);
+                        CompoundTag compoundTag = new CompoundTag();
+                        choppingBoardBlockEntity.writeFood(compoundTag);
+                        BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
                         if(!player.getAbilities().instabuild) {
                             heldItem.shrink(1);
                         }
@@ -97,7 +98,9 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                             ItemEntity foodEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, choppingBoardBlockEntity.getFood());
                             level.addFreshEntity(foodEntity);
                             choppingBoardBlockEntity.setFood(null);
-                            BlockEntityUtil.sendUpdatePacket(blockEntity);
+                            CompoundTag compoundTag = new CompoundTag();
+                            choppingBoardBlockEntity.writeFood(compoundTag);
+                            BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
                         }
                         return InteractionResult.SUCCESS;
                     }
@@ -114,7 +117,9 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                     level.addFreshEntity(foodEntity);
                 }
                 choppingBoardBlockEntity.setFood(null);
-                BlockEntityUtil.sendUpdatePacket(blockEntity);
+                CompoundTag compoundTag = new CompoundTag();
+                choppingBoardBlockEntity.writeFood(compoundTag);
+                BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
             }
         }
         return InteractionResult.SUCCESS;
