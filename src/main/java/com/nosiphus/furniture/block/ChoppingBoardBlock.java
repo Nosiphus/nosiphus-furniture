@@ -107,7 +107,9 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
                     }
                 } else if(heldItem.getItem() == ModItems.KNIFE.get() && choppingBoardBlockEntity.getFood() != null) {
                     if(choppingBoardBlockEntity.chopFood()) {
-                        heldItem.setDamageValue(heldItem.getDamageValue() + 1);
+                        if(!player.getAbilities().instabuild) {
+                            heldItem.setDamageValue(heldItem.getDamageValue() + 1);
+                        }
                     }
                     return InteractionResult.SUCCESS;
                 }

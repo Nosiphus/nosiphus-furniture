@@ -95,7 +95,7 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
         if(compoundTag.contains("ChoppingBoard", Tag.TAG_LIST)) {
             this.foodStack.clear();
             ItemStackHelper.loadAllItems("ChoppingBoard", compoundTag, this.foodStack);
-            this.food = foodStack.get(0);
+            setFood(foodStack.get(0));
         }
     }
 
@@ -110,15 +110,14 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
         return compoundTag;
     }
 
-    @Override
-    public CompoundTag getUpdateTag() {
-        return this.saveWithFullMetadata();
-    }
-
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this, BlockEntity::getUpdateTag);
+        return ClientboundBlockEntityDataPacket.create(this, this::getUpdateTag);
+    }
+
+    private CompoundTag getUpdateTag(BlockEntity blockEntity) {
+        return this.saveWithFullMetadata();
     }
 
     @Override
