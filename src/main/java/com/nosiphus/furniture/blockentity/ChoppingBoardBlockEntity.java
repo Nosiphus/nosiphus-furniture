@@ -6,6 +6,7 @@ import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.core.ModRecipeTypes;
 import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -22,15 +23,29 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
+import static com.mrcrayfish.furniture.block.FurnitureHorizontalBlock.DIRECTION;
+
 public class ChoppingBoardBlockEntity extends BlockEntity {
 
     public ChoppingBoardBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CHOPPING_BOARD.get(), pos, state);
     }
 
+    public int getDirection(BlockState state) {
+        if(state.getValue(DIRECTION) == Direction.EAST) {
+            return 0;
+        } else if (state.getValue(DIRECTION) == Direction.SOUTH) {
+            return 1;
+        } else if (state.getValue(DIRECTION) == Direction.WEST) {
+            return 2;
+        } else if (state.getValue(DIRECTION) == Direction.NORTH) {
+            return 3;
+        }
+        return 0;
+    }
+
     private ItemStack food = null;
     private final NonNullList<ItemStack> foodStack = NonNullList.withSize(1, ItemStack.EMPTY);
-    private final byte[] rotations = new byte[4];
 
     public void setFood(ItemStack food) {
         this.food = food;
@@ -43,10 +58,6 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
 
     public ItemStack getFood() {
         return food;
-    }
-
-    public byte[] getRotations() {
-        return rotations;
     }
 
     public boolean chopFood() {
@@ -80,26 +91,16 @@ public class ChoppingBoardBlockEntity extends BlockEntity {
             ItemStackHelper.loadAllItems("ChoppingBoard", compoundTag, this.foodStack);
             this.food = foodStack.get(0);
         }
-        if(compoundTag.contains("Rotations", Tag.TAG_BYTE_ARRAY)) {
-            byte[] rotations = compoundTag.getByteArray("Rotations");
-            System.arraycopy(rotations, 0, this.rotations, 0, Math.min(this.rotations.length, rotations.length));
-        }
     }
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
         this.writeFood(compoundTag);
-        this.writeRotations(compoundTag);
     }
 
     public CompoundTag writeFood(CompoundTag compoundTag) {
         ItemStackHelper.saveAllItems("ChoppingBoard", compoundTag, this.foodStack, true);
-        return compoundTag;
-    }
-
-    private CompoundTag writeRotations(CompoundTag compoundTag) {
-        compoundTag.putByteArray("Rotations", this.rotations);
         return compoundTag;
     }
 
