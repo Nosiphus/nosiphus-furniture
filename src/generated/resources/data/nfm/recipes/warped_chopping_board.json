@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "SSS",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:warped_planks"
+    },
+	"S": {
+      "item": "minecraft:warped_slab"
+    }
+  },
+  "result": {
+    "item": "nfm:warped_chopping_board",
+	"count": 2
+  }
+}

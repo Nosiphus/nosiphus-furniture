@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "lit=true,type=single": {
+            "model": "nfm:block/purple_lamp"
+        },
+		"lit=false,type=single": {
+            "model": "nfm:block/purple_lamp"
+        },
+		"lit=true,type=top": {
+            "model": "nfm:block/purple_lamp_top"
+        },
+		"lit=false,type=top": {
+            "model": "nfm:block/purple_lamp_top"
+        },
+		"lit=true,type=middle": {
+            "model": "nfm:block/lamp_middle"
+        },
+		"lit=false,type=middle": {
+            "model": "nfm:block/lamp_middle"
+        },
+		"lit=true,type=bottom": {
+            "model": "nfm:block/lamp_bottom"
+        },
+		"lit=false,type=bottom": {
+            "model": "nfm:block/lamp_bottom"
+        }
+    }
+}

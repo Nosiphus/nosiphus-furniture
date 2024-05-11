@@ -1,0 +1,10 @@
+{
+  "type": "nfm:chopping",
+  "base": {
+    "item": "minecraft:bread"
+  },
+  "result": {
+    "count": 6,
+    "item": "nfm:bread_slice"
+  }
+}

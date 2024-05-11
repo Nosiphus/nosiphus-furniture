@@ -1,6 +1,16 @@
 {
   "replace": false,
   "values": [
+	"nfm:oak_chopping_board",
+	"nfm:spruce_chopping_board",
+	"nfm:birch_chopping_board",
+	"nfm:jungle_chopping_board",
+	"nfm:acacia_chopping_board",
+	"nfm:dark_oak_chopping_board",
+	"nfm:crimson_chopping_board",
+	"nfm:warped_chopping_board",
+	"nfm:mangrove_chopping_board",
+	"nfm:cherry_chopping_board",
 	"nfm:oak_door_bell",
 	"nfm:spruce_door_bell",
 	"nfm:birch_door_bell",

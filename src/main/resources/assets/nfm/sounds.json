@@ -7,6 +7,10 @@
         "subtitle": "subtitle.nfm.close_bin",
         "sounds": [ "nfm:block/bins/close" ]
     },
+    "block.chopping_board.knife_chop": {
+        "subtitle": "subtitle.nfm.knife_chop",
+        "sounds": [ "nfm:block/chopping_board/knife_chop" ]
+    },
 	"block.door_bell.ring": {
         "subtitle": "subtitle.nfm.ring_door_bell",
         "sounds": [ "nfm:block/door_bell/ring" ]

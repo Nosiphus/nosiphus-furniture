@@ -1,6 +1,7 @@
 package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.NosiphusFurnitureMod;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -14,6 +15,50 @@ import java.util.function.Supplier;
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NosiphusFurnitureMod.MOD_ID);
+
+    //Food
+    public static final RegistryObject<Item> BREAD_SLICE = register("bread_slice",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(2)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> COOKED_KEBAB = register("cooked_kebab",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> COOKED_SAUSAGE = register("cooked_sausage",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> KEBAB = register("kebab",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(1)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> SAUSAGE = register("sausage",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(1)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
+    public static final RegistryObject<Item> TOAST = register("toast",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationMod(0.2f)
+                            .alwaysEat()
+                            .build())));
 
     //Tools
     public static final RegistryObject<Item> KNIFE = register("knife",
