@@ -5,7 +5,7 @@
 			"y": 270
         },
 		"facing=east": {
-            "model": "nfm:block/birch_chopping_board",
+            "model": "nfm:block/birch_chopping_board"
         },
 		"facing=south": {
             "model": "nfm:block/birch_chopping_board",
