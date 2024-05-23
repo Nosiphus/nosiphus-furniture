@@ -917,8 +917,6 @@ public class ModBlocks {
     //Fluid Blocks
     public static final RegistryObject<LiquidBlock> SOAPY_WATER = registerLiquid("soapy_water",
             () -> new LiquidBlock(ModFluids.SOAPY_WATER, BlockBehaviour.Properties.of(Material.WATER)));
-    public static final RegistryObject<LiquidBlock> SUPER_SOAPY_WATER = registerLiquid("super_soapy_water",
-            () -> new LiquidBlock(ModFluids.SUPER_SOAPY_WATER, BlockBehaviour.Properties.of(Material.WATER)));
 
     //Methods
     private static ToIntFunction<BlockState> getLightValueLit(int lightValue) {

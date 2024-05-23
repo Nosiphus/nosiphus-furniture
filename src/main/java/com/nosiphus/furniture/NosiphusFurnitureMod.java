@@ -1,10 +1,8 @@
 package com.nosiphus.furniture;
 
 import com.nosiphus.furniture.client.event.CreativeScreenEvents;
-import com.nosiphus.furniture.client.menu.screen.BinMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.MicrowaveMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.OvenMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.WallCabinetMenuScreen;
+import com.nosiphus.furniture.client.menu.DishwasherMenu;
+import com.nosiphus.furniture.client.menu.screen.*;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.network.PacketHandler;
@@ -22,6 +20,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -63,9 +62,8 @@ public class NosiphusFurnitureMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOAPY_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAPY_WATER.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.SUPER_SOAPY_WATER.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SUPER_SOAPY_WATER.get(), RenderType.translucent());
             MenuScreens.register(ModMenuTypes.BIN.get(), BinMenuScreen::new);
+            MenuScreens.register(ModMenuTypes.DISHWASHER.get(), DishwasherMenuScreen::new);
             MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveMenuScreen::new);
             MenuScreens.register(ModMenuTypes.OVEN.get(), OvenMenuScreen::new);
             MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetMenuScreen::new);
@@ -73,7 +71,17 @@ public class NosiphusFurnitureMod {
         }
 
         @SubscribeEvent
-        public static void onRegisterBlockColors(RegisterColorHandlersEvent.Block event) {
+        public static void onStitch(TextureStitchEvent.Pre event) {
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_AXE);
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_BUCKET);
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_HOE);
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_PICKAXE);
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_SHOVEL);
+            event.addSprite(DishwasherMenu.EMPTY_TOOL_SLOT_SWORD);
+        }
+
+        @SubscribeEvent
+        public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
             event.register((state, reader, pos, i) -> FoliageColor.getEvergreenColor(),
                     ModBlocks.CHRISTMAS_TREE_BOTTOM.get());
             event.register((state, reader, pos, i) -> FoliageColor.getEvergreenColor(),
@@ -83,7 +91,7 @@ public class NosiphusFurnitureMod {
         }
 
         @SubscribeEvent
-        public static void onRegisterItemColors(RegisterColorHandlersEvent.Item event) {
+        public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
             event.register((stack, i) -> {
                 BlockState state = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
                 return Minecraft.getInstance().getBlockColors().getColor(state, null, null, i);
@@ -91,19 +99,19 @@ public class NosiphusFurnitureMod {
         }
 
         @SubscribeEvent
-        public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
+            Minecraft.getInstance().particleEngine.register(ModParticleTypes.SHOWER_PARTICLE.get(),
+                    ShowerParticle.Provider::new);
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.BIRD_BATH.get(), BirdBathBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.CHOPPING_BOARD.get(), ChoppingBoardBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.MODERN_KITCHEN_SINK.get(), ModernKitchenSinkBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.SINK.get(), SinkBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.TOILET.get(), ToiletBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.WATER_TANK.get(), WaterTankBlockEntityRenderer::new);
-        }
-
-        @SubscribeEvent
-        public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
-            Minecraft.getInstance().particleEngine.register(ModParticleTypes.SHOWER_PARTICLE.get(),
-                    ShowerParticle.Provider::new);
         }
 
     }

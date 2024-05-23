@@ -1,15 +1,20 @@
 package com.nosiphus.furniture.inventory;
 
+import com.nosiphus.furniture.NosiphusFurnitureMod;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
-public class ToolSlot extends Slot {
+public class ToolSlot extends SlotItemHandler {
 
     private int toolType;
 
-    public ToolSlot(Container container, int index, int x, int y, int toolType) {
-        super(container, index, x, y);
+    public ToolSlot(IItemHandler itemHandler, int index, int x, int y, int toolType) {
+        super(itemHandler, index, x, y);
         this.toolType = toolType;
     }
 
@@ -43,7 +48,10 @@ public class ToolSlot extends Slot {
                 }
                 break;
             case 5:
-                return !(item instanceof PickaxeItem || item instanceof ShovelItem || item instanceof SwordItem || item instanceof AxeItem || item instanceof HoeItem);
+                if(item instanceof ShieldItem) {
+                    return true;
+                }
+                break;
         }
         return false;
     }

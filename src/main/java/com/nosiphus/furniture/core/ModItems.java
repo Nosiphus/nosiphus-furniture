@@ -64,8 +64,6 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(NosiphusFurnitureMod.GROUP)));
     public static final RegistryObject<Item> SOAPY_WATER_BUCKET = register("soapy_water_bucket",
             () -> new BucketItem(ModFluids.SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).stacksTo(1)));
-    public static final RegistryObject<Item> SUPER_SOAPY_WATER_BUCKET = register("super_soapy_water_bucket",
-            () -> new BucketItem(ModFluids.SUPER_SOAPY_WATER, new Item.Properties().tab(NosiphusFurnitureMod.GROUP).stacksTo(1)));
 
     //Methods
     private static RegistryObject<Item> register(String name, Supplier<Item> item)
