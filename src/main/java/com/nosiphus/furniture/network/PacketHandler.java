@@ -26,7 +26,6 @@ public class PacketHandler {
                 .serverAcceptedVersions(PROTOCOL_VERSION::equals)
                 .simpleChannel();
         register(C2SMessageEmptyBin.class, new C2SMessageEmptyBin(), NetworkDirection.PLAY_TO_SERVER);
-        register(S2CMessageFluidSync.class, new S2CMessageFluidSync(), NetworkDirection.PLAY_TO_CLIENT);
     }
 
     private static <T> void register(Class<T> clazz, IMessage<T> message, @Nullable NetworkDirection direction) {

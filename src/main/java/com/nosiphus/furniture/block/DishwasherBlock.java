@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
-import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,7 +29,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DishwasherBlock extends FurnitureHorizontalBlock implements EntityBlock
+public class DishwasherBlock extends FurnitureHorizontalBlock
 {
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
@@ -77,44 +76,5 @@ public class DishwasherBlock extends FurnitureHorizontalBlock implements EntityB
     public VoxelShape getOcclusionShape(BlockState state, BlockGetter reader, BlockPos pos) {
         return SHAPES.get(state);
     }
-
-    @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DishwasherBlockEntity) {
-                ((DishwasherBlockEntity) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (!level.isClientSide()) {
-            if(level.getBlockEntity(pos) instanceof DishwasherBlockEntity blockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) player), blockEntity, pos);
-            } else {
-                throw new IllegalStateException("Dishwasher container provider is absent.");
-            }
-        }
-        return InteractionResult.SUCCESS;
-    }
-
-    @Nullable
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new DishwasherBlockEntity(pos, state);
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.DISHWASHER.get(), DishwasherBlockEntity::tick);
-    }
-
+    
 }
