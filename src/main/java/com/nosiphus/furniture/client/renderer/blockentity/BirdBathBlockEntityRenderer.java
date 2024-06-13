@@ -6,7 +6,6 @@ import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.nosiphus.furniture.blockentity.BirdBathBlockEntity;
-import com.nosiphus.furniture.blockentity.SinkBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

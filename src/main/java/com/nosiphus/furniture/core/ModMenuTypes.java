@@ -1,9 +1,7 @@
 package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.NosiphusFurnitureMod;
-import com.nosiphus.furniture.blockentity.BinBlockEntity;
-import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
-import com.nosiphus.furniture.blockentity.WallCabinetBlockEntity;
+import com.nosiphus.furniture.blockentity.*;
 import com.nosiphus.furniture.client.menu.*;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;

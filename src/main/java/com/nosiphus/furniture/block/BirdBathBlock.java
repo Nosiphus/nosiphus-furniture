@@ -1,11 +1,8 @@
 package com.nosiphus.furniture.block;
 
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
-import com.mrcrayfish.furniture.entity.SeatEntity;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.BirdBathBlockEntity;
-import com.nosiphus.furniture.blockentity.ToiletBlockEntity;
-import com.nosiphus.furniture.core.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;

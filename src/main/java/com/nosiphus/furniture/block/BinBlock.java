@@ -3,7 +3,6 @@ package com.nosiphus.furniture.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
-import com.mrcrayfish.furniture.tileentity.DeskCabinetBlockEntity;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.BinBlockEntity;
 import net.minecraft.core.BlockPos;

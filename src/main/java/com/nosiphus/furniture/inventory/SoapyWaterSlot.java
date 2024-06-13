@@ -1,8 +1,6 @@
 package com.nosiphus.furniture.inventory;
 
 import com.nosiphus.furniture.core.ModItems;
-import net.minecraft.world.Container;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;

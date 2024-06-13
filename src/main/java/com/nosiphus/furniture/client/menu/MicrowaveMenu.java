@@ -1,27 +1,17 @@
 package com.nosiphus.furniture.client.menu;
 
 import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
-import com.nosiphus.furniture.core.ModBlocks;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import com.nosiphus.furniture.core.ModRecipeTypes;
 import com.nosiphus.furniture.inventory.MicrowaveSlot;
 import com.nosiphus.furniture.inventory.RedstoneSlot;
-import com.nosiphus.furniture.recipe.CookingRecipe;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class MicrowaveMenu extends AbstractContainerMenu {
 
