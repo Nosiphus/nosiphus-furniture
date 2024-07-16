@@ -1,10 +1,7 @@
 package com.nosiphus.furniture.client;
 
 import com.nosiphus.furniture.client.event.CreativeScreenEvents;
-import com.nosiphus.furniture.client.gui.screen.inventory.BinMenuScreen;
-import com.nosiphus.furniture.client.gui.screen.inventory.MicrowaveMenuScreen;
-import com.nosiphus.furniture.client.gui.screen.inventory.OvenMenuScreen;
-import com.nosiphus.furniture.client.gui.screen.inventory.WallCabinetMenuScreen;
+import com.nosiphus.furniture.client.gui.screen.inventory.*;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.particle.ShowerParticle;
@@ -29,6 +26,7 @@ public class ClientHandler {
         ItemBlockRenderTypes.setRenderLayer(ModFluids.SUPER_SOAPY_WATER.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SUPER_SOAPY_WATER.get(), RenderType.translucent());
         MenuScreens.register(ModMenuTypes.BIN.get(), BinMenuScreen::new);
+        MenuScreens.register(ModMenuTypes.DISHWASHER.get(), DishwasherMenuScreen::new);
         MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveMenuScreen::new);
         MenuScreens.register(ModMenuTypes.OVEN.get(), OvenMenuScreen::new);
         MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetMenuScreen::new);
