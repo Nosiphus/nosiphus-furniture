@@ -3,18 +3,15 @@ package com.nosiphus.furniture.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
-import com.mrcrayfish.furniture.util.BlockEntityUtil;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.ChoppingBoardBlockEntity;
 import com.nosiphus.furniture.core.ModItems;
 import com.nosiphus.furniture.recipe.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -24,7 +21,6 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -34,15 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements EntityBlock
-{
+public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements EntityBlock {
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
-    public ChoppingBoardBlock(Properties properties)
-    {
+    public ChoppingBoardBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.EAST));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
@@ -61,7 +55,7 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context)
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context)
     {
         return SHAPES.get(state);
     }
@@ -76,78 +70,57 @@ public class ChoppingBoardBlock extends FurnitureHorizontalBlock implements Enti
         return RenderShape.MODEL;
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        ItemStack heldItem = player.getItemInHand(hand);
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if(blockEntity instanceof ChoppingBoardBlockEntity) {
-            ChoppingBoardBlockEntity choppingBoardBlockEntity = (ChoppingBoardBlockEntity) blockEntity;
-            if(!heldItem.isEmpty()) {
-                Optional<ChoppingRecipe> optional = choppingBoardBlockEntity.findMatchingRecipe(heldItem);
-                if(optional.isPresent()) {
-                    if(choppingBoardBlockEntity.getFood() == null) {
-                        choppingBoardBlockEntity.setFood(new ItemStack(heldItem.getItem(), 1, heldItem.getTag()));
-                        CompoundTag compoundTag = new CompoundTag();
-                        choppingBoardBlockEntity.writeFood(compoundTag);
-                        BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
-                        if(!player.getAbilities().instabuild) {
-                            heldItem.shrink(1);
-                        }
-                        return InteractionResult.SUCCESS;
-                    } else {
-                        if(!level.isClientSide()) {
-                            ItemEntity foodEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, choppingBoardBlockEntity.getFood());
-                            level.addFreshEntity(foodEntity);
-                            choppingBoardBlockEntity.setFood(null);
-                            CompoundTag compoundTag = new CompoundTag();
-                            choppingBoardBlockEntity.writeFood(compoundTag);
-                            BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
-                        }
-                        return InteractionResult.SUCCESS;
-                    }
-                } else if(heldItem.getItem() == ModItems.KNIFE.get() && choppingBoardBlockEntity.getFood() != null) {
-                    if(choppingBoardBlockEntity.chopFood()) {
-                        if(!player.getAbilities().instabuild) {
-                            heldItem.setDamageValue(heldItem.getDamageValue() + 1);
-                        }
-                    }
-                    return InteractionResult.SUCCESS;
-                }
-            }
-            if(choppingBoardBlockEntity.getFood() != null) {
-                if(!level.isClientSide()) {
-                    ItemEntity foodEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, choppingBoardBlockEntity.getFood());
-                    level.addFreshEntity(foodEntity);
-                }
-                choppingBoardBlockEntity.setFood(null);
-                CompoundTag compoundTag = new CompoundTag();
-                choppingBoardBlockEntity.writeFood(compoundTag);
-                BlockEntityUtil.sendUpdatePacket(choppingBoardBlockEntity, compoundTag);
-            }
-        }
-        return InteractionResult.SUCCESS;
+    public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos)
+    {
+        return 1.0F;
     }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if(state.getBlock() != newState.getBlock()) {
             if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
-                Containers.dropContents(level, pos, blockEntity.getFoodStack());
+                Containers.dropContents(level, pos, blockEntity.getChoppingBoard());
             }
             super.onRemove(state, level, pos, newState, isMoving);
         }
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        if(!level.isClientSide() && result.getDirection() == Direction.UP) {
+            if(level.getBlockEntity(pos) instanceof ChoppingBoardBlockEntity blockEntity) {
+                ItemStack heldItem = player.getItemInHand(hand);
+                if(heldItem.getItem() == ModItems.KNIFE.get()) {
+                    if(blockEntity.chopItem()) {
+                        if(!player.getAbilities().instabuild) {
+                            heldItem.setDamageValue(heldItem.getDamageValue() + 1);
+                        }
+                    }
+                } else if(!heldItem.isEmpty()) {
+                    Optional<ChoppingRecipe> optional = blockEntity.findMatchingRecipe(heldItem);
+                    if(optional.isPresent()) {
+                        if(blockEntity.addItem(heldItem)) {
+                            if(!player.getAbilities().instabuild) {
+                                heldItem.shrink(1);
+                            }
+                        }
+                    } else {
+                        if(!level.isClientSide()) {
+                            blockEntity.removeItem();
+                        }
+                    }
+                } else {
+                    blockEntity.removeItem();
+                }
+            }
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new ChoppingBoardBlockEntity(pos, state);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-    {
-        super.createBlockStateDefinition(builder);
     }
 
 }

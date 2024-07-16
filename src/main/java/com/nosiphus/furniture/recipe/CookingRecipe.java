@@ -115,12 +115,4 @@ public class CookingRecipe implements Recipe<SimpleContainer> {
             friendlyByteBuf.writeItemStack(cookingRecipe.getResultItem(null), false);
         }
     }
-
-
-
-
-
-
-
-
 }

@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
@@ -17,11 +18,10 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
     @Override
     public void render(ChoppingBoardBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource source, int light, int overlay) {
 
+        NonNullList<ItemStack> choppingBoard = blockEntity.getChoppingBoard();
+        ItemStack stack = choppingBoard.get(0);
         int rotationData = blockEntity.getDirection(blockEntity.getBlockState());
-
-        ItemStack stack = blockEntity.getFood();
-        if(stack != null) {
-
+        if(!stack.isEmpty()) {
             poseStack.pushPose();
             poseStack.translate(0.5, 0.0625, 0.5);
             poseStack.mulPose(Axis.XP.rotationDegrees(90F));
@@ -29,7 +29,6 @@ public class ChoppingBoardBlockEntityRenderer implements BlockEntityRenderer<Cho
             poseStack.mulPose(Axis.ZP.rotationDegrees(rotationData * 90F));
             Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, source, blockEntity.getLevel(), 0);
             poseStack.popPose();
-
         }
 
     }
