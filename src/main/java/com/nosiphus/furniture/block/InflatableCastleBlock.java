@@ -22,10 +22,10 @@ public class InflatableCastleBlock extends Block {
     public void fallOn(Level level, BlockState blockState, BlockPos blockPos, Entity entity, float fallDistance) {
         if (entity instanceof LivingEntity) {
             float height = entity.fallDistance;
-            if (height > 0 && !entity.isSteppingCarefully()) {
+            if(height > 0 && !entity.isSteppingCarefully()) {
                 if(height > 4) height = 4;
-                entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0, 0.0, 1.0));
-                entity.push(0, Math.sqrt(0.22 * (height + 0.25F)), 0);
+                entity.setDeltaMovement(entity.getDeltaMovement().x, 0, entity.getDeltaMovement().z);
+                entity.push(0, getRequiredVelocity(height + 1), 0);
                 if(level.isClientSide) {
                     for(int i = 0; i < 5; i++) {
                         level.addParticle(ParticleTypes.ENTITY_EFFECT, entity.xo, entity.yo, entity.zo, 1.0, 1.0, 1.0);
@@ -36,6 +36,10 @@ public class InflatableCastleBlock extends Block {
             }
             entity.fallDistance = 0;
         }
+    }
+
+    public double getRequiredVelocity(float height) {
+        return Math.sqrt(0.22 * height);
     }
 
     public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity entity) {
