@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.integration;
 
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.recipe.CookingRecipe;
+import com.nosiphus.furniture.item.crafting.CookingRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;

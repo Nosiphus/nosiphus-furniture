@@ -1,8 +1,8 @@
-package com.nosiphus.furniture.client.menu.screen;
+package com.nosiphus.furniture.client.gui.screen.inventory;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.client.menu.BinMenu;
+import com.nosiphus.furniture.inventory.container.BinMenu;
 import com.nosiphus.furniture.network.PacketHandler;
 import com.nosiphus.furniture.network.message.C2SMessageEmptyBin;
 import net.minecraft.client.gui.GuiGraphics;

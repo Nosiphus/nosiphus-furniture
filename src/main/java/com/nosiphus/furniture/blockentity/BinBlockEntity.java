@@ -2,7 +2,7 @@ package com.nosiphus.furniture.blockentity;
 
 import com.mrcrayfish.furniture.tileentity.BasicLootBlockEntity;
 import com.nosiphus.furniture.block.BinBlock;
-import com.nosiphus.furniture.client.menu.BinMenu;
+import com.nosiphus.furniture.inventory.container.BinMenu;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.core.ModSounds;
 import net.minecraft.core.BlockPos;

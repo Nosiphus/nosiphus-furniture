@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.network.message;
 
 import com.mrcrayfish.furniture.network.message.IMessage;
-import com.nosiphus.furniture.client.menu.BinMenu;
+import com.nosiphus.furniture.inventory.container.BinMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

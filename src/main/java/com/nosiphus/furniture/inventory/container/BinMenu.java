@@ -1,4 +1,4 @@
-package com.nosiphus.furniture.client.menu;
+package com.nosiphus.furniture.inventory.container;
 
 import com.nosiphus.furniture.blockentity.BinBlockEntity;
 import com.nosiphus.furniture.core.ModMenuTypes;

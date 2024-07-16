@@ -1,9 +1,8 @@
 package com.nosiphus.furniture.blockentity;
 
-import com.nosiphus.furniture.client.menu.MicrowaveMenu;
+import com.nosiphus.furniture.inventory.container.MicrowaveMenu;
 import com.nosiphus.furniture.core.ModBlockEntities;
-import com.nosiphus.furniture.core.ModItems;
-import com.nosiphus.furniture.recipe.CookingRecipe;
+import com.nosiphus.furniture.item.crafting.CookingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

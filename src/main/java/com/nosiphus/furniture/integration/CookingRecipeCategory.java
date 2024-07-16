@@ -2,7 +2,7 @@ package com.nosiphus.furniture.integration;
 
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.core.ModBlocks;
-import com.nosiphus.furniture.recipe.CookingRecipe;
+import com.nosiphus.furniture.item.crafting.CookingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

@@ -5,7 +5,7 @@ import com.mrcrayfish.furniture.util.ItemStackHelper;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.core.ModRecipeTypes;
 import com.nosiphus.furniture.core.ModSounds;
-import com.nosiphus.furniture.recipe.ChoppingRecipe;
+import com.nosiphus.furniture.item.crafting.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;

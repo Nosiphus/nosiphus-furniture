@@ -6,7 +6,7 @@ import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.ChoppingBoardBlockEntity;
 import com.nosiphus.furniture.core.ModItems;
-import com.nosiphus.furniture.recipe.ChoppingRecipe;
+import com.nosiphus.furniture.item.crafting.ChoppingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;

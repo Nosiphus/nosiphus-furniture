@@ -1,8 +1,8 @@
-package com.nosiphus.furniture.client.menu.screen;
+package com.nosiphus.furniture.client.gui.screen.inventory;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.client.menu.WallCabinetMenu;
+import com.nosiphus.furniture.inventory.container.WallCabinetMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;

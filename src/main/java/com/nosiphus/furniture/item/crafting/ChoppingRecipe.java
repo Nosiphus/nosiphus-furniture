@@ -1,4 +1,4 @@
-package com.nosiphus.furniture.recipe;
+package com.nosiphus.furniture.item.crafting;
 
 import com.google.gson.JsonObject;
 import com.nosiphus.furniture.Reference;

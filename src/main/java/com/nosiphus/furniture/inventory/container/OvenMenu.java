@@ -1,8 +1,8 @@
-package com.nosiphus.furniture.client.menu;
+package com.nosiphus.furniture.inventory.container;
 
 import com.nosiphus.furniture.blockentity.OvenBlockEntity;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import com.nosiphus.furniture.inventory.RedstoneSlot;
+import com.nosiphus.furniture.inventory.container.slot.RedstoneSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

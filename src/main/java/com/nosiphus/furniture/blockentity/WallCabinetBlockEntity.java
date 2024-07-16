@@ -3,7 +3,7 @@ package com.nosiphus.furniture.blockentity;
 import com.mrcrayfish.furniture.core.ModSounds;
 import com.mrcrayfish.furniture.tileentity.BasicLootBlockEntity;
 import com.nosiphus.furniture.block.WallCabinetBlock;
-import com.nosiphus.furniture.client.menu.WallCabinetMenu;
+import com.nosiphus.furniture.inventory.container.WallCabinetMenu;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;

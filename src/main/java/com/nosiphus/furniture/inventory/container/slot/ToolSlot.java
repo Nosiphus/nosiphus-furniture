@@ -1,4 +1,4 @@
-package com.nosiphus.furniture.inventory;
+package com.nosiphus.furniture.inventory.container.slot;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;

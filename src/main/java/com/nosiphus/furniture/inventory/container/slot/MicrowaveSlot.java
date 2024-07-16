@@ -1,4 +1,4 @@
-package com.nosiphus.furniture.inventory;
+package com.nosiphus.furniture.inventory.container.slot;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;

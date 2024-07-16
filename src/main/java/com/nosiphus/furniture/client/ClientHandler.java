@@ -1,10 +1,10 @@
 package com.nosiphus.furniture.client;
 
 import com.nosiphus.furniture.client.event.CreativeScreenEvents;
-import com.nosiphus.furniture.client.menu.screen.BinMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.MicrowaveMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.OvenMenuScreen;
-import com.nosiphus.furniture.client.menu.screen.WallCabinetMenuScreen;
+import com.nosiphus.furniture.client.gui.screen.inventory.BinMenuScreen;
+import com.nosiphus.furniture.client.gui.screen.inventory.MicrowaveMenuScreen;
+import com.nosiphus.furniture.client.gui.screen.inventory.OvenMenuScreen;
+import com.nosiphus.furniture.client.gui.screen.inventory.WallCabinetMenuScreen;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.particle.ShowerParticle;
