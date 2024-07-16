@@ -97,11 +97,16 @@ public class LampBlock extends FurnitureBlock
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player playerEntity, InteractionHand hand, BlockHitResult result)
     {
-        if(state.getValue(LIT)) {
+        if(level.getBlockState(pos.above()).getBlock() instanceof LampBlock) {
             level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
         } else {
-            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(true)), 2);
+            if(state.getValue(LIT)) {
+                level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
+            } else {
+                level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(true)), 2);
+            }
         }
+
         return InteractionResult.SUCCESS;
     }
 
@@ -117,26 +122,32 @@ public class LampBlock extends FurnitureBlock
         BlockState upState = level.getBlockState(pos.above());
         if(upState.getBlock() instanceof LampBlock) {
             top = true;
+            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
         }
 
         boolean bottom = false;
         BlockState downState = level.getBlockState(pos.below());
         if(downState.getBlock() instanceof LampBlock) {
             bottom = true;
+            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
         }
 
         if(top && bottom)
         {
+            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
             return state.setValue(TYPE, Type.MIDDLE);
         }
         else if(bottom)
         {
+            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
             return state.setValue(TYPE, Type.TOP);
         }
         else if(top)
         {
+            level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
             return state.setValue(TYPE, Type.BOTTOM);
         }
+        level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(false)), 2);
         return state.setValue(TYPE, Type.SINGLE);
     }
 
