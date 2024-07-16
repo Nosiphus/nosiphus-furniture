@@ -4,8 +4,6 @@ import com.mojang.datafixers.util.Pair;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import com.nosiphus.furniture.inventory.container.slot.SoapyWaterSlot;
-import com.nosiphus.furniture.inventory.container.slot.ToolSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,6 +16,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class DishwasherMenu extends AbstractContainerMenu {
 
@@ -33,6 +33,7 @@ public class DishwasherMenu extends AbstractContainerMenu {
     protected final DishwasherBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private FluidStack fluidStack;
 
     public DishwasherMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
         this(id, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
@@ -44,41 +45,42 @@ public class DishwasherMenu extends AbstractContainerMenu {
         blockEntity = (DishwasherBlockEntity) entity;
         this.level = inventory.player.level();
         this.data = data;
+        this.fluidStack = blockEntity.getFluidStack();
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new ToolSlot(iItemHandler, 0, 56, 43, 0) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 56, 43) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_PICKAXE);
                 }
             });
-            this.addSlot(new ToolSlot(iItemHandler, 1, 80, 43, 1) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 43) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_SHOVEL);
                 }
             });
-            this.addSlot(new ToolSlot(iItemHandler, 2, 104, 43, 2) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 104, 43) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_SWORD);
                 }
             });
-            this.addSlot(new ToolSlot(iItemHandler, 3, 56, 74, 3) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 56, 74) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_AXE);
                 }
             });
-            this.addSlot(new ToolSlot(iItemHandler, 4, 80, 74, 4) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 74) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_HOE);
                 }
             });
-            this.addSlot(new ToolSlot(iItemHandler, 5, 104, 74, 5) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 104, 74) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_ARMOR_SLOT_SHIELD);
                 }
             });
-            this.addSlot(new SoapyWaterSlot(iItemHandler, 6, 125, 7));
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 125, 7));
 
-            this.addSlot(new SoapyWaterSlot(iItemHandler, 6, 125, 7) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 125, 7) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_TOOL_SLOT_BUCKET);
                 }
@@ -100,6 +102,26 @@ public class DishwasherMenu extends AbstractContainerMenu {
 
         addDataSlots(data);
 
+    }
+
+    public void setFluid(FluidStack fluidStack) {
+        this.fluidStack = fluidStack;
+    }
+
+    public FluidStack getFluidStack() {
+        return fluidStack;
+    }
+
+    public DishwasherBlockEntity getBlockEntity() {
+        return this.blockEntity;
+    }
+
+    public int getFluidRenderAmount() {
+        int actualAmount = blockEntity.getFluidStack().getAmount(); //needs more work
+        System.out.println(blockEntity.getFluidStack().getAmount());
+        int actualMaxAmount = 64000;
+        int tankSize = 55;
+        return actualAmount * tankSize / actualMaxAmount;
     }
 
     @Override

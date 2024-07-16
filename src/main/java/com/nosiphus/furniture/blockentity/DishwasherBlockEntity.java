@@ -1,7 +1,10 @@
 package com.nosiphus.furniture.blockentity;
 
 import com.nosiphus.furniture.core.ModBlockEntities;
+import com.nosiphus.furniture.core.ModFluids;
 import com.nosiphus.furniture.inventory.container.DishwasherMenu;
+import com.nosiphus.furniture.network.PacketHandler;
+import com.nosiphus.furniture.network.message.S2CMessageFluidSync;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -13,12 +16,15 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -33,6 +39,21 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged(int slot) {
             setChanged();
         }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return switch(slot) {
+                case 0 -> stack.getItem() instanceof PickaxeItem;
+                case 1 -> stack.getItem() instanceof ShovelItem;
+                case 2 -> stack.getItem() instanceof SwordItem;
+                case 3 -> stack.getItem() instanceof AxeItem;
+                case 4 -> stack.getItem() instanceof HoeItem;
+                case 5 -> stack.getItem() instanceof ShieldItem;
+                case 6 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+                default -> super.isItemValid(slot, stack);
+            };
+        }
+
     };
 
     private final FluidTank FLUID_TANK = new FluidTank(64000) {
@@ -40,12 +61,25 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged() {
             setChanged();
             if(!level.isClientSide()) {
-
+                PacketHandler.sendToClients(new S2CMessageFluidSync(this.fluid, worldPosition));
             }
+        }
+
+        @Override
+        public boolean isFluidValid(FluidStack stack) {
+            return stack.getFluid() == ModFluids.SOAPY_WATER.get() || stack.getFluid() == ModFluids.SUPER_SOAPY_WATER.get();
         }
     };
 
+    public void setFluid(FluidStack stack) {
+        this.FLUID_TANK.setFluid(stack);
+    }
 
+    public FluidStack getFluidStack() {
+        return this.FLUID_TANK.getFluid();
+    }
+
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
@@ -106,11 +140,15 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+        PacketHandler.sendToClients(new S2CMessageFluidSync(this.getFluidStack(), worldPosition));
         return new DishwasherMenu(id, inventory, this, this.data);
     }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @org.jetbrains.annotations.Nullable Direction side) {
+        if (cap == ForgeCapabilities.FLUID_HANDLER) {
+            return lazyFluidHandler.cast();
+        }
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
@@ -120,17 +158,20 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public void onLoad() {
         super.onLoad();
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
+        lazyFluidHandler.invalidate();
         lazyItemHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
+        tag = FLUID_TANK.writeToNBT(tag);
         tag.put("inventory", itemHandler.serializeNBT());
         tag.putInt("dishwasher.progress1", this.progress1);
         tag.putInt("dishwasher.progress2", this.progress2);
@@ -144,6 +185,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
+        FLUID_TANK.readFromNBT(tag);
         itemHandler.deserializeNBT(tag.getCompound("inventory"));
         progress1 = tag.getInt("dishwasher.progress1");
         progress2 = tag.getInt("dishwasher.progress2");
@@ -162,19 +204,36 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, DishwasherBlockEntity blockEntity) {
-        if(level != null) {
-            if(level.isClientSide()) {
-                return;
-            }
-
-
-
+        if(level.isClientSide()) {
+            return;
         }
+
+        if(hasFluidItemInSourceSlot(blockEntity)) {
+            transferItemFluidToFluidTank(blockEntity);
+        }
+
     }
 
-    //resetProgress
+    private static void transferItemFluidToFluidTank(DishwasherBlockEntity blockEntity) {
+        blockEntity.itemHandler.getStackInSlot(6).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
+            int drainAmount = Math.min(blockEntity.FLUID_TANK.getSpace(), 1000);
+            FluidStack stack = handler.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+            if(blockEntity.FLUID_TANK.isFluidValid(stack)) {
+                stack = handler.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                fillTankWithFluid(blockEntity, stack, handler.getContainer());
+            }
+        });
+    }
 
-    //repairItem
+    private static void fillTankWithFluid(DishwasherBlockEntity blockEntity, FluidStack stack, ItemStack container) {
+        blockEntity.FLUID_TANK.fill(stack, IFluidHandler.FluidAction.EXECUTE);
+        blockEntity.itemHandler.extractItem(6, 1, false);
+        blockEntity.itemHandler.insertItem(6, container, false);
+    }
+
+    private static boolean hasFluidItemInSourceSlot(DishwasherBlockEntity blockEntity) {
+        return blockEntity.itemHandler.getStackInSlot(6).getCount() > 0;
+    }
 
     public boolean stillValid(Player player) {
         if (this.level.getBlockEntity(this.worldPosition) != this) {

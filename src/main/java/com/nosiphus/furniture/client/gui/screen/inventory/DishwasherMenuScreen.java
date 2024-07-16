@@ -35,6 +35,11 @@ public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu
         int startX = (this.width - this.imageWidth) / 2;
         int startY = (this.height - this.imageHeight) / 2;
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        renderFluidLevel(guiGraphics, startX, startY);
+    }
+
+    private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(TEXTURE, x + 129, y + 39 + (55 - menu.getFluidRenderAmount()), 185, (55 - menu.getFluidRenderAmount()), 7, menu.getFluidRenderAmount());
     }
 
     @Override
