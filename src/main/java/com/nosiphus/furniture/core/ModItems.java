@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.core;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public class ModItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NosiphusFurnitureMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
     //Food
     public static final RegistryObject<Item> BREAD_SLICE = register("bread_slice",

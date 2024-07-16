@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.core;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.fluid.BaseFluidType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -16,12 +16,12 @@ public class ModFluidTypes {
 
     public static final ResourceLocation WATER_STILL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOW = new ResourceLocation("block/water_flow");
-    public static final ResourceLocation SOAP_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "block/soapy_water");
-    public static final ResourceLocation SOAP_RENDER_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/misc/soapy_water.png");
-    public static final ResourceLocation SUPER_SOAP_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "block/super_soapy_water");
-    public static final ResourceLocation SUPER_SOAP_RENDER_OVERLAY = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/misc/super_soapy_water.png");
+    public static final ResourceLocation SOAP_OVERLAY = new ResourceLocation(Reference.MOD_ID, "block/soapy_water");
+    public static final ResourceLocation SOAP_RENDER_OVERLAY = new ResourceLocation(Reference.MOD_ID, "textures/misc/soapy_water.png");
+    public static final ResourceLocation SUPER_SOAP_OVERLAY = new ResourceLocation(Reference.MOD_ID, "block/super_soapy_water");
+    public static final ResourceLocation SUPER_SOAP_RENDER_OVERLAY = new ResourceLocation(Reference.MOD_ID, "textures/misc/super_soapy_water.png");
 
-    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, NosiphusFurnitureMod.MOD_ID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Reference.MOD_ID);
 
     public static final RegistryObject<FluidType> SOAPY_WATER_FLUID_TYPE = registerSoap("soapy_water",
             FluidType.Properties.create().lightLevel(2).density(15).viscosity(7).sound(SoundAction.get("drink"), SoundEvents.HONEY_DRINK));

@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.core;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.BinBlockEntity;
 import com.nosiphus.furniture.blockentity.WallCabinetBlockEntity;
 import com.nosiphus.furniture.client.menu.*;
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModMenuTypes {
 
-    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, NosiphusFurnitureMod.MOD_ID);
+    public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, Reference.MOD_ID);
 
     public static final RegistryObject<MenuType<BinMenu>> BIN = register("bin", (IContainerFactory<BinMenu>) (ID, inventory, data) -> {
         BinBlockEntity binBlockEntity = (BinBlockEntity) inventory.player.level().getBlockEntity(data.readBlockPos());

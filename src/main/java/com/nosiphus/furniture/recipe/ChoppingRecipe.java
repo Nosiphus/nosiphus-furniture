@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.recipe;
 
 import com.google.gson.JsonObject;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.core.ModBlocks;
 import com.nosiphus.furniture.core.ModRecipeSerializer;
 import com.nosiphus.furniture.core.ModRecipeTypes;
@@ -77,7 +77,7 @@ public class ChoppingRecipe implements Recipe<Container> {
     public static class Serializer implements RecipeSerializer<ChoppingRecipe> {
 
         public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "chopping");
+        public static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "chopping");
 
         public ChoppingRecipe fromJson(ResourceLocation resourceLocation, JsonObject jsonObject) {
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(jsonObject, "base"));

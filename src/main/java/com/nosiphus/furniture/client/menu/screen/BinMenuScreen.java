@@ -1,8 +1,7 @@
 package com.nosiphus.furniture.client.menu.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.client.menu.BinMenu;
 import com.nosiphus.furniture.network.PacketHandler;
 import com.nosiphus.furniture.network.message.C2SMessageEmptyBin;
@@ -12,12 +11,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.entity.player.Inventory;
 
 public class BinMenuScreen extends AbstractContainerScreen<BinMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/bin.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/bin.png");
 
     private Button emptyButton;
 

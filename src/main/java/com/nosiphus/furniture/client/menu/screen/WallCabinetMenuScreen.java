@@ -1,8 +1,7 @@
 package com.nosiphus.furniture.client.menu.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.client.menu.WallCabinetMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -13,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class WallCabinetMenuScreen extends AbstractContainerScreen<WallCabinetMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/wall_cabinet.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/wall_cabinet.png");
 
     public WallCabinetMenuScreen(WallCabinetMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);

@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.network;
 
 import com.mrcrayfish.furniture.network.message.IMessage;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.network.message.C2SMessageEmptyBin;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
@@ -20,7 +20,7 @@ public class PacketHandler {
 
     public static void init() {
         instance = NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "network"))
+                .named(new ResourceLocation(Reference.MOD_ID, "network"))
                 .networkProtocolVersion(() -> PROTOCOL_VERSION)
                 .clientAcceptedVersions(PROTOCOL_VERSION::equals)
                 .serverAcceptedVersions(PROTOCOL_VERSION::equals)

@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.core;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModSounds {
 
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, NosiphusFurnitureMod.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Reference.MOD_ID);
 
     public static final RegistryObject<SoundEvent> BLOCK_BIN_CLOSE = register("block.bin.close");
     public static final RegistryObject<SoundEvent> BLOCK_BIN_OPEN = register("block.bin.open");

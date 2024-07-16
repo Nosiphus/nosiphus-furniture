@@ -2,7 +2,7 @@ package com.nosiphus.furniture.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -77,7 +77,7 @@ public class CookingRecipe implements Recipe<SimpleContainer> {
 
     public static class Serializer implements RecipeSerializer<CookingRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "cooking");
+        public static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "cooking");
 
         @Override
         public CookingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe) {

@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mrcrayfish.furniture.Reference;
 import com.mrcrayfish.furniture.client.gui.widget.button.IconButton;
 import com.mrcrayfish.furniture.item.CreativeItem;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
 import com.nosiphus.furniture.client.gui.widget.button.TagButton;
 import com.nosiphus.furniture.common.ModTags;
 import com.nosiphus.furniture.core.ModBlocks;
@@ -227,7 +226,7 @@ public class CreativeScreenEvents
         };
 
         ForgeRegistries.ITEMS.getValues().stream()
-                .filter(item -> Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace().equals(NosiphusFurnitureMod.MOD_ID))
+                .filter(item -> Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getNamespace().equals(com.nosiphus.furniture.Reference.MOD_ID))
                 .forEach(item -> {
                     ForgeRegistries.ITEMS.getHolder(item).ifPresent(holder -> {
                         holder.tags().forEach(tagKey -> {

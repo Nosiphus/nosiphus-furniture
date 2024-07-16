@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.integration;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.core.ModBlocks;
 import com.nosiphus.furniture.recipe.CookingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -17,8 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
-    public final static ResourceLocation UID = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "cooking");
-    public final static ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/microwave.png");
+    public final static ResourceLocation UID = new ResourceLocation(Reference.MOD_ID, "cooking");
+    public final static ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/microwave.png");
     private final IDrawable background;
     private final IDrawable icon;
 

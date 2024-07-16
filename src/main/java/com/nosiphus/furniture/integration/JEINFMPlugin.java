@@ -1,6 +1,6 @@
 package com.nosiphus.furniture.integration;
 
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.recipe.CookingRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -21,7 +21,7 @@ public class JEINFMPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "jei_plugin");
+        return new ResourceLocation(Reference.MOD_ID, "jei_plugin");
     }
 
     @Override

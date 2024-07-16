@@ -1,8 +1,7 @@
 package com.nosiphus.furniture.client.menu.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.OvenBlockEntity;
 import com.nosiphus.furniture.client.menu.OvenMenu;
 import net.minecraft.client.gui.GuiGraphics;
@@ -14,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class OvenMenuScreen extends AbstractContainerScreen<OvenMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/oven.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/oven.png");
     public OvenBlockEntity blockEntity;
 
     public OvenMenuScreen(OvenMenu menu, Inventory inventory, Component component) {

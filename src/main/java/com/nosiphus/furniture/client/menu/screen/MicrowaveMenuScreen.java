@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.client.menu.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
 import com.nosiphus.furniture.client.menu.MicrowaveMenu;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(NosiphusFurnitureMod.MOD_ID, "textures/gui/microwave.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/microwave.png");
     public MicrowaveBlockEntity blockEntity;
 
     public MicrowaveMenuScreen(MicrowaveMenu menu, Inventory inventory, Component component) {

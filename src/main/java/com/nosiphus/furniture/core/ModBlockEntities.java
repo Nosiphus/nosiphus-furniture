@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.core;
 
 import com.mrcrayfish.furniture.tileentity.*;
-import com.nosiphus.furniture.NosiphusFurnitureMod;
+import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public class ModBlockEntities {
 
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, NosiphusFurnitureMod.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<BinBlockEntity>> BIN = register("bin", BinBlockEntity::new, () -> new Block[]{ModBlocks.BIN_LIGHT.get(), ModBlocks.BIN_DARK.get()});
     public static final RegistryObject<BlockEntityType<BedsideCabinetBlockEntity>> BEDSIDE_CABINET = register("bedside_cabinet", BedsideCabinetBlockEntity::new, () -> new Block[]{ModBlocks.BEDSIDE_CABINET_STONE.get(), ModBlocks.BEDSIDE_CABINET_ANDESITE.get(), ModBlocks.BEDSIDE_CABINET_DIORITE.get(), ModBlocks.BEDSIDE_CABINET_GRANITE.get(), ModBlocks.BEDSIDE_CABINET_BLACKSTONE.get(), ModBlocks.BEDSIDE_CABINET_DEEPSLATE.get(), ModBlocks.BEDSIDE_CABINET_WHITE_MODERN.get(), ModBlocks.BEDSIDE_CABINET_ORANGE_MODERN.get(), ModBlocks.BEDSIDE_CABINET_MAGENTA_MODERN.get(), ModBlocks.BEDSIDE_CABINET_LIGHT_BLUE_MODERN.get(), ModBlocks.BEDSIDE_CABINET_YELLOW_MODERN.get(), ModBlocks.BEDSIDE_CABINET_LIME_MODERN.get(), ModBlocks.BEDSIDE_CABINET_PINK_MODERN.get(), ModBlocks.BEDSIDE_CABINET_GRAY_MODERN.get(), ModBlocks.BEDSIDE_CABINET_LIGHT_GRAY_MODERN.get(), ModBlocks.BEDSIDE_CABINET_CYAN_MODERN.get(), ModBlocks.BEDSIDE_CABINET_PURPLE_MODERN.get(), ModBlocks.BEDSIDE_CABINET_BLUE_MODERN.get(), ModBlocks.BEDSIDE_CABINET_BROWN_MODERN.get(), ModBlocks.BEDSIDE_CABINET_GREEN_MODERN.get(), ModBlocks.BEDSIDE_CABINET_RED_MODERN.get(), ModBlocks.BEDSIDE_CABINET_BLACK_MODERN.get()});
