@@ -3,6 +3,7 @@ package com.nosiphus.furniture.inventory.container;
 import com.mojang.datafixers.util.Pair;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
+import com.nosiphus.furniture.core.ModFluids;
 import com.nosiphus.furniture.core.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -116,9 +117,18 @@ public class DishwasherMenu extends AbstractContainerMenu {
         return this.blockEntity;
     }
 
+    public int getFluidType() {
+        int fluidType = 0;
+        if (fluidStack.getFluid() == ModFluids.SOAPY_WATER.get()) {
+            fluidType = 185;
+        } else if (fluidStack.getFluid() == ModFluids.SUPER_SOAPY_WATER.get()) {
+            fluidType = 199;
+        }
+        return fluidType;
+    }
+
     public int getFluidRenderAmount() {
-        int actualAmount = blockEntity.getFluidStack().getAmount(); //needs more work
-        System.out.println(blockEntity.getFluidStack().getAmount());
+        int actualAmount = blockEntity.getFluidStack().getAmount();
         int actualMaxAmount = 64000;
         int tankSize = 55;
         return actualAmount * tankSize / actualMaxAmount;
