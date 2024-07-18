@@ -208,10 +208,62 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
+        if(hasRepairableItem(blockEntity, 0)) {
+
+            repairItem(blockEntity, 0);
+            setChanged(level, pos, state);
+        }
+
+        if(hasRepairableItem(blockEntity, 1)) {
+            repairItem(blockEntity, 1);
+            setChanged(level, pos, state);
+        }
+
+        if(hasRepairableItem(blockEntity, 2)) {
+            repairItem(blockEntity, 2);
+            setChanged(level, pos, state);
+        }
+
+        if(hasRepairableItem(blockEntity, 3)) {
+            repairItem(blockEntity, 3);
+            setChanged(level, pos, state);
+        }
+
+        if(hasRepairableItem(blockEntity, 4)) {
+            repairItem(blockEntity, 4);
+            setChanged(level, pos, state);
+        }
+
+        if(hasRepairableItem(blockEntity, 5)) {
+            repairItem(blockEntity, 5);
+            setChanged(level, pos, state);
+        }
+
         if(hasFluidItemInSourceSlot(blockEntity)) {
             transferItemFluidToFluidTank(blockEntity);
         }
 
+    }
+
+    private static void repairItem(DishwasherBlockEntity blockEntity, int slot) {
+        if(hasRepairableItem(blockEntity, slot)) {
+            ItemStack itemInSlot = blockEntity.itemHandler.getStackInSlot(slot);
+            itemInSlot.setDamageValue(itemInSlot.getDamageValue() - 1);
+        }
+    }
+
+    private static boolean hasRepairableItem(DishwasherBlockEntity blockEntity, int slot) {
+        boolean isDamaged;
+        if (blockEntity.itemHandler.getStackInSlot(slot).getDamageValue() > 0) {
+            isDamaged = true;
+        } else {
+            isDamaged = false;
+        }
+        return isDamaged && hasCorrectFluidAmountInTank(blockEntity);
+    }
+
+    private static boolean hasCorrectFluidAmountInTank(DishwasherBlockEntity blockEntity) {
+        return blockEntity.FLUID_TANK.getFluidAmount() > 0;
     }
 
     private static void transferItemFluidToFluidTank(DishwasherBlockEntity blockEntity) {
