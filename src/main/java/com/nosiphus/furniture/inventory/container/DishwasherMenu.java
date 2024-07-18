@@ -5,20 +5,15 @@ import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
 import com.nosiphus.furniture.core.ModFluids;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
@@ -36,19 +31,17 @@ public class DishwasherMenu extends AbstractContainerMenu {
 
     protected final DishwasherBlockEntity blockEntity;
     private final Level level;
-    private final ContainerData data;
     private FluidStack fluidStack;
 
     public DishwasherMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
-        this(id, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(7));
+        this(id, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public DishwasherMenu(int id, Inventory inventory, BlockEntity entity, ContainerData data) {
+    public DishwasherMenu(int id, Inventory inventory, BlockEntity entity) {
         super(ModMenuTypes.DISHWASHER.get(), id);
         checkContainerSize(inventory, 8);
         blockEntity = (DishwasherBlockEntity) entity;
         this.level = inventory.player.level();
-        this.data = data;
         this.fluidStack = blockEntity.getFluidStack();
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
@@ -103,8 +96,6 @@ public class DishwasherMenu extends AbstractContainerMenu {
         {
             this.addSlot(new Slot(inventory, i, i * 18 + 8, 204));
         }
-
-        addDataSlots(data);
 
     }
 
