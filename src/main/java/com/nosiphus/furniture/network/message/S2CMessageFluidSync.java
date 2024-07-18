@@ -1,9 +1,7 @@
 package com.nosiphus.furniture.network.message;
 
 import com.mrcrayfish.furniture.network.message.IMessage;
-import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
-import com.nosiphus.furniture.inventory.container.DishwasherMenu;
-import net.minecraft.client.Minecraft;
+import com.nosiphus.furniture.network.play.ClientPlayHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.fluids.FluidStack;
@@ -24,29 +22,28 @@ public class S2CMessageFluidSync implements IMessage<S2CMessageFluidSync> {
     }
 
     @Override
-    public void encode(S2CMessageFluidSync s2CMessageFluidSync, FriendlyByteBuf friendlyByteBuf) {
-        friendlyByteBuf.writeFluidStack(s2CMessageFluidSync.fluidStack);
-        friendlyByteBuf.writeBlockPos(s2CMessageFluidSync.pos);
+    public void encode(S2CMessageFluidSync message, FriendlyByteBuf buffer) {
+        buffer.writeFluidStack(message.fluidStack);
+        buffer.writeBlockPos(message.pos);
     }
 
     @Override
-    public S2CMessageFluidSync decode(FriendlyByteBuf friendlyByteBuf) {
-        return new S2CMessageFluidSync(friendlyByteBuf.readFluidStack(), friendlyByteBuf.readBlockPos());
+    public S2CMessageFluidSync decode(FriendlyByteBuf buffer) {
+        return new S2CMessageFluidSync(buffer.readFluidStack(), buffer.readBlockPos());
     }
 
     @Override
-    public void handle(S2CMessageFluidSync s2CMessageFluidSync, Supplier<NetworkEvent.Context> supplier) {
-        supplier.get().enqueueWork(() ->
-        {
-            if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof DishwasherBlockEntity blockEntity) {
-                blockEntity.setFluid(this.fluidStack);
-                if(Minecraft.getInstance().player.containerMenu instanceof DishwasherMenu menu &&
-                menu.getBlockEntity().getBlockPos().equals(pos)) {
-                    menu.setFluid(this.fluidStack);
-                }
-            }
-        });
+    public void handle(S2CMessageFluidSync message, Supplier<NetworkEvent.Context> supplier) {
+        supplier.get().enqueueWork(() -> ClientPlayHandler.handleFluidSyncMessage(message));
         supplier.get().setPacketHandled(true);
+    }
+
+    public FluidStack getFluidStack() {
+        return this.fluidStack;
+    }
+
+    public BlockPos getPos() {
+        return this.pos;
     }
 
 }

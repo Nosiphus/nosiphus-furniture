@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -60,7 +61,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged() {
             setChanged();
             if(!level.isClientSide()) {
-                PacketHandler.sendToClients(new S2CMessageFluidSync(this.fluid, worldPosition));
+                PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageFluidSync(this.fluid, worldPosition));
             }
         }
 
@@ -97,7 +98,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        PacketHandler.sendToClients(new S2CMessageFluidSync(this.getFluidStack(), worldPosition));
+        PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> this.level.getChunkAt(this.worldPosition)), new S2CMessageFluidSync(this.FLUID_TANK.getFluid(), this.worldPosition));
         return new DishwasherMenu(id, inventory, this);
     }
 

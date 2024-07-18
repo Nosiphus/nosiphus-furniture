@@ -119,7 +119,7 @@ public class DishwasherMenu extends AbstractContainerMenu {
         } else if (getFluidStack().getFluid() == ModFluids.SUPER_SOAPY_WATER.get()) {
             fluidType = 199;
         }
-        return 185;
+        return fluidType;
     }
 
     public int getFluidRenderAmount() {

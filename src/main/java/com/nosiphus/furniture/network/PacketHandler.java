@@ -40,16 +40,4 @@ public class PacketHandler {
         return instance;
     }
 
-    public static <MSG> void sendToServer(MSG message) {
-        instance.sendToServer(message);
-    }
-
-    public static <MSG> void sendToPlayer(MSG message, ServerPlayer player) {
-        instance.send(PacketDistributor.PLAYER.with(() -> player), message);
-    }
-
-    public static <MSG> void sendToClients(MSG message) {
-        instance.send(PacketDistributor.ALL.noArg(), message);
-    }
-
 }
