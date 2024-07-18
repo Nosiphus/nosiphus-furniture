@@ -13,23 +13,26 @@ public class S2CMessageFluidSync implements IMessage<S2CMessageFluidSync> {
 
     private FluidStack fluidStack;
     private BlockPos pos;
+    private boolean washing;
 
     public S2CMessageFluidSync() {}
 
-    public S2CMessageFluidSync(FluidStack fluidStack, BlockPos pos) {
+    public S2CMessageFluidSync(FluidStack fluidStack, BlockPos pos, boolean washing) {
         this.fluidStack = fluidStack;
         this.pos = pos;
+        this.washing = washing;
     }
 
     @Override
     public void encode(S2CMessageFluidSync message, FriendlyByteBuf buffer) {
         buffer.writeFluidStack(message.fluidStack);
         buffer.writeBlockPos(message.pos);
+        buffer.writeBoolean(message.washing);
     }
 
     @Override
     public S2CMessageFluidSync decode(FriendlyByteBuf buffer) {
-        return new S2CMessageFluidSync(buffer.readFluidStack(), buffer.readBlockPos());
+        return new S2CMessageFluidSync(buffer.readFluidStack(), buffer.readBlockPos(), buffer.readBoolean());
     }
 
     @Override
@@ -44,6 +47,10 @@ public class S2CMessageFluidSync implements IMessage<S2CMessageFluidSync> {
 
     public BlockPos getPos() {
         return this.pos;
+    }
+
+    public boolean getWashing() {
+        return this.washing;
     }
 
 }

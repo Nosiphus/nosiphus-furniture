@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
 
 public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
 
+    private boolean washing = false;
+
     private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -61,7 +63,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged() {
             setChanged();
             if (!level.isClientSide()) {
-                PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageFluidSync(this.fluid, worldPosition));
+                PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageFluidSync(this.fluid, worldPosition, washing));
             }
         }
 
@@ -86,6 +88,14 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         return this.FLUID_TANK.getFluid();
     }
 
+    public void setWashing(boolean washing) {
+        this.washing = washing;
+    }
+
+    public boolean getWashing() {
+        return this.washing;
+    }
+
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -105,7 +115,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> this.level.getChunkAt(this.worldPosition)), new S2CMessageFluidSync(this.FLUID_TANK.getFluid(), this.worldPosition));
+        PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> this.level.getChunkAt(this.worldPosition)), new S2CMessageFluidSync(this.FLUID_TANK.getFluid(), this.worldPosition, this.washing));
         return new DishwasherMenu(id, inventory, this);
     }
 
@@ -162,7 +172,6 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         if(hasRepairableItem(blockEntity, 0)) {
-
             repairItem(blockEntity, 0);
             setChanged(level, pos, state);
         }
@@ -214,8 +223,10 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         boolean isDamaged;
         if (blockEntity.itemHandler.getStackInSlot(slot).getDamageValue() > 0) {
             isDamaged = true;
+            blockEntity.washing = true;
         } else {
             isDamaged = false;
+            blockEntity.washing = false;
         }
         return isDamaged && hasCorrectFluidAmountInTank(blockEntity);
     }

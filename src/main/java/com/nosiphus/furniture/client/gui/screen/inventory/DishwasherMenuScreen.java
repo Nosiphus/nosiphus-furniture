@@ -37,6 +37,7 @@ public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
         renderFluidLevel(guiGraphics, startX, startY);
         renderTankOverlay(guiGraphics, startX, startY);
+        renderColor(guiGraphics, startX, startY);
     }
 
     private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
@@ -45,6 +46,14 @@ public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu
 
     private void renderTankOverlay(GuiGraphics guiGraphics, int x, int y) {
         guiGraphics.blit(TEXTURE, x + 129, y + 39, 192, 0, 7, 55);
+    }
+
+    private void renderColor(GuiGraphics guiGraphics, int x, int y) {
+        if(menu.getWashing()) {
+            guiGraphics.fill(x + 37, y + 9, x + 37 + 11, y + 9 + 11, -16711936);
+        } else {
+            guiGraphics.fill(x + 37, y + 9, x + 37 + 11, y + 9 + 11, -65280);
+        }
     }
 
     @Override
@@ -58,6 +67,11 @@ public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu
         this.renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, delta);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
+
+        if(isHovering(129, 39, 7, 55, mouseX, mouseY)) {
+            setTooltipForNextRenderPass(Component.literal(menu.getFluidStack().getAmount() + " / 64000"));
+        }
+
     }
 
 }

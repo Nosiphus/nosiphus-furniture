@@ -5,7 +5,6 @@ import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
 import com.nosiphus.furniture.core.ModFluids;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import com.nosiphus.furniture.network.message.S2CMessageFluidSync;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -33,6 +32,7 @@ public class DishwasherMenu extends AbstractContainerMenu {
     protected final DishwasherBlockEntity blockEntity;
     private final Level level;
     private FluidStack fluidStack;
+    private boolean washing;
 
     public DishwasherMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
         this(id, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()));
@@ -44,6 +44,7 @@ public class DishwasherMenu extends AbstractContainerMenu {
         blockEntity = (DishwasherBlockEntity) entity;
         this.level = inventory.player.level();
         this.fluidStack = blockEntity.getFluidStack();
+        this.washing = blockEntity.getWashing();
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 56, 43) {
@@ -110,6 +111,14 @@ public class DishwasherMenu extends AbstractContainerMenu {
 
     public DishwasherBlockEntity getBlockEntity() {
         return this.blockEntity;
+    }
+
+    public void setWashing(boolean washing) {
+        this.washing = washing;
+    }
+
+    public boolean getWashing() {
+        return washing;
     }
 
     public int getFluidType() {

@@ -11,8 +11,10 @@ public class ClientPlayHandler {
         Minecraft minecraft = Minecraft.getInstance();
         if(minecraft.level.getBlockEntity(message.getPos()) instanceof DishwasherBlockEntity dishwasher) {
             dishwasher.setFluid(message.getFluidStack());
+            dishwasher.setWashing(message.getWashing());
             if (minecraft.player.containerMenu instanceof DishwasherMenu menu && menu.getBlockEntity().getBlockPos().equals(message.getPos())) {
                 menu.setFluid(message.getFluidStack());
+                menu.setWashing(message.getWashing());
             }
         }
     }
