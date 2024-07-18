@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 
 public class DishwasherScreen extends AbstractContainerScreen<DishwasherMenu> {
 
@@ -35,17 +36,18 @@ public class DishwasherScreen extends AbstractContainerScreen<DishwasherMenu> {
         int startX = (this.width - this.imageWidth) / 2;
         int startY = (this.height - this.imageHeight) / 2;
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        renderBubbles(guiGraphics, startX, startY);
+        renderColor(guiGraphics, startX, startY);
         renderFluidLevel(guiGraphics, startX, startY);
         renderTankOverlay(guiGraphics, startX, startY);
-        renderColor(guiGraphics, startX, startY);
     }
 
-    private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 129, y + 39 + (55 - menu.getFluidRenderAmount()), menu.getFluidType(), (55 - menu.getFluidRenderAmount()), 7, menu.getFluidRenderAmount());
-    }
-
-    private void renderTankOverlay(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 129, y + 39, 192, 0, 7, 55);
+    private void renderBubbles(GuiGraphics guiGraphics, int x, int y) {
+        if(menu.getWashing()) {
+            for(int i = 0; i < 55; i++) {
+                guiGraphics.blit(TEXTURE, x + 39, y + 39 + (55 - i), 176, (55 - i), 9, i);
+            }
+        }
     }
 
     private void renderColor(GuiGraphics guiGraphics, int x, int y) {
@@ -54,6 +56,14 @@ public class DishwasherScreen extends AbstractContainerScreen<DishwasherMenu> {
         } else {
             guiGraphics.fill(x + 37, y + 9, x + 37 + 11, y + 9 + 11, -65280);
         }
+    }
+
+    private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(TEXTURE, x + 129, y + 39 + (55 - menu.getFluidRenderAmount()), menu.getFluidType(), (55 - menu.getFluidRenderAmount()), 7, menu.getFluidRenderAmount());
+    }
+
+    private void renderTankOverlay(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(TEXTURE, x + 129, y + 39, 192, 0, 7, 55);
     }
 
     @Override

@@ -40,20 +40,20 @@ public class WashingMachineScreen extends AbstractContainerScreen<WashingMachine
         renderColor(guiGraphics, startX, startY);
     }
 
-    private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 129, y + 30 + (73 - menu.getFluidRenderAmount()), menu.getFluidType(), (73 - menu.getFluidRenderAmount()), 10, menu.getFluidRenderAmount());
-    }
-
-    private void renderTankOverlay(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 129, y + 30, 202, 0, 10, 73);
-    }
-
     private void renderColor(GuiGraphics guiGraphics, int x, int y) {
         if(menu.getWashing()) {
             guiGraphics.fill(x + 37, y + 9, x + 37 + 11, y + 9 + 11, -16711936);
         } else {
             guiGraphics.fill(x + 37, y + 9, x + 37 + 11, y + 9 + 11, -65280);
         }
+    }
+
+    private void renderFluidLevel(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(TEXTURE, x + 129, y + 30 + (73 - menu.getFluidRenderAmount()), menu.getFluidType(), (73 - menu.getFluidRenderAmount()), 10, menu.getFluidRenderAmount());
+    }
+
+    private void renderTankOverlay(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(TEXTURE, x + 129, y + 30, 202, 0, 10, 73);
     }
 
     @Override
