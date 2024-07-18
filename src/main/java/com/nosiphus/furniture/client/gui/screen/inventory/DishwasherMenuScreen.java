@@ -14,7 +14,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/dishwasher.png");
-    public DishwasherBlockEntity blockEntity;
+    public DishwasherBlockEntity blockEntity = getMenu().getBlockEntity();
 
     public DishwasherMenuScreen(DishwasherMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
