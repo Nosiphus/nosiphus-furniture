@@ -30,6 +30,7 @@ public class ClientHandler {
         MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveScreen::new);
         MenuScreens.register(ModMenuTypes.OVEN.get(), OvenScreen::new);
         MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetScreen::new);
+        MenuScreens.register(ModMenuTypes.WASHING_MACHINE.get(), WashingMachineScreen::new);
         MinecraftForge.EVENT_BUS.register(new CreativeScreenEvents());
     }
 

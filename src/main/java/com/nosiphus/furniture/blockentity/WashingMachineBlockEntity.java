@@ -2,9 +2,9 @@ package com.nosiphus.furniture.blockentity;
 
 import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.core.ModFluids;
-import com.nosiphus.furniture.inventory.container.DishwasherMenu;
+import com.nosiphus.furniture.inventory.container.WashingMachineMenu;
 import com.nosiphus.furniture.network.PacketHandler;
-import com.nosiphus.furniture.network.message.S2CMessageDishwasherSync;
+import com.nosiphus.furniture.network.message.S2CMessageWashingMachineSync;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -32,11 +32,11 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
-public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
+public class WashingMachineBlockEntity extends BlockEntity implements MenuProvider {
 
     private boolean washing = false;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -45,13 +45,11 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch(slot) {
-                case 0 -> stack.getItem() instanceof PickaxeItem;
-                case 1 -> stack.getItem() instanceof ShovelItem;
-                case 2 -> stack.getItem() instanceof SwordItem;
-                case 3 -> stack.getItem() instanceof AxeItem;
-                case 4 -> stack.getItem() instanceof HoeItem;
-                case 5 -> stack.getItem() instanceof ShieldItem;
-                case 6 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
+                case 0 -> stack.getItem() instanceof ArmorItem;
+                case 1 -> stack.getItem() instanceof ArmorItem;
+                case 2 -> stack.getItem() instanceof ArmorItem;
+                case 3 -> stack.getItem() instanceof ArmorItem;
+                case 4 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
                 default -> super.isItemValid(slot, stack);
             };
         }
@@ -63,7 +61,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged() {
             setChanged();
             if (!level.isClientSide()) {
-                PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageDishwasherSync(this.fluid, worldPosition, washing));
+                PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageWashingMachineSync(this.fluid, worldPosition, washing));
             }
         }
 
@@ -99,24 +97,24 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
-    public DishwasherBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.DISHWASHER.get(), pos, state);
+    public WashingMachineBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.WASHING_MACHINE.get(), pos, state);
     }
 
     public int getContainerSize() {
-        return 8;
+        return 6;
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("container.nfm.dishwasher");
+        return Component.translatable("container.nfm.washing_machine");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> this.level.getChunkAt(this.worldPosition)), new S2CMessageDishwasherSync(this.FLUID_TANK.getFluid(), this.worldPosition, this.washing));
-        return new DishwasherMenu(id, inventory, this);
+        PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> this.level.getChunkAt(this.worldPosition)), new S2CMessageWashingMachineSync(this.FLUID_TANK.getFluid(), this.worldPosition, this.washing));
+        return new WashingMachineMenu(id, inventory, this);
     }
 
     @Override
@@ -166,7 +164,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, DishwasherBlockEntity blockEntity) {
+    public static void tick(Level level, BlockPos pos, BlockState state, WashingMachineBlockEntity blockEntity) {
         if(level.isClientSide()) {
             return;
         }
@@ -195,19 +193,9 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
             setChanged(level, pos, state);
         }
 
-        if(hasRepairableItem(blockEntity, 4)) {
-            repairItem(blockEntity, 4);
-            setChanged(level, pos, state);
-        }
-
-        if(hasRepairableItem(blockEntity, 5)) {
-            repairItem(blockEntity, 5);
-            setChanged(level, pos, state);
-        }
-
     }
 
-    private static void repairItem(DishwasherBlockEntity blockEntity, int slot) {
+    private static void repairItem(WashingMachineBlockEntity blockEntity, int slot) {
         ItemStack itemInSlot = blockEntity.itemHandler.getStackInSlot(slot);
         itemInSlot.setDamageValue(itemInSlot.getDamageValue() - 1);
         if(itemInSlot.getDamageValue() == 0) {
@@ -230,7 +218,7 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-    private static boolean hasRepairableItem(DishwasherBlockEntity blockEntity, int slot) {
+    private static boolean hasRepairableItem(WashingMachineBlockEntity blockEntity, int slot) {
         boolean isDamaged;
         if (blockEntity.itemHandler.getStackInSlot(slot).getDamageValue() > 0) {
             isDamaged = true;
@@ -242,12 +230,12 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         return isDamaged && hasCorrectFluidAmountInTank(blockEntity);
     }
 
-    private static boolean hasCorrectFluidAmountInTank(DishwasherBlockEntity blockEntity) {
+    private static boolean hasCorrectFluidAmountInTank(WashingMachineBlockEntity blockEntity) {
         return blockEntity.FLUID_TANK.getFluidAmount() > 0;
     }
 
-    private static void transferItemFluidToFluidTank(DishwasherBlockEntity blockEntity) {
-        blockEntity.itemHandler.getStackInSlot(6).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
+    private static void transferItemFluidToFluidTank(WashingMachineBlockEntity blockEntity) {
+        blockEntity.itemHandler.getStackInSlot(4).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
             int drainAmount = Math.min(blockEntity.FLUID_TANK.getSpace(), 1000);
             FluidStack stack = handler.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
             if(blockEntity.FLUID_TANK.isFluidValid(stack)) {
@@ -257,14 +245,14 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         });
     }
 
-    private static void fillTankWithFluid(DishwasherBlockEntity blockEntity, FluidStack stack, ItemStack container) {
+    private static void fillTankWithFluid(WashingMachineBlockEntity blockEntity, FluidStack stack, ItemStack container) {
         blockEntity.FLUID_TANK.fill(stack, IFluidHandler.FluidAction.EXECUTE);
-        blockEntity.itemHandler.extractItem(6, 1, false);
-        blockEntity.itemHandler.insertItem(6, container, false);
+        blockEntity.itemHandler.extractItem(4, 1, false);
+        blockEntity.itemHandler.insertItem(4, container, false);
     }
 
-    private static boolean hasFluidItemInSourceSlot(DishwasherBlockEntity blockEntity) {
-        return blockEntity.itemHandler.getStackInSlot(6).getCount() > 0;
+    private static boolean hasFluidItemInSourceSlot(WashingMachineBlockEntity blockEntity) {
+        return blockEntity.itemHandler.getStackInSlot(4).getCount() > 0;
     }
 
     public boolean stillValid(Player player) {

@@ -28,6 +28,7 @@ public class ModMenuTypes {
         WallCabinetBlockEntity wallCabinetBlockEntity = (WallCabinetBlockEntity) inventory.player.level().getBlockEntity(data.readBlockPos());
         return new WallCabinetMenu(ID, inventory, wallCabinetBlockEntity);
     });
+    public static final RegistryObject<MenuType<WashingMachineMenu>> WASHING_MACHINE = registerMenuType(WashingMachineMenu::new, "washing_machine");
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> register(String key, MenuType.MenuSupplier<T> supplier)
     {
