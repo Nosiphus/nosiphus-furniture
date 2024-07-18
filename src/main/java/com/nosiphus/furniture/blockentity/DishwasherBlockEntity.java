@@ -60,14 +60,21 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         protected void onContentsChanged() {
             setChanged();
-            if(!level.isClientSide()) {
+            if (!level.isClientSide()) {
                 PacketHandler.getPlayChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(worldPosition)), new S2CMessageFluidSync(this.fluid, worldPosition));
             }
         }
 
         @Override
         public boolean isFluidValid(FluidStack stack) {
-            return stack.getFluid() == ModFluids.SOAPY_WATER.get() || stack.getFluid() == ModFluids.SUPER_SOAPY_WATER.get();
+            if (FLUID_TANK.isEmpty()) {
+                return stack.getFluid() == ModFluids.SOAPY_WATER.get() || stack.getFluid() == ModFluids.SUPER_SOAPY_WATER.get();
+            } else if (FLUID_TANK.getFluid().getFluid() == ModFluids.SOAPY_WATER.get()) {
+                return stack.getFluid() == ModFluids.SOAPY_WATER.get();
+            } else if (FLUID_TANK.getFluid().getFluid() == ModFluids.SUPER_SOAPY_WATER.get()) {
+                return stack.getFluid() == ModFluids.SUPER_SOAPY_WATER.get();
+            }
+            return false;
         }
     };
 
