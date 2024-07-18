@@ -25,11 +25,11 @@ public class ClientHandler {
         ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAPY_WATER.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.SUPER_SOAPY_WATER.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SUPER_SOAPY_WATER.get(), RenderType.translucent());
-        MenuScreens.register(ModMenuTypes.BIN.get(), BinMenuScreen::new);
-        MenuScreens.register(ModMenuTypes.DISHWASHER.get(), DishwasherMenuScreen::new);
-        MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveMenuScreen::new);
-        MenuScreens.register(ModMenuTypes.OVEN.get(), OvenMenuScreen::new);
-        MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetMenuScreen::new);
+        MenuScreens.register(ModMenuTypes.BIN.get(), BinScreen::new);
+        MenuScreens.register(ModMenuTypes.DISHWASHER.get(), DishwasherScreen::new);
+        MenuScreens.register(ModMenuTypes.MICROWAVE.get(), MicrowaveScreen::new);
+        MenuScreens.register(ModMenuTypes.OVEN.get(), OvenScreen::new);
+        MenuScreens.register(ModMenuTypes.WALL_CABINET.get(), WallCabinetScreen::new);
         MinecraftForge.EVENT_BUS.register(new CreativeScreenEvents());
     }
 

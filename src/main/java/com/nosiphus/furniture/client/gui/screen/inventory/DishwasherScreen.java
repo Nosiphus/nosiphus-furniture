@@ -11,12 +11,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class DishwasherMenuScreen extends AbstractContainerScreen<DishwasherMenu> {
+public class DishwasherScreen extends AbstractContainerScreen<DishwasherMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/dishwasher.png");
     public DishwasherBlockEntity blockEntity = getMenu().getBlockEntity();
 
-    public DishwasherMenuScreen(DishwasherMenu menu, Inventory inventory, Component component) {
+    public DishwasherScreen(DishwasherMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
         this.imageWidth = 176;
         this.imageHeight = 228;

@@ -11,12 +11,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class OvenMenuScreen extends AbstractContainerScreen<OvenMenu> {
+public class OvenScreen extends AbstractContainerScreen<OvenMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/oven.png");
     public OvenBlockEntity blockEntity;
 
-    public OvenMenuScreen(OvenMenu menu, Inventory inventory, Component component) {
+    public OvenScreen(OvenMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
         this.imageWidth = 176;
         this.imageHeight = 228;

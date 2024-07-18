@@ -171,6 +171,10 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
+        if(hasFluidItemInSourceSlot(blockEntity)) {
+            transferItemFluidToFluidTank(blockEntity);
+        }
+
         if(hasRepairableItem(blockEntity, 0)) {
             repairItem(blockEntity, 0);
             setChanged(level, pos, state);
@@ -201,21 +205,28 @@ public class DishwasherBlockEntity extends BlockEntity implements MenuProvider {
             setChanged(level, pos, state);
         }
 
-        if(hasFluidItemInSourceSlot(blockEntity)) {
-            transferItemFluidToFluidTank(blockEntity);
-        }
-
     }
 
     private static void repairItem(DishwasherBlockEntity blockEntity, int slot) {
-        if(hasRepairableItem(blockEntity, slot)) {
-            ItemStack itemInSlot = blockEntity.itemHandler.getStackInSlot(slot);
-            itemInSlot.setDamageValue(itemInSlot.getDamageValue() - 1);
-            if(blockEntity.getFluidStack().getFluid() == ModFluids.SOAPY_WATER.get()) {
-                blockEntity.FLUID_TANK.drain(20, IFluidHandler.FluidAction.EXECUTE);
-            } else if(blockEntity.getFluidStack().getFluid() == ModFluids.SUPER_SOAPY_WATER.get()) {
-                blockEntity.FLUID_TANK.drain(10, IFluidHandler.FluidAction.EXECUTE);
+        ItemStack itemInSlot = blockEntity.itemHandler.getStackInSlot(slot);
+        itemInSlot.setDamageValue(itemInSlot.getDamageValue() - 1);
+        if(itemInSlot.getDamageValue() == 0) {
+            blockEntity.washing = false;
+        }
+        if(blockEntity.getFluidStack().getFluid() == ModFluids.SOAPY_WATER.get()) {
+            blockEntity.FLUID_TANK.drain(20, IFluidHandler.FluidAction.EXECUTE);
+            if(blockEntity.getFluidStack().getAmount() < 20) {
+                blockEntity.washing = false;
             }
+        }
+        if(blockEntity.getFluidStack().getFluid() == ModFluids.SUPER_SOAPY_WATER.get()) {
+            blockEntity.FLUID_TANK.drain(10, IFluidHandler.FluidAction.EXECUTE);
+            if(blockEntity.getFluidStack().getAmount() < 10) {
+                blockEntity.washing = false;
+            }
+        }
+        if(blockEntity.getFluidStack().isEmpty()) {
+            blockEntity.washing = false;
         }
     }
 

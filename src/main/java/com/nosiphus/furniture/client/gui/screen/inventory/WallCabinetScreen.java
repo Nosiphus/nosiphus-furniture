@@ -2,40 +2,27 @@ package com.nosiphus.furniture.client.gui.screen.inventory;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.inventory.container.BinMenu;
-import com.nosiphus.furniture.network.PacketHandler;
-import com.nosiphus.furniture.network.message.C2SMessageEmptyBin;
+import com.nosiphus.furniture.inventory.container.WallCabinetMenu;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class BinMenuScreen extends AbstractContainerScreen<BinMenu> {
+public class WallCabinetScreen extends AbstractContainerScreen<WallCabinetMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/bin.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/wall_cabinet.png");
 
-    private Button emptyButton;
-
-    public BinMenuScreen(BinMenu menu, Inventory inventory, Component component) {
+    public WallCabinetScreen(WallCabinetMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
+        this.imageWidth = 176;
+        this.imageHeight = 197;
     }
 
     @Override
     protected void init() {
         super.init();
-        this.emptyButton = addRenderableWidget(
-                Button.builder(
-                        Component.translatable("gui.button.nfm.bin.empty"),
-                        this::handleEmptyButton)
-                        .bounds(this.getGuiLeft() + 128, this.getGuiTop() + 48, 40, 20)
-                        .build());
-    }
-
-    private void handleEmptyButton(Button button) {
-        PacketHandler.getPlayChannel().sendToServer(new C2SMessageEmptyBin(getMenu().getBlockEntity().getBlockPos()));
     }
 
     @Override
@@ -43,9 +30,9 @@ public class BinMenuScreen extends AbstractContainerScreen<BinMenu> {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        this.imageWidth = 176;
-        this.imageHeight = 197;
-        graphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        int startX = (this.width - this.imageWidth) / 2;
+        int startY = (this.height - this.imageHeight) / 2;
+        graphics.blit(TEXTURE, startX, startY, 0, 0, this.imageWidth, this.imageHeight);
     }
 
     @Override

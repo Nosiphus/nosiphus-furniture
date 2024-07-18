@@ -11,12 +11,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class MicrowaveMenuScreen extends AbstractContainerScreen<MicrowaveMenu> {
+public class MicrowaveScreen extends AbstractContainerScreen<MicrowaveMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/microwave.png");
     public MicrowaveBlockEntity blockEntity;
 
-    public MicrowaveMenuScreen(MicrowaveMenu menu, Inventory inventory, Component component) {
+    public MicrowaveScreen(MicrowaveMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
         this.imageWidth = 176;
         this.imageHeight = 174;
