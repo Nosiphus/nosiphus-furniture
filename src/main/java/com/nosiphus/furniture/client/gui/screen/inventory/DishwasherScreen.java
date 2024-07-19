@@ -44,9 +44,7 @@ public class DishwasherScreen extends AbstractContainerScreen<DishwasherMenu> {
 
     private void renderBubbles(GuiGraphics guiGraphics, int x, int y) {
         if(menu.getWashing()) {
-            for(int i = 0; i < 55; i++) {
-                guiGraphics.blit(TEXTURE, x + 39, y + 39 + (55 - i), 176, (55 - i), 9, i);
-            }
+            guiGraphics.blit(TEXTURE, x + 39, y + 39, 176, 0, 9, 55);
         }
     }
 
