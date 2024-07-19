@@ -1,0 +1,10 @@
+{
+  "type": "nfm:toasting",
+  "base": {
+    "item": "nfm:bread_slice"
+  },
+  "result": {
+    "count": 1,
+    "item": "nfm:toast"
+  }
+}

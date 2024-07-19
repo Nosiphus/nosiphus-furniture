@@ -1,8 +1,7 @@
 package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.item.crafting.ChoppingRecipe;
-import com.nosiphus.furniture.item.crafting.CookingRecipe;
+import com.nosiphus.furniture.item.crafting.*;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,5 +15,7 @@ public class ModRecipeSerializer {
             () -> ChoppingRecipe.Serializer.INSTANCE);
     public static final RegistryObject<RecipeSerializer<CookingRecipe>> COOKING = RECIPE_SERIALIZER.register("cooking",
             () -> CookingRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<ToastingRecipe>> TOASTING = RECIPE_SERIALIZER.register("toasting",
+            () -> ToastingRecipe.Serializer.INSTANCE);
 
 }
