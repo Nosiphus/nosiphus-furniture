@@ -8,7 +8,6 @@ import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.StereoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +37,7 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
     public StereoBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.WEST));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.EAST));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
 
         for(Item item : ForgeRegistries.ITEMS) {
@@ -51,12 +50,12 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
 
     private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states)
     {
-        final VoxelShape[] CORE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.5, 0.0, 0.5, 10.5, 7.0, 15.5), Direction.WEST));
-        final VoxelShape[] SCREEN = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.4, 3.0, 5.6, 5.5, 6.0, 10.6), Direction.WEST));
-        final VoxelShape[] ANTENNA_BASE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.0, 7.0, 6.2, 9.0, 7.5, 9.8), Direction.WEST));
-        final VoxelShape[] POWER_BUTTON = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 6.0, 5.5, 2.0, 7.0), Direction.WEST));
-        final VoxelShape[] BUTTON_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 7.5, 5.5, 2.0, 8.5), Direction.WEST));
-        final VoxelShape[] BUTTON_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 9.0, 5.5, 2.0, 10.0), Direction.WEST));
+        final VoxelShape[] CORE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.5, 0.0, 0.5, 10.5, 7.0, 15.5), Direction.EAST));
+        final VoxelShape[] SCREEN = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.4, 3.0, 5.6, 5.5, 6.0, 10.6), Direction.EAST));
+        final VoxelShape[] ANTENNA_BASE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.0, 7.0, 6.2, 9.0, 7.5, 9.8), Direction.EAST));
+        final VoxelShape[] POWER_BUTTON = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 6.0, 5.5, 2.0, 7.0), Direction.EAST));
+        final VoxelShape[] BUTTON_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 7.5, 5.5, 2.0, 8.5), Direction.EAST));
+        final VoxelShape[] BUTTON_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.1, 1.0, 9.0, 5.5, 2.0, 10.0), Direction.EAST));
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
         for (BlockState state : states) {
