@@ -22,31 +22,11 @@ public class ToasterBlockEntityRenderer implements BlockEntityRenderer<ToasterBl
             ItemStack stack = toaster.get(j);
             int directionData = blockEntity.getDirection(blockEntity.getBlockState());
             if(!stack.isEmpty()) {
-                /*
-                poseStack.translate(-0.2 + 0.4 * (j % 2), -0.2 + 0.4 * (j / 2), 0.0);
-                poseStack.scale(0.375F, 0.375F, 0.375F);
-                poseStack.mulPose(Axis.ZP.rotationDegrees(90F * blockEntity.getRotations()[j]));
-                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, source, blockEntity.getLevel(), 0);
-                poseStack.popPose();
-                 */
-
                 poseStack.pushPose();
-
-                switch(directionData) {
-                    case 0: poseStack.translate(0.5, 0.5, 0.44);
-                    break;
-                    case 1: poseStack.translate(0.44, 0.5, 0.5);
-                    break;
-                    case 2: poseStack.translate(0.5, 0.5, 0.44);
-                    break;
-                    case 3: poseStack.translate(0.44, 0.5, 0.5);
-                    break;
-                }
-
+                poseStack.translate(0.5, 0.3, 0.5);
                 poseStack.mulPose(Axis.YP.rotationDegrees(90F * directionData));
-
-                poseStack.scale(0.375F, 0.375F, 0.375F);
-
+                poseStack.scale(0.5F, 0.5F, 0.5F);
+                poseStack.translate(0.0, 0.0, -0.125 + 0.25 * (j % 2));
                 Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, source, blockEntity.getLevel(), 0);
                 poseStack.popPose();
             }
