@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "S S",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:smooth_quartz"
+    }
+  },
+  "result": {
+    "item": "nfm:plate",
+	"count": 3
+  }
+}

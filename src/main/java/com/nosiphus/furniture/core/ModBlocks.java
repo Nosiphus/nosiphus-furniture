@@ -720,7 +720,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CASTLE_NETTING = register("castle_netting",
             () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
 
-    //Cups
+    //Cups and Plate
     public static final RegistryObject<Block> CUP_WHITE = register("white_cup",
             () -> new CupBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)));
     public static final RegistryObject<Block> CUP_ORANGE = register("orange_cup",
@@ -753,6 +753,8 @@ public class ModBlocks {
             () -> new CupBlock(BlockBehaviour.Properties.copy(Blocks.RED_STAINED_GLASS)));
     public static final RegistryObject<Block> CUP_BLACK = register("black_cup",
             () -> new CupBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_STAINED_GLASS)));
+    public static final RegistryObject<Block> PLATE = register("plate",
+            () -> new PlateBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_QUARTZ)));
 
     //Bird Baths
     public static final RegistryObject<Block> BIRD_BATH_STONE = register("stone_bird_bath",

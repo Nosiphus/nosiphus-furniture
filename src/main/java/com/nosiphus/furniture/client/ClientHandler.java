@@ -60,6 +60,7 @@ public class ClientHandler {
         event.registerBlockEntityRenderer(ModBlockEntities.BIRD_BATH.get(), BirdBathBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CHOPPING_BOARD.get(), ChoppingBoardBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MODERN_KITCHEN_SINK.get(), ModernKitchenSinkBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.PLATE.get(), PlateBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SINK.get(), SinkBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TOASTER.get(), ToasterBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TOILET.get(), ToiletBlockEntityRenderer::new);
