@@ -61,6 +61,8 @@ public class ModItems {
                             .build())));
 
     //Tools
+    public static final RegistryObject<Item> CROWBAR = register("crowbar",
+            () -> new SwordItem(Tiers.IRON, 5, -3.0F, (new Item.Properties())));
     public static final RegistryObject<Item> KNIFE = register("knife",
             () -> new SwordItem(Tiers.STONE, 3, -2.4F, (new Item.Properties())));
     public static final RegistryObject<Item> SOAP = register("soap",
