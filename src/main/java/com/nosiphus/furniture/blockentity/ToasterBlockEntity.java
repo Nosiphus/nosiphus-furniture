@@ -38,7 +38,6 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
     private final int[] cookingTimes = new int[2];
     private final int[] cookingTotalTimes = new int[2];
     private final float[] experience = new float[2];
-    private final byte[] rotations = new byte[2];
 
     protected ToasterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -65,34 +64,27 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
         return this.toaster;
     }
 
-    public byte[] getRotations()
-    {
-        return this.rotations;
-    }
-
-    public boolean addItem(ItemStack stack, int position, int cookTime, float experience, byte rotation) {
+    public boolean addItem(ItemStack stack, int position, int cookTime, float experience) {
         if(this.toaster.get(position).isEmpty()) {
             ItemStack copy = stack.copy();
             copy.setCount(1);
             this.toaster.set(position, copy);
-            this.resetPosition(position, cookTime, experience, rotation);
+            this.resetPosition(position, cookTime, experience);
 
             return true;
         }
         return false;
     }
 
-    private void resetPosition(int position, int cookTime, float experience, byte rotation) {
+    private void resetPosition(int position, int cookTime, float experience) {
         this.cookingTimes[position] = 0;
         this.cookingTotalTimes[position] = cookTime / 2;
         this.experience[position] = 0;
-        this.rotations[position] = rotation;
 
         CompoundTag compound = new CompoundTag();
         this.writeItems(compound);
         this.writeCookingTimes(compound);
         this.writeCookingTotalTimes(compound);
-        this.writeRotations(compound);
         BlockEntityUtil.sendUpdatePacket(this, compound);
     }
 
@@ -229,7 +221,7 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
         Optional<ToastingRecipe> optional = this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.TOASTING.get(), new SimpleContainer(stack), this.level);
         if(optional.isPresent()) {
             ToastingRecipe recipe = optional.get();
-            this.resetPosition(index, recipe.getCookingTime(), recipe.getExperience(), (byte) 0);
+            this.resetPosition(index, recipe.getCookingTime(), recipe.getExperience());
         }
         inventory.set(index, stack);
         if(stack.getCount() > this.getMaxStackSize()) {
@@ -277,11 +269,6 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
                 this.experience[i] = Float.intBitsToFloat(experience[i]);
             }
         }
-        if(compound.contains("Rotations", Tag.TAG_BYTE_ARRAY))
-        {
-            byte[] rotations = compound.getByteArray("Rotations");
-            System.arraycopy(rotations, 0, this.rotations, 0, Math.min(this.rotations.length, rotations.length));
-        }
     }
 
     @Override
@@ -292,7 +279,6 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
         this.writeCookingTimes(tag);
         this.writeCookingTotalTimes(tag);
         this.writeExperience(tag);
-        this.writeRotations(tag);
     }
 
     private CompoundTag writeItems(CompoundTag compound)
@@ -321,12 +307,6 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
             experience[i] = Float.floatToIntBits(experience[i]);
         }
         compound.putIntArray("Experience", experience);
-        return compound;
-    }
-
-    private CompoundTag writeRotations(CompoundTag compound)
-    {
-        compound.putByteArray("Rotations", this.rotations);
         return compound;
     }
 

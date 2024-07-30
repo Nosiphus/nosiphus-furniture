@@ -87,6 +87,19 @@ public class ToasterBlock extends FurnitureHorizontalBlock implements EntityBloc
         return RenderShape.MODEL;
     }
 
+    public int getDirection(BlockState state) {
+        if(state.getValue(DIRECTION) == Direction.NORTH) {
+            return 0;
+        } else if (state.getValue(DIRECTION) == Direction.EAST) {
+            return 1;
+        } else if (state.getValue(DIRECTION) == Direction.SOUTH) {
+            return 2;
+        } else if (state.getValue(DIRECTION) == Direction.WEST) {
+            return 3;
+        }
+        return 0;
+    }
+
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if(state.getBlock() != newState.getBlock()) {
@@ -106,24 +119,33 @@ public class ToasterBlock extends FurnitureHorizontalBlock implements EntityBloc
                     Optional<ToastingRecipe> optional = blockEntity.findMatchingRecipe(stack);
                     if(optional.isPresent()) {
                         ToastingRecipe recipe = optional.get();
-                        if(blockEntity.addItem(stack, this.getPosition(result, pos), recipe.getCookingTime(), recipe.getExperience(), (byte) player.getDirection().get2DDataValue())) {
+                        if(blockEntity.addItem(stack, this.getPosition(result, pos, state), recipe.getCookingTime(), recipe.getExperience())) {
                             if(!player.getAbilities().instabuild) {
                                 stack.shrink(1);
                             }
                         }
                     }
                 } else {
-                    blockEntity.removeItem(this.getPosition(result, pos));
+                    blockEntity.removeItem(this.getPosition(result, pos, state));
                 }
             }
         }
         return InteractionResult.SUCCESS;
     }
 
-    private int getPosition(BlockHitResult result, BlockPos pos) {
+    private int getPosition(BlockHitResult result, BlockPos pos, BlockState state) {
         Vec3 hitVec = result.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
         int position = 0;
-        if(hitVec.x() > 0.5 || hitVec.z() > 0.5) position = 1;
+        int direction = getDirection(state);
+        switch(direction) {
+            case 0: if(hitVec.z() > 0.5) position = 1;
+            break;
+            case 1: if(hitVec.x() > 0.5) position = 1;
+            break;
+            case 2: if(hitVec.z() < 0.5) position = 1;
+            break;
+            case 3: if(hitVec.x() < 0.5) position = 1;
+        }
         return position;
     }
 
