@@ -3,18 +3,33 @@ package com.nosiphus.furniture.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
+import com.mrcrayfish.furniture.util.BlockEntityUtil;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.StereoBlockEntity;
+import com.nosiphus.furniture.core.ModSounds;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -24,11 +39,19 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
+    public static ArrayList<RecordItem> records = new ArrayList<>();
+
     public StereoBlock(Properties properties)
     {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.WEST));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
+
+        for(Item item : ForgeRegistries.ITEMS) {
+            if(item instanceof RecordItem) {
+                records.add((RecordItem) item);
+            }
+        }
 
     }
 
@@ -65,6 +88,49 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
     @Override
     public VoxelShape getOcclusionShape(BlockState state, BlockGetter reader, BlockPos pos) {
         return SHAPES.get(state);
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if(blockEntity instanceof StereoBlockEntity) {
+            StereoBlockEntity stereoBlockEntity = (StereoBlockEntity) blockEntity;
+            if(!player.isSteppingCarefully()) {
+                if(stereoBlockEntity.count == 16) {
+                    stereoBlockEntity.count = records.size();
+                } else {
+                    stereoBlockEntity.count++;
+                }
+                if(stereoBlockEntity.count == records.size())
+                {
+                    stereoBlockEntity.count = 0;
+                }
+                level.levelEvent(1010, pos, Item.getId(records.get(stereoBlockEntity.count)));
+            } else {
+                if(stereoBlockEntity.count != 16) {
+                    stereoBlockEntity.count = 16;
+                    if(!level.isClientSide()) {
+                        //player.sendMessage(new TextComponentTranslation("cfm.message.stereo1"));
+                    }
+                    this.ejectRecord(level, pos);
+                }
+            }
+            if(!level.isClientSide())
+            {
+                BlockEntityUtil.sendUpdatePacket(blockEntity);
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        this.ejectRecord(level, pos);
+        super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    public void ejectRecord(Level level, BlockPos pos) {
+        level.levelEvent(1010, pos, 0);
     }
 
     @Nullable

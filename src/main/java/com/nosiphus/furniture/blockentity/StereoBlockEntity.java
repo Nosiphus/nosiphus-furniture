@@ -20,15 +20,15 @@ public class StereoBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
-        this.count = compound.getInt("count");
+    public void load(CompoundTag compoundTag) {
+        super.load(compoundTag);
+        this.count = compoundTag.getInt("count");
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compound) {
-        compound.putInt("count", count);
-        super.saveAdditional(compound);
+    protected void saveAdditional(CompoundTag compoundTag) {
+        super.saveAdditional(compoundTag);
+        compoundTag.putInt("count", count);
     }
 
     @Override
