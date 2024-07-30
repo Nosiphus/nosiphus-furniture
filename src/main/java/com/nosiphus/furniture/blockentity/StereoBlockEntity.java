@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class StereoBlockEntity extends BlockEntity {
 
-    public int count;
+    public int count = -1;
 
     public StereoBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.STEREO.get(), pos, state);

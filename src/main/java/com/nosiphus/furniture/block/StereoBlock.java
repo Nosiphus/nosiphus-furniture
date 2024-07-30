@@ -6,15 +6,9 @@ import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.BlockEntityUtil;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.StereoBlockEntity;
-import com.nosiphus.furniture.core.ModSounds;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -130,7 +124,7 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
     }
 
     public void ejectRecord(Level level, BlockPos pos) {
-        level.levelEvent(1010, pos, 0);
+        level.levelEvent(1011, pos, -1);
     }
 
     @Nullable
