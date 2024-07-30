@@ -20,13 +20,33 @@ public class ToasterBlockEntityRenderer implements BlockEntityRenderer<ToasterBl
         NonNullList<ItemStack> toaster = blockEntity.getToaster();
         for(int j = 0; j < toaster.size(); j++) {
             ItemStack stack = toaster.get(j);
+            int directionData = blockEntity.getDirection(blockEntity.getBlockState());
             if(!stack.isEmpty()) {
-                poseStack.pushPose();
-                poseStack.translate(0.5, 1.0, 0.5);
-                poseStack.mulPose(Axis.XP.rotationDegrees(90F));
+                /*
                 poseStack.translate(-0.2 + 0.4 * (j % 2), -0.2 + 0.4 * (j / 2), 0.0);
                 poseStack.scale(0.375F, 0.375F, 0.375F);
                 poseStack.mulPose(Axis.ZP.rotationDegrees(90F * blockEntity.getRotations()[j]));
+                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, source, blockEntity.getLevel(), 0);
+                poseStack.popPose();
+                 */
+
+                poseStack.pushPose();
+
+                switch(directionData) {
+                    case 0: poseStack.translate(0.5, 0.5, 0.44);
+                    break;
+                    case 1: poseStack.translate(0.44, 0.5, 0.5);
+                    break;
+                    case 2: poseStack.translate(0.5, 0.5, 0.44);
+                    break;
+                    case 3: poseStack.translate(0.44, 0.5, 0.5);
+                    break;
+                }
+
+                poseStack.mulPose(Axis.YP.rotationDegrees(90F * directionData));
+
+                poseStack.scale(0.375F, 0.375F, 0.375F);
+
                 Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, source, blockEntity.getLevel(), 0);
                 poseStack.popPose();
             }

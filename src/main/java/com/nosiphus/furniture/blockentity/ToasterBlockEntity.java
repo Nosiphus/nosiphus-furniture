@@ -27,6 +27,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
+import static com.mrcrayfish.furniture.block.FurnitureHorizontalBlock.DIRECTION;
+
 public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer {
 
     public static final int[] ALL_SLOTS = new int[]{0, 1};
@@ -44,6 +46,19 @@ public class ToasterBlockEntity extends BlockEntity implements WorldlyContainer 
 
     public ToasterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TOASTER.get(), pos, state);
+    }
+
+    public int getDirection(BlockState state) {
+        if(state.getValue(DIRECTION) == Direction.NORTH) {
+            return 0;
+        } else if (state.getValue(DIRECTION) == Direction.EAST) {
+            return 1;
+        } else if (state.getValue(DIRECTION) == Direction.SOUTH) {
+            return 2;
+        } else if (state.getValue(DIRECTION) == Direction.WEST) {
+            return 3;
+        }
+        return 0;
     }
 
     public NonNullList<ItemStack> getToaster() {
