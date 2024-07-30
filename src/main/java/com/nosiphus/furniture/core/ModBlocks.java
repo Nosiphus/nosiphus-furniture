@@ -833,6 +833,8 @@ public class ModBlocks {
             () -> new ShowerHeadBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
     public static final RegistryObject<Block> SHOWER_HEAD_DARK = register("shower_head_dark",
             () -> new ShowerHeadBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).noOcclusion()));
+    public static final RegistryObject<Block> STEREO = register("stereo",
+            () -> new StereoBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
     public static final RegistryObject<Block> TOASTER_LIGHT = register("toaster_light",
             () -> new ToasterBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
     public static final RegistryObject<Block> TOASTER_DARK = register("toaster_dark",

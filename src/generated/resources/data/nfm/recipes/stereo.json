@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "NJN",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+	"N": {
+      "item": "minecraft:note_block"
+    },
+	"J": {
+      "item": "minecraft:jukebox"
+    }
+  },
+  "result": {
+    "item": "nfm:stereo"
+  }
+}
