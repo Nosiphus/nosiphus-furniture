@@ -30,7 +30,7 @@ public class NosiphusFurnitureMod {
         ModItems.ITEMS.register(eventBus);
         ModMenuTypes.MENU_TYPES.register(eventBus);
         ModParticleTypes.PARTICLE_TYPES.register(eventBus);
-        ModRecipeSerializer.RECIPE_SERIALIZER.register(eventBus);
+        ModRecipeSerializers.RECIPE_SERIALIZER.register(eventBus);
         ModRecipeTypes.RECIPE_TYPES.register(eventBus);
         ModSounds.SOUNDS.register(eventBus);
         eventBus.addListener(this::onCommonSetup);

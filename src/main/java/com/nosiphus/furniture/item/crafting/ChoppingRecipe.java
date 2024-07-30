@@ -3,7 +3,7 @@ package com.nosiphus.furniture.item.crafting;
 import com.google.gson.JsonObject;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.core.ModBlocks;
-import com.nosiphus.furniture.core.ModRecipeSerializer;
+import com.nosiphus.furniture.core.ModRecipeSerializers;
 import com.nosiphus.furniture.core.ModRecipeTypes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
@@ -61,7 +61,7 @@ public class ChoppingRecipe implements Recipe<Container> {
     }
 
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializer.CHOPPING.get();
+        return ModRecipeSerializers.CHOPPING.get();
     }
 
     public RecipeType<?> getType() {

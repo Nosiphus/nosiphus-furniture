@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import com.nosiphus.furniture.blockentity.ToasterBlockEntity;
-import com.nosiphus.furniture.core.ModItems;
+import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.item.crafting.ToastingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,8 +20,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -98,38 +101,48 @@ public class ToasterBlock extends FurnitureHorizontalBlock implements EntityBloc
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         if(!level.isClientSide() && result.getDirection() == Direction.UP) {
             if(level.getBlockEntity(pos) instanceof ToasterBlockEntity blockEntity) {
-                ItemStack heldItem = player.getItemInHand(hand);
-                if(heldItem.getItem() == ModItems.KNIFE.get()) {
-                    if(blockEntity.toastItem()) {
-                        if(!player.getAbilities().instabuild) {
-                            heldItem.setDamageValue(heldItem.getDamageValue() + 1);
-                        }
-                    }
-                } else if(!heldItem.isEmpty()) {
-                    Optional<ToastingRecipe> optional = blockEntity.findMatchingRecipe(heldItem);
+                ItemStack stack = player.getItemInHand(hand);
+                if(!stack.isEmpty()) {
+                    Optional<ToastingRecipe> optional = blockEntity.findMatchingRecipe(stack);
                     if(optional.isPresent()) {
-                        if(blockEntity.addItem(heldItem)) {
+                        ToastingRecipe recipe = optional.get();
+                        if(blockEntity.addItem(stack, this.getPosition(result, pos), recipe.getCookingTime(), recipe.getExperience(), (byte) player.getDirection().get2DDataValue())) {
                             if(!player.getAbilities().instabuild) {
-                                heldItem.shrink(1);
+                                stack.shrink(1);
                             }
-                        }
-                    } else {
-                        if(!level.isClientSide()) {
-                            blockEntity.removeItem();
                         }
                     }
                 } else {
-                    blockEntity.removeItem();
+                    blockEntity.removeItem(this.getPosition(result, pos));
                 }
             }
         }
         return InteractionResult.SUCCESS;
     }
 
+    private int getPosition(BlockHitResult result, BlockPos pos) {
+        Vec3 hitVec = result.getLocation().subtract(pos.getX(), pos.getY(), pos.getZ());
+        int position = 0;
+        if(hitVec.x() > 0.5 || hitVec.z() > 0.5) position = 1;
+        return position;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new ToasterBlockEntity(pos, state);
+    }
+
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type)
+    {
+        return createMailBoxTicker(level, type, ModBlockEntities.TOASTER.get());
+    }
+
+    @Nullable
+    protected static <T extends BlockEntity> BlockEntityTicker<T> createMailBoxTicker(Level level, BlockEntityType<T> blockEntityType, BlockEntityType<? extends ToasterBlockEntity> toasterBlockEntity)
+    {
+        return createTickerHelper(blockEntityType, toasterBlockEntity, ToasterBlockEntity::tick);
     }
 
 }

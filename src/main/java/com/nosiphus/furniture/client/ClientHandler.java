@@ -17,6 +17,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
 
 public class ClientHandler {
 
@@ -60,6 +61,7 @@ public class ClientHandler {
         event.registerBlockEntityRenderer(ModBlockEntities.CHOPPING_BOARD.get(), ChoppingBoardBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MODERN_KITCHEN_SINK.get(), ModernKitchenSinkBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.SINK.get(), SinkBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.TOASTER.get(), ToasterBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TOILET.get(), ToiletBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.WATER_TANK.get(), WaterTankBlockEntityRenderer::new);
     }
