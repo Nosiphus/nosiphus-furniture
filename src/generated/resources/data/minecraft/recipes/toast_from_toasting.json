@@ -1,8 +1,8 @@
 {
   "type": "nfm:toasting",
   "category": "food",
-  "cookingtime": 600,
-  "experience": 0.35,
+  "cookingtime": 300,
+  "experience": 0.20,
   "ingredient": {
     "item": "nfm:bread_slice"
   },
