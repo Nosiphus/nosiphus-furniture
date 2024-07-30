@@ -89,7 +89,7 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
         if(blockEntity instanceof StereoBlockEntity) {
             StereoBlockEntity stereoBlockEntity = (StereoBlockEntity) blockEntity;
             if(!player.isSteppingCarefully()) {
-                if(stereoBlockEntity.count == 16) {
+                if(stereoBlockEntity.count == records.size()) {
                     stereoBlockEntity.count = records.size();
                 } else {
                     stereoBlockEntity.count++;
@@ -100,8 +100,8 @@ public class StereoBlock extends FurnitureHorizontalBlock implements EntityBlock
                 }
                 level.levelEvent(1010, pos, Item.getId(records.get(stereoBlockEntity.count)));
             } else {
-                if(stereoBlockEntity.count != 16) {
-                    stereoBlockEntity.count = 16;
+                if(stereoBlockEntity.count != records.size()) {
+                    stereoBlockEntity.count = records.size();
                     if(!level.isClientSide()) {
                         //player.sendMessage(new TextComponentTranslation("cfm.message.stereo1"));
                     }
