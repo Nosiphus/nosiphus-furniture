@@ -383,38 +383,40 @@ public class ModBlocks {
             () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Sofas
+    public static final RegistryObject<Block> SOFA_BEIGE_MODERN = register("beige_modern_sofa",
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_WOOL.get())));
     public static final RegistryObject<Block> SOFA_WHITE_MODERN = register("white_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> SOFA_ORANGE_MODERN = register("orange_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)));
     public static final RegistryObject<Block> SOFA_MAGENTA_MODERN = register("magenta_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL)));
     public static final RegistryObject<Block> SOFA_LIGHT_BLUE_MODERN = register("light_blue_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_WOOL)));
     public static final RegistryObject<Block> SOFA_YELLOW_MODERN = register("yellow_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_WOOL)));
     public static final RegistryObject<Block> SOFA_LIME_MODERN = register("lime_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIME_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIME_WOOL)));
     public static final RegistryObject<Block> SOFA_PINK_MODERN = register("pink_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.PINK_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.PINK_WOOL)));
     public static final RegistryObject<Block> SOFA_GRAY_MODERN = register("gray_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_WOOL)));
     public static final RegistryObject<Block> SOFA_LIGHT_GRAY_MODERN = register("light_gray_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)));
     public static final RegistryObject<Block> SOFA_CYAN_MODERN = register("cyan_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_WOOL)));
     public static final RegistryObject<Block> SOFA_PURPLE_MODERN = register("purple_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_WOOL)));
     public static final RegistryObject<Block> SOFA_BLUE_MODERN = register("blue_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
     public static final RegistryObject<Block> SOFA_BROWN_MODERN = register("brown_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)));
     public static final RegistryObject<Block> SOFA_GREEN_MODERN = register("green_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL)));
     public static final RegistryObject<Block> SOFA_RED_MODERN = register("red_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.RED_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
     public static final RegistryObject<Block> SOFA_BLACK_MODERN = register("black_modern_sofa",
-            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
+            () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_WOOL)));
 
     //Television Stands
     public static final RegistryObject<Block> TELEVISION_STAND_WHITE = register("white_television_stand",

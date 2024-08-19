@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/modern_sofa_left",
+    "textures": {
+        "couch": "yogmod:block/beige_wool"
+    }
+}

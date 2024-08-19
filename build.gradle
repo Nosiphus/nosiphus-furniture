@@ -75,6 +75,7 @@ dependencies {
 	implementation fg.deobf("curse.maven:cfm-55438:4602980")
 	implementation fg.deobf("curse.maven:jei-238222:4712868")
     implementation fg.deobf("curse.maven:worldedit-225608:4586218")
+    implementation fg.deobf("curse.maven:yogmod-372408:4966516")
     implementation fg.deobf("curse.maven:badpackets-615134:4784395")
     implementation fg.deobf("curse.maven:wthit-forge-455982:4889899")
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"

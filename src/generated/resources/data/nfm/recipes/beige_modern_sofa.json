@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W  ",
+    "WWW",
+    "C C"
+  ],
+  "key": {
+    "W": {
+      "item": "yogmod:beige_wool"
+    },
+	"C": {
+      "item": "minecraft:light_gray_concrete"
+    }
+  },
+  "result": {
+    "item": "nfm:beige_modern_sofa"
+  }
+}

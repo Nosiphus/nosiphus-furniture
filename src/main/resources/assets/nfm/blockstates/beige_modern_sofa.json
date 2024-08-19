@@ -1,0 +1,84 @@
+{
+    "variants": {
+        "facing=north,type=single": {
+            "model": "nfm:block/beige_modern_sofa_single",
+            "uvlock": true,
+            "y": 0
+        },
+        "facing=north,type=left": {
+            "model": "nfm:block/beige_modern_sofa_left",
+            "uvlock": true,
+            "y": 0
+        },
+        "facing=north,type=right": {
+            "model": "nfm:block/beige_modern_sofa_right",
+            "uvlock": true,
+            "y": 0
+        },
+        "facing=north,type=middle": {
+            "model": "nfm:block/beige_modern_sofa_middle",
+            "uvlock": true,
+            "y": 0
+        },
+        "facing=east,type=single": {
+            "model": "nfm:block/beige_modern_sofa_single",
+            "uvlock": true,
+            "y": 90
+        },
+        "facing=east,type=left": {
+            "model": "nfm:block/beige_modern_sofa_left",
+            "uvlock": true,
+            "y": 90
+        },
+        "facing=east,type=right": {
+            "model": "nfm:block/beige_modern_sofa_right",
+            "uvlock": true,
+            "y": 90
+        },
+        "facing=east,type=middle": {
+            "model": "nfm:block/beige_modern_sofa_middle",
+            "uvlock": true,
+            "y": 90
+        },
+        "facing=south,type=single": {
+            "model": "nfm:block/beige_modern_sofa_single",
+            "uvlock": true,
+            "y": 180
+        },
+        "facing=south,type=left": {
+            "model": "nfm:block/beige_modern_sofa_left",
+            "uvlock": true,
+            "y": 180
+        },
+        "facing=south,type=right": {
+            "model": "nfm:block/beige_modern_sofa_right",
+            "uvlock": true,
+            "y": 180
+        },
+        "facing=south,type=middle": {
+            "model": "nfm:block/beige_modern_sofa_middle",
+            "uvlock": true,
+            "y": 180
+        },
+        "facing=west,type=single": {
+            "model": "nfm:block/beige_modern_sofa_single",
+            "uvlock": true,
+            "y": 270
+        },
+        "facing=west,type=left": {
+            "model": "nfm:block/beige_modern_sofa_left",
+            "uvlock": true,
+            "y": 270
+        },
+        "facing=west,type=right": {
+            "model": "nfm:block/beige_modern_sofa_right",
+            "uvlock": true,
+            "y": 270
+        },
+        "facing=west,type=middle": {
+            "model": "nfm:block/beige_modern_sofa_middle",
+            "uvlock": true,
+            "y": 270
+        }
+    }
+}
