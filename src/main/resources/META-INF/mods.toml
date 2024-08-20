@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/Nosiphus/nosiphus-furniture-mod/issues"
 
 [[mods]]
 modId="nfm"
-version="2024.07.30"
+version="2024.08.19"
 displayName="Nosiphus Furniture Mod"
 updateJSONURL=""
 displayURL=""
@@ -35,7 +35,7 @@ description="Nosiphus Furniture Mod is an addon to MrCrayFish's Furniture Mod th
 [[dependencies.nfm]]
 modId="yogmod"
 mandatory=true
-versionRange="[2023.12.18,)"
+versionRange="[2024.08.19,)"
 ordering="AFTER"
 side="BOTH"
 
