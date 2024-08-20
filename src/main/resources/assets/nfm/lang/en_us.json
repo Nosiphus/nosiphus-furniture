@@ -7,6 +7,7 @@
 	"block.nfm.granite_table": "Granite Table",
 	"block.nfm.blackstone_table": "Blackstone Table",
 	"block.nfm.deepslate_table": "Deepslate Table",
+	"block.nfm.beige_modern_table": "Beige Modern Table",
 	"block.nfm.white_modern_table": "White Modern Table",
 	"block.nfm.orange_modern_table": "Orange Modern Table",
 	"block.nfm.magenta_modern_table": "Magenta Modern Table",
@@ -30,6 +31,7 @@
 	"block.nfm.granite_chair": "Granite Chair",
 	"block.nfm.blackstone_chair": "Blackstone Chair",
 	"block.nfm.deepslate_chair": "Deepslate Chair",
+	"block.nfm.beige_modern_chair": "Beige Modern Chair",
 	"block.nfm.white_modern_chair": "White Modern Chair",
 	"block.nfm.orange_modern_chair": "Orange Modern Chair",
 	"block.nfm.magenta_modern_chair": "Magenta Modern Chair",
@@ -53,6 +55,7 @@
 	"block.nfm.granite_coffee_table": "Granite Coffee Table",
 	"block.nfm.blackstone_coffee_table": "Blackstone Coffee Table",
 	"block.nfm.deepslate_coffee_table": "Deepslate Coffee Table",
+	"block.nfm.beige_modern_coffee_table": "Beige Modern Coffee Table",
 	"block.nfm.white_modern_coffee_table": "White Modern Coffee Table",
 	"block.nfm.orange_modern_coffee_table": "Orange Modern Coffee Table",
 	"block.nfm.magenta_modern_coffee_table": "Magenta Modern Coffee Table",
@@ -76,6 +79,7 @@
 	"block.nfm.granite_cabinet": "Granite Cabinet",
 	"block.nfm.blackstone_cabinet": "Blackstone Cabinet",
 	"block.nfm.deepslate_cabinet": "Deepslate Cabinet",
+	"block.nfm.beige_modern_cabinet": "Beige Modern Cabinet",
 	"block.nfm.white_modern_cabinet": "White Modern Cabinet",
 	"block.nfm.orange_modern_cabinet": "Orange Modern Cabinet",
 	"block.nfm.magenta_modern_cabinet": "Magenta Modern Cabinet",
@@ -99,6 +103,7 @@
 	"block.nfm.granite_bedside_cabinet": "Granite Bedside Cabinet",
 	"block.nfm.blackstone_bedside_cabinet": "Blackstone Bedside Cabinet",
 	"block.nfm.deepslate_bedside_cabinet": "Deepslate Bedside Cabinet",
+	"block.nfm.beige_modern_bedside_cabinet": "Beige Modern Bedside Cabinet",
 	"block.nfm.white_modern_bedside_cabinet": "White Modern Bedside Cabinet",
 	"block.nfm.orange_modern_bedside_cabinet": "Orange Modern Bedside Cabinet",
 	"block.nfm.magenta_modern_bedside_cabinet": "Magenta Modern Bedside Cabinet",
@@ -122,6 +127,7 @@
 	"block.nfm.granite_desk": "Granite Desk",
 	"block.nfm.blackstone_desk": "Blackstone Desk",
 	"block.nfm.deepslate_desk": "Deepslate Desk",
+	"block.nfm.beige_modern_desk": "Beige Modern Desk",
 	"block.nfm.white_modern_desk": "White Modern Desk",
 	"block.nfm.orange_modern_desk": "Orange Modern Desk",
 	"block.nfm.magenta_modern_desk": "Magenta Modern Desk",
@@ -145,6 +151,7 @@
 	"block.nfm.granite_desk_cabinet": "Granite Desk Cabinet",
 	"block.nfm.blackstone_desk_cabinet": "Blackstone Desk Cabinet",
 	"block.nfm.deepslate_desk_cabinet": "Deepslate Desk Cabinet",
+	"block.nfm.beige_modern_desk_cabinet": "Beige Modern Desk Cabinet",
 	"block.nfm.white_modern_desk_cabinet": "White Modern Desk Cabinet",
 	"block.nfm.orange_modern_desk_cabinet": "Orange Modern Desk Cabinet",
 	"block.nfm.magenta_modern_desk_cabinet": "Magenta Modern Desk Cabinet",
@@ -161,7 +168,8 @@
 	"block.nfm.green_modern_desk_cabinet": "Green Modern Desk Cabinet",
 	"block.nfm.red_modern_desk_cabinet": "Red Modern Desk Cabinet",
 	"block.nfm.black_modern_desk_cabinet": "Black Modern Desk Cabinet",
-	
+
+	"block.nfm.beige_wall_cabinet": "Beige Wall Cabinet",
 	"block.nfm.white_wall_cabinet": "White Wall Cabinet",
 	"block.nfm.orange_wall_cabinet": "Orange Wall Cabinet",
 	"block.nfm.magenta_wall_cabinet": "Magenta Wall Cabinet",
@@ -196,7 +204,8 @@
 	"block.nfm.green_modern_sofa": "Green Modern Sofa",
 	"block.nfm.red_modern_sofa": "Red Modern Sofa",
 	"block.nfm.black_modern_sofa": "Black Modern Sofa",
-	
+
+	"block.nfm.beige_television_stand": "Beige Television Stand",
 	"block.nfm.white_television_stand": "White Television Stand",
 	"block.nfm.orange_television_stand": "Orange Television Stand",
 	"block.nfm.magenta_television_stand": "Magenta Television Stand",
@@ -214,6 +223,7 @@
 	"block.nfm.red_television_stand": "Red Television Stand",
 	"block.nfm.black_television_stand": "Black Television Stand",
 
+	"block.nfm.beige_lamp": "Beige Lamp",
 	"block.nfm.white_lamp": "White Lamp",
 	"block.nfm.orange_lamp": "Orange Lamp",
 	"block.nfm.magenta_lamp": "Magenta Lamp",
@@ -231,6 +241,7 @@
 	"block.nfm.red_lamp": "Red Lamp",
 	"block.nfm.black_lamp": "Black Lamp",
 
+	"block.nfm.beige_modern_kitchen_counter": "Beige Modern Kitchen Counter",
 	"block.nfm.white_modern_kitchen_counter": "White Modern Kitchen Counter",
 	"block.nfm.orange_modern_kitchen_counter": "Orange Modern Kitchen Counter",
 	"block.nfm.magenta_modern_kitchen_counter": "Magenta Modern Kitchen Counter",
@@ -248,6 +259,7 @@
 	"block.nfm.red_modern_kitchen_counter": "Red Modern Kitchen Counter",
 	"block.nfm.black_modern_kitchen_counter": "Black Modern Kitchen Counter",
 
+	"block.nfm.beige_modern_kitchen_drawer": "Beige Modern Kitchen Drawer",
 	"block.nfm.white_modern_kitchen_drawer": "White Modern Kitchen Drawer",
 	"block.nfm.orange_modern_kitchen_drawer": "Orange Modern Kitchen Drawer",
 	"block.nfm.magenta_modern_kitchen_drawer": "Magenta Modern Kitchen Drawer",
@@ -265,6 +277,7 @@
 	"block.nfm.red_modern_kitchen_drawer": "Red Modern Kitchen Drawer",
 	"block.nfm.black_modern_kitchen_drawer": "Black Modern Kitchen Drawer",
 
+	"block.nfm.beige_modern_kitchen_sink": "Beige Modern Kitchen Sink",
 	"block.nfm.white_modern_kitchen_sink": "White Modern Kitchen Sink",
     "block.nfm.orange_modern_kitchen_sink": "Orange Modern Kitchen Sink",
     "block.nfm.magenta_modern_kitchen_sink": "Magenta Modern Kitchen Sink",
@@ -281,7 +294,8 @@
     "block.nfm.green_modern_kitchen_sink": "Green Modern Kitchen Sink",
     "block.nfm.red_modern_kitchen_sink": "Red Modern Kitchen Sink",
     "block.nfm.black_modern_kitchen_sink": "Black Modern Kitchen Sink",
-	
+
+	"block.nfm.beige_bar_stool": "Beige Bar Stool",
 	"block.nfm.white_bar_stool": "White Bar Stool",
     "block.nfm.orange_bar_stool": "Orange Bar Stool",
     "block.nfm.magenta_bar_stool": "Magenta Bar Stool",
@@ -331,6 +345,7 @@
 	"block.nfm.stripped_mangrove_door_bell": "Stripped Mangrove Door Bell",
 	"block.nfm.stripped_cherry_door_bell": "Stripped Cherry Door Bell",
 
+	"block.nfm.beige_inflatable_castle": "Beige Inflatable Castle",
 	"block.nfm.white_inflatable_castle": "White Inflatable Castle",
 	"block.nfm.orange_inflatable_castle": "Orange Inflatable Castle",
 	"block.nfm.magenta_inflatable_castle": "Magenta Inflatable Castle",
@@ -349,6 +364,7 @@
 	"block.nfm.black_inflatable_castle": "Black Inflatable Castle",
 	"block.nfm.castle_netting": "Castle Netting",
 	
+	"block.nfm.beige_cup": "Beige Cup",
 	"block.nfm.white_cup": "White Cup",
 	"block.nfm.orange_cup": "Orange Cup",
 	"block.nfm.magenta_cup": "Magenta Cup",

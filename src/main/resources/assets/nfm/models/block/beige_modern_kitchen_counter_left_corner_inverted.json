@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/modern_kitchen_counter_left_corner_inverted",
+    "textures": {
+        "top": "yogmod:block/beige_concrete"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/lamp_top",
+    "textures": {
+        "lampshade": "yogmod:block/beige_wool"
+    }
+}

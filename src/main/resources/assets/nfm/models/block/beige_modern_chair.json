@@ -1,0 +1,6 @@
+{
+	"parent": "nfm:block/modern_chair",
+	"textures": {
+		"seat": "yogmod:block/beige_concrete"
+	}
+}

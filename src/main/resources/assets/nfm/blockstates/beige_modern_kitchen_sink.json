@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "nfm:block/beige_modern_kitchen_sink_alt",
+            "y": 0
+        },
+        "facing=east": {
+            "model": "nfm:block/beige_modern_kitchen_sink_alt",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "nfm:block/beige_modern_kitchen_sink_alt",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "nfm:block/beige_modern_kitchen_sink_alt",
+            "y": 270
+        }
+    }
+}

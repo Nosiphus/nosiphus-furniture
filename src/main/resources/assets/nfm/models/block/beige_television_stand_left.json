@@ -1,0 +1,6 @@
+{
+	"parent": "nfm:block/television_stand_left",
+	"textures": {
+		"table_top": "yogmod:block/beige_concrete"
+	}
+}

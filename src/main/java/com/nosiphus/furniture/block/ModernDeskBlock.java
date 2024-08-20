@@ -142,6 +142,7 @@ public class ModernDeskBlock extends FurnitureHorizontalBlock
 
     public enum MaterialType
     {
+        BEIGE_CONCRETE,
         WHITE_CONCRETE,
         ORANGE_CONCRETE,
         MAGENTA_CONCRETE,

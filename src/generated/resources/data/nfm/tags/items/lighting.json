@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+	"nfm:beige_lamp",
 	"nfm:white_lamp",
     "nfm:orange_lamp",
     "nfm:magenta_lamp",

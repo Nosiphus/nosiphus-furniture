@@ -1,0 +1,6 @@
+{
+	"parent": "nfm:block/modern_coffee_table_three",
+	"textures": {
+		"table_top": "yogmod:block/beige_concrete"
+	}
+}

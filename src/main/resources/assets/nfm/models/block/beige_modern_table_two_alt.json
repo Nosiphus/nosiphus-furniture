@@ -1,0 +1,6 @@
+{
+	"parent": "nfm:block/modern_table_two_alt",
+	"textures": {
+		"table_top": "yogmod:block/beige_concrete"
+	}
+}

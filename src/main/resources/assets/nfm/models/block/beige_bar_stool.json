@@ -1,0 +1,8 @@
+{
+	"parent": "nfm:block/bar_stool",
+	"textures": {
+		"cushion": "yogmod:block/beige_wool",
+		"seat": "minecraft:block/gray_concrete",
+		"legs": "minecraft:block/white_concrete"
+	}
+}

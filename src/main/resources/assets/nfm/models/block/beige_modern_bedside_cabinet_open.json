@@ -1,0 +1,9 @@
+{
+    "parent": "cfm:block/bedside_cabinet_open",
+    "textures": {
+        "base": "minecraft:block/stone",
+        "top": "yogmod:block/beige_concrete",
+        "draw": "yogmod:block/beige_concrete",
+        "draw_front": "yogmod:block/beige_concrete"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "yogmod:beige_wool",
+            "data": 4
+        },
+        {
+            "item": "minecraft:rabbit_foot"
+        }
+    ],
+	"result": {
+        "item": "nfm:beige_inflatable_castle",
+        "data": 4,
+        "count": 16
+    }
+}

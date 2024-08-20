@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/modern_kitchen_sink_alt",
+    "textures": {
+        "sink": "yogmod:block/beige_concrete"
+    }
+}

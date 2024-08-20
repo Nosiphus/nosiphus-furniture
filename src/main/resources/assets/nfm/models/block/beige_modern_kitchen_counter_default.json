@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/modern_kitchen_counter_default",
+    "textures": {
+        "top": "yogmod:block/beige_concrete"
+    }
+}
