@@ -32,12 +32,6 @@ description="Nosiphus Furniture Mod is an addon to MrCrayFish's Furniture Mod th
     versionRange="[7.0.0-pre36,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.nfm]]
-modId="yogmod"
-mandatory=true
-versionRange="[2024.08.19,)"
-ordering="AFTER"
-side="BOTH"
 
 [modproperties.nfm]
     catalogueItemIcon="nfm:white_modern_chair"

@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,7 +40,7 @@ public class ModBlocks {
             () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> TABLE_DEEPSLATE = register("deepslate_table",
             () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
-    public static final RegistryObject<Block> TABLE_BEIGE_MODERN = register("beige_modern_table",
+    public static final RegistryObject<Block> TABLE_BEIGE_MODERN = registerOptional("yogmod", "beige_modern_table",
             () -> new ModernTableBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> TABLE_WHITE_MODERN = register("white_modern_table",
             () -> new ModernTableBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -87,7 +88,7 @@ public class ModBlocks {
             () -> new ChairBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> CHAIR_DEEPSLATE = register("deepslate_chair",
             () -> new ChairBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
-    public static final RegistryObject<Block> CHAIR_BEIGE_MODERN = register("beige_modern_chair",
+    public static final RegistryObject<Block> CHAIR_BEIGE_MODERN = registerOptional("yogmod","beige_modern_chair",
             () -> new ModernChairBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> CHAIR_WHITE_MODERN = register("white_modern_chair",
             () -> new ModernChairBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -135,7 +136,7 @@ public class ModBlocks {
             () -> new CoffeeTableBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> COFFEE_TABLE_DEEPSLATE = register("deepslate_coffee_table",
             () -> new CoffeeTableBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
-    public static final RegistryObject<Block> COFFEE_TABLE_BEIGE_MODERN = register("beige_modern_coffee_table",
+    public static final RegistryObject<Block> COFFEE_TABLE_BEIGE_MODERN = registerOptional("yogmod","beige_modern_coffee_table",
             () -> new ModernCoffeeTableBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> COFFEE_TABLE_WHITE_MODERN = register("white_modern_coffee_table",
             () -> new ModernCoffeeTableBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -183,7 +184,7 @@ public class ModBlocks {
             () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> CABINET_DEEPSLATE = register("deepslate_cabinet",
             () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
-    public static final RegistryObject<Block> CABINET_BEIGE_MODERN = register("beige_modern_cabinet",
+    public static final RegistryObject<Block> CABINET_BEIGE_MODERN = registerOptional("yogmod","beige_modern_cabinet",
             () -> new CabinetBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> CABINET_WHITE_MODERN = register("white_modern_cabinet",
             () -> new CabinetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -231,7 +232,7 @@ public class ModBlocks {
             () -> new BedsideCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE)));
     public static final RegistryObject<Block> BEDSIDE_CABINET_DEEPSLATE = register("deepslate_bedside_cabinet",
             () -> new BedsideCabinetBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
-    public static final RegistryObject<Block> BEDSIDE_CABINET_BEIGE_MODERN = register("beige_modern_bedside_cabinet",
+    public static final RegistryObject<Block> BEDSIDE_CABINET_BEIGE_MODERN = registerOptional("yogmod","beige_modern_bedside_cabinet",
             () -> new BedsideCabinetBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> BEDSIDE_CABINET_WHITE_MODERN = register("white_modern_bedside_cabinet",
             () -> new BedsideCabinetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -279,7 +280,7 @@ public class ModBlocks {
             () -> new DeskBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), DeskBlock.MaterialType.STONE));
     public static final RegistryObject<Block> DESK_DEEPSLATE = register("deepslate_desk",
             () -> new DeskBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE), DeskBlock.MaterialType.STONE));
-    public static final RegistryObject<Block> DESK_BEIGE_MODERN = register("beige_modern_desk",
+    public static final RegistryObject<Block> DESK_BEIGE_MODERN = registerOptional("yogmod","beige_modern_desk",
             () -> new ModernDeskBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()), ModernDeskBlock.MaterialType.BEIGE_CONCRETE));
     public static final RegistryObject<Block> DESK_WHITE_MODERN = register("white_modern_desk",
             () -> new ModernDeskBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE), ModernDeskBlock.MaterialType.WHITE_CONCRETE));
@@ -327,7 +328,7 @@ public class ModBlocks {
             () -> new DeskCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACKSTONE), DeskBlock.MaterialType.STONE));
     public static final RegistryObject<Block> DESK_CABINET_DEEPSLATE = register("deepslate_desk_cabinet",
             () -> new DeskCabinetBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE), DeskBlock.MaterialType.STONE));
-    public static final RegistryObject<Block> DESK_CABINET_BEIGE_MODERN = register("beige_modern_desk_cabinet",
+    public static final RegistryObject<Block> DESK_CABINET_BEIGE_MODERN = registerOptional("yogmod","beige_modern_desk_cabinet",
             () -> new ModernDeskCabinetBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()), ModernDeskBlock.MaterialType.BEIGE_CONCRETE));
     public static final RegistryObject<Block> DESK_CABINET_WHITE_MODERN = register("white_modern_desk_cabinet",
             () -> new ModernDeskCabinetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE), ModernDeskBlock.MaterialType.WHITE_CONCRETE));
@@ -363,7 +364,7 @@ public class ModBlocks {
             () -> new ModernDeskCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE), ModernDeskBlock.MaterialType.BLACK_CONCRETE));
 
     //Wall Cabinets
-    public static final RegistryObject<Block> WALL_CABINET_BEIGE = register("beige_wall_cabinet",
+    public static final RegistryObject<Block> WALL_CABINET_BEIGE = registerOptional("yogmod","beige_wall_cabinet",
             () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> WALL_CABINET_WHITE = register("white_wall_cabinet",
             () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -399,7 +400,7 @@ public class ModBlocks {
             () -> new WallCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Sofas
-    public static final RegistryObject<Block> SOFA_BEIGE_MODERN = register("beige_modern_sofa",
+    public static final RegistryObject<Block> SOFA_BEIGE_MODERN = registerOptional("yogmod","beige_modern_sofa",
             () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_WOOL.get())));
     public static final RegistryObject<Block> SOFA_WHITE_MODERN = register("white_modern_sofa",
             () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
@@ -435,7 +436,7 @@ public class ModBlocks {
             () -> new ModernSofaBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_WOOL)));
 
     //Television Stands
-    public static final RegistryObject<Block> TELEVISION_STAND_BEIGE = register("beige_television_stand",
+    public static final RegistryObject<Block> TELEVISION_STAND_BEIGE = registerOptional("yogmod","beige_television_stand",
             () -> new TelevisionStandBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> TELEVISION_STAND_WHITE = register("white_television_stand",
             () -> new TelevisionStandBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -471,7 +472,7 @@ public class ModBlocks {
             () -> new TelevisionStandBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Lamps
-    public static final RegistryObject<Block> LAMP_BEIGE = register("beige_lamp",
+    public static final RegistryObject<Block> LAMP_BEIGE = registerOptional("yogmod","beige_lamp",
             () -> new LampBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()).lightLevel((getLightValueLit(15)))));
     public static final RegistryObject<Block> LAMP_WHITE = register("white_lamp",
             () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).lightLevel((getLightValueLit(15)))));
@@ -507,7 +508,7 @@ public class ModBlocks {
             () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_WOOL).lightLevel((getLightValueLit(15)))));
 
     //Kitchen Counters
-    public static final RegistryObject<Block> KITCHEN_COUNTER_BEIGE_MODERN = register("beige_modern_kitchen_counter",
+    public static final RegistryObject<Block> KITCHEN_COUNTER_BEIGE_MODERN = registerOptional("yogmod","beige_modern_kitchen_counter",
             () -> new KitchenCounterBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> KITCHEN_COUNTER_WHITE_MODERN = register("white_modern_kitchen_counter",
             () -> new KitchenCounterBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -543,7 +544,7 @@ public class ModBlocks {
             () -> new KitchenCounterBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Kitchen Drawers
-    public static final RegistryObject<Block> KITCHEN_DRAWER_BEIGE_MODERN = register("beige_modern_kitchen_drawer",
+    public static final RegistryObject<Block> KITCHEN_DRAWER_BEIGE_MODERN = registerOptional("yogmod","beige_modern_kitchen_drawer",
             () -> new KitchenDrawerBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> KITCHEN_DRAWER_WHITE_MODERN = register("white_modern_kitchen_drawer",
             () -> new KitchenDrawerBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -579,7 +580,7 @@ public class ModBlocks {
             () -> new KitchenDrawerBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
     //Kitchen Sinks
-    public static final RegistryObject<Block> KITCHEN_SINK_BEIGE_MODERN = register("beige_modern_kitchen_sink",
+    public static final RegistryObject<Block> KITCHEN_SINK_BEIGE_MODERN = registerOptional("yogmod","beige_modern_kitchen_sink",
             () -> new ModernKitchenSinkBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()), false));
     public static final RegistryObject<Block> KITCHEN_SINK_WHITE_MODERN = register("white_modern_kitchen_sink",
             () -> new ModernKitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE), false));
@@ -615,7 +616,7 @@ public class ModBlocks {
             () -> new ModernKitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE), false));
 
     //Bar Stools
-    public static final RegistryObject<Block> BAR_STOOL_BEIGE = register("beige_bar_stool",
+    public static final RegistryObject<Block> BAR_STOOL_BEIGE = registerOptional("yogmod","beige_bar_stool",
             () -> new BarStoolBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> BAR_STOOL_WHITE = register("white_bar_stool",
             () -> new BarStoolBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
@@ -715,7 +716,7 @@ public class ModBlocks {
             () -> new DoorBellBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_WOOD).noOcclusion()));
 
     //Inflatable Castles
-    public static final RegistryObject<Block> INFLATABLE_CASTLE_BEIGE = register("beige_inflatable_castle",
+    public static final RegistryObject<Block> INFLATABLE_CASTLE_BEIGE = registerOptional("yogmod","beige_inflatable_castle",
             () -> new InflatableCastleBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_WOOL.get())));
     public static final RegistryObject<Block> INFLATABLE_CASTLE_WHITE = register("white_inflatable_castle",
             () -> new InflatableCastleBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
@@ -753,7 +754,7 @@ public class ModBlocks {
             () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
 
     //Cups and Plate
-    public static final RegistryObject<Block> CUP_BEIGE = register("beige_cup",
+    public static final RegistryObject<Block> CUP_BEIGE = registerOptional("yogmod","beige_cup",
             () -> new CupBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_STAINED_GLASS.get())));
     public static final RegistryObject<Block> CUP_WHITE = register("white_cup",
             () -> new CupBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)));
@@ -903,6 +904,14 @@ public class ModBlocks {
         return (state) -> {
             return state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
         };
+    }
+
+    @Nullable
+    private static RegistryObject<Block> registerOptional(String modID, String name, Supplier<Block> block) {
+        if(ModList.get().isLoaded(modID)) {
+            return register(name, block, new Item.Properties());
+        }
+        return null;
     }
 
     private static RegistryObject<Block> register(String name, Supplier<Block> block)
