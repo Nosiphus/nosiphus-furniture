@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-	"nfm:bread_slice",
-	"nfm:toast",
-	"nfm:knife",
-	"nfm:soap",
-	"nfm:soapy_water_bucket",
-	"nfm:super_soapy_water_bucket",
-	"nfm:sausage",
-	"nfm:cooked_sausage",
-	"nfm:kebab",
-	"nfm:cooked_kebab",
-	"nfm:crowbar"
+	{ "id": "nfm:bread_slice", "required": false },
+	{ "id": "nfm:toast", "required": false },
+	{ "id": "nfm:knife", "required": false },
+	{ "id": "nfm:soap", "required": false },
+	{ "id": "nfm:soapy_water_bucket", "required": false },
+	{ "id": "nfm:super_soapy_water_bucket", "required": false },
+	{ "id": "nfm:sausage", "required": false },
+	{ "id": "nfm:cooked_sausage", "required": false },
+	{ "id": "nfm:kebab", "required": false },
+	{ "id": "nfm:cooked_kebab", "required": false },
+	{ "id": "nfm:crowbar", "required": false }
   ]
 }

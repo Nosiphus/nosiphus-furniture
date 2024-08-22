@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:oak_water_tank", "required": false },
+    { "id": "nfm:spruce_water_tank", "required": false },
+    { "id": "nfm:birch_water_tank", "required": false },
+    { "id": "nfm:jungle_water_tank", "required": false },
+    { "id": "nfm:acacia_water_tank", "required": false },
+    { "id": "nfm:dark_oak_water_tank", "required": false },
+	{ "id": "nfm:crimson_water_tank", "required": false },
+	{ "id": "nfm:warped_water_tank", "required": false },
+	{ "id": "nfm:mangrove_water_tank", "required": false },
+	{ "id": "nfm:cherry_water_tank", "required": false }
+  ]
+}

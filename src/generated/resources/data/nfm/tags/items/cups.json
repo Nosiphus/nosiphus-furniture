@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_cup", "required": false },
+    { "id": "nfm:white_cup", "required": false },
+    { "id": "nfm:orange_cup", "required": false },
+    { "id": "nfm:magenta_cup", "required": false },
+    { "id": "nfm:light_blue_cup", "required": false },
+    { "id": "nfm:yellow_cup", "required": false },
+    { "id": "nfm:lime_cup", "required": false },
+    { "id": "nfm:pink_cup", "required": false },
+    { "id": "nfm:gray_cup", "required": false },
+    { "id": "nfm:light_gray_cup", "required": false },
+    { "id": "nfm:cyan_cup", "required": false },
+    { "id": "nfm:purple_cup", "required": false },
+    { "id": "nfm:blue_cup", "required": false },
+    { "id": "nfm:brown_cup", "required": false },
+    { "id": "nfm:green_cup", "required": false },
+    { "id": "nfm:red_cup", "required": false },
+    { "id": "nfm:black_cup", "required": false }
+  ]
+}

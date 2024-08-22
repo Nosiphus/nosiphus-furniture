@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_desk", "required": false },
+    { "id": "nfm:andesite_desk", "required": false },
+    { "id": "nfm:diorite_desk", "required": false },
+    { "id": "nfm:granite_desk", "required": false },
+    { "id": "nfm:blackstone_desk", "required": false },
+    { "id": "nfm:deepslate_desk", "required": false },
+    { "id": "#nfm:modern_desks", "required": false }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_bird_bath", "required": false },
+    { "id": "nfm:andesite_bird_bath", "required": false },
+    { "id": "nfm:diorite_bird_bath", "required": false },
+    { "id": "nfm:granite_bird_bath", "required": false },
+    { "id": "nfm:blackstone_bird_bath", "required": false },
+    { "id": "nfm:deepslate_bird_bath", "required": false }
+  ]
+}

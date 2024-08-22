@@ -1,23 +1,7 @@
 {
   "replace": false,
   "values": [
-	"nfm:beige_lamp",
-	"nfm:white_lamp",
-    "nfm:orange_lamp",
-    "nfm:magenta_lamp",
-    "nfm:light_blue_lamp",
-    "nfm:yellow_lamp",
-    "nfm:lime_lamp",
-    "nfm:pink_lamp",
-    "nfm:gray_lamp",
-    "nfm:light_gray_lamp",
-    "nfm:cyan_lamp",
-    "nfm:purple_lamp",
-    "nfm:blue_lamp",
-    "nfm:brown_lamp",
-    "nfm:green_lamp",
-    "nfm:red_lamp",
-    "nfm:black_lamp",
-	"nfm:christmas_tree"
+	{ "id": "#nfm:lamps", "required": false },
+	{ "id": "nfm:christmas_tree", "required": false }
   ]
 }

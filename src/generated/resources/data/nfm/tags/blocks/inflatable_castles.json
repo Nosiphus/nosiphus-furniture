@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_inflatable_castle", "required": false },
+    { "id": "nfm:white_inflatable_castle", "required": false },
+    { "id": "nfm:orange_inflatable_castle", "required": false },
+    { "id": "nfm:magenta_inflatable_castle", "required": false },
+    { "id": "nfm:light_blue_inflatable_castle", "required": false },
+    { "id": "nfm:yellow_inflatable_castle", "required": false },
+    { "id": "nfm:lime_inflatable_castle", "required": false },
+    { "id": "nfm:pink_inflatable_castle", "required": false },
+    { "id": "nfm:gray_inflatable_castle", "required": false },
+    { "id": "nfm:light_gray_inflatable_castle", "required": false },
+    { "id": "nfm:cyan_inflatable_castle", "required": false },
+    { "id": "nfm:purple_inflatable_castle", "required": false },
+    { "id": "nfm:blue_inflatable_castle", "required": false },
+    { "id": "nfm:brown_inflatable_castle", "required": false },
+    { "id": "nfm:green_inflatable_castle", "required": false },
+    { "id": "nfm:red_inflatable_castle", "required": false },
+    { "id": "nfm:black_inflatable_castle", "required": false }
+  ]
+}

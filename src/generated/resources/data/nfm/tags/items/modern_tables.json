@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_modern_table", "required": false },
+    { "id": "nfm:white_modern_table", "required": false },
+    { "id": "nfm:orange_modern_table", "required": false },
+    { "id": "nfm:magenta_modern_table", "required": false },
+    { "id": "nfm:light_blue_modern_table", "required": false },
+    { "id": "nfm:yellow_modern_table", "required": false },
+    { "id": "nfm:lime_modern_table", "required": false },
+    { "id": "nfm:pink_modern_table", "required": false },
+    { "id": "nfm:gray_modern_table", "required": false },
+    { "id": "nfm:light_gray_modern_table", "required": false },
+    { "id": "nfm:cyan_modern_table", "required": false },
+    { "id": "nfm:purple_modern_table", "required": false },
+    { "id": "nfm:blue_modern_table", "required": false },
+    { "id": "nfm:brown_modern_table", "required": false },
+    { "id": "nfm:green_modern_table", "required": false },
+    { "id": "nfm:red_modern_table", "required": false },
+    { "id": "nfm:black_modern_table", "required": false }
+  ]
+}

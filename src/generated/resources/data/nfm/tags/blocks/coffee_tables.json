@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_coffee_table", "required": false },
+    { "id": "nfm:andesite_coffee_table", "required": false },
+    { "id": "nfm:diorite_coffee_table", "required": false },
+    { "id": "nfm:granite_coffee_table", "required": false },
+    { "id": "nfm:blackstone_coffee_table", "required": false },
+    { "id": "nfm:deepslate_coffee_table", "required": false },
+    { "id": "#nfm:modern_coffee_tables", "required": false }
+  ]
+}

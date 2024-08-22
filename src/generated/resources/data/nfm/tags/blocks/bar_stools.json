@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_bar_stool", "required": false },
+    { "id": "nfm:white_bar_stool", "required": false },
+    { "id": "nfm:orange_bar_stool", "required": false },
+    { "id": "nfm:magenta_bar_stool", "required": false },
+    { "id": "nfm:light_blue_bar_stool", "required": false },
+    { "id": "nfm:yellow_bar_stool", "required": false },
+    { "id": "nfm:lime_bar_stool", "required": false },
+    { "id": "nfm:pink_bar_stool", "required": false },
+    { "id": "nfm:gray_bar_stool", "required": false },
+    { "id": "nfm:light_gray_bar_stool", "required": false },
+    { "id": "nfm:cyan_bar_stool", "required": false },
+    { "id": "nfm:purple_bar_stool", "required": false },
+    { "id": "nfm:blue_bar_stool", "required": false },
+    { "id": "nfm:brown_bar_stool", "required": false },
+    { "id": "nfm:green_bar_stool", "required": false },
+    { "id": "nfm:red_bar_stool", "required": false },
+    { "id": "nfm:black_bar_stool", "required": false }
+  ]
+}

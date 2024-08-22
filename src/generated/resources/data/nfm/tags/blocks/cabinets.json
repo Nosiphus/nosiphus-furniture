@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_cabinet", "required": false },
+    { "id": "nfm:andesite_cabinet", "required": false },
+    { "id": "nfm:diorite_cabinet", "required": false },
+    { "id": "nfm:granite_cabinet", "required": false },
+    { "id": "nfm:blackstone_cabinet", "required": false },
+    { "id": "nfm:deepslate_cabinet", "required": false },
+    { "id": "#nfm:modern_cabinets", "required": false }
+  ]
+}

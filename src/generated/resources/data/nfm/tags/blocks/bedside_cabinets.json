@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_bedside_cabinet", "required": false },
+    { "id": "nfm:andesite_bedside_cabinet", "required": false },
+    { "id": "nfm:diorite_bedside_cabinet", "required": false },
+    { "id": "nfm:granite_bedside_cabinet", "required": false },
+    { "id": "nfm:blackstone_bedside_cabinet", "required": false },
+    { "id": "nfm:deepslate_bedside_cabinet", "required": false },
+    { "id": "#nfm:modern_bedside_cabinets", "required": false }
+  ]
+}

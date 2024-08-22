@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_wall_cabinet", "required": false },
+    { "id": "nfm:white_wall_cabinet", "required": false },
+    { "id": "nfm:orange_wall_cabinet", "required": false },
+    { "id": "nfm:magenta_wall_cabinet", "required": false },
+    { "id": "nfm:light_blue_wall_cabinet", "required": false },
+    { "id": "nfm:yellow_wall_cabinet", "required": false },
+    { "id": "nfm:lime_wall_cabinet", "required": false },
+    { "id": "nfm:pink_wall_cabinet", "required": false },
+    { "id": "nfm:gray_wall_cabinet", "required": false },
+    { "id": "nfm:light_gray_wall_cabinet", "required": false },
+    { "id": "nfm:cyan_wall_cabinet", "required": false },
+    { "id": "nfm:purple_wall_cabinet", "required": false },
+    { "id": "nfm:blue_wall_cabinet", "required": false },
+    { "id": "nfm:brown_wall_cabinet", "required": false },
+    { "id": "nfm:green_wall_cabinet", "required": false },
+    { "id": "nfm:red_wall_cabinet", "required": false },
+    { "id": "nfm:black_wall_cabinet", "required": false }
+  ]
+}

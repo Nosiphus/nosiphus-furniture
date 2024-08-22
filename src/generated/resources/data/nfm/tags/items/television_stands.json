@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_television_stand", "required": false },
+    { "id": "nfm:white_television_stand", "required": false },
+    { "id": "nfm:orange_television_stand", "required": false },
+    { "id": "nfm:magenta_television_stand", "required": false },
+    { "id": "nfm:light_blue_television_stand", "required": false },
+    { "id": "nfm:yellow_television_stand", "required": false },
+    { "id": "nfm:lime_television_stand", "required": false },
+    { "id": "nfm:pink_television_stand", "required": false },
+    { "id": "nfm:gray_television_stand", "required": false },
+    { "id": "nfm:light_gray_television_stand", "required": false },
+    { "id": "nfm:cyan_television_stand", "required": false },
+    { "id": "nfm:purple_television_stand", "required": false },
+    { "id": "nfm:blue_television_stand", "required": false },
+    { "id": "nfm:brown_television_stand", "required": false },
+    { "id": "nfm:green_television_stand", "required": false },
+    { "id": "nfm:red_television_stand", "required": false },
+    { "id": "nfm:black_television_stand", "required": false }
+  ]
+}

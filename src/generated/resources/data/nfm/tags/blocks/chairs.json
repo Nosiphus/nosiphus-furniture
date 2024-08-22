@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_chair", "required": false },
+    { "id": "nfm:andesite_chair", "required": false },
+    { "id": "nfm:diorite_chair", "required": false },
+    { "id": "nfm:granite_chair", "required": false },
+    { "id": "nfm:blackstone_chair", "required": false },
+    { "id": "nfm:deepslate_chair", "required": false },
+    { "id": "#nfm:modern_chairs", "required": false }
+  ]
+}

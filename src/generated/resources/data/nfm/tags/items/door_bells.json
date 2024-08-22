@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:oak_door_bell", "required": false },
+    { "id": "nfm:spruce_door_bell", "required": false },
+    { "id": "nfm:birch_door_bell", "required": false },
+    { "id": "nfm:jungle_door_bell", "required": false },
+    { "id": "nfm:acacia_door_bell", "required": false },
+    { "id": "nfm:dark_oak_door_bell", "required": false },
+	{ "id": "nfm:crimson_door_bell", "required": false },
+	{ "id": "nfm:warped_door_bell", "required": false },
+	{ "id": "nfm:mangrove_door_bell", "required": false },
+	{ "id": "nfm:cherry_door_bell", "required": false },
+	{ "id": "nfm:stripped_oak_door_bell", "required": false },
+    { "id": "nfm:stripped_spruce_door_bell", "required": false },
+    { "id": "nfm:stripped_birch_door_bell", "required": false },
+    { "id": "nfm:stripped_jungle_door_bell", "required": false },
+    { "id": "nfm:stripped_acacia_door_bell", "required": false },
+    { "id": "nfm:stripped_dark_oak_door_bell", "required": false },
+	{ "id": "nfm:stripped_crimson_door_bell", "required": false },
+	{ "id": "nfm:stripped_warped_door_bell", "required": false },
+	{ "id": "nfm:stripped_mangrove_door_bell", "required": false },
+	{ "id": "nfm:stripped_cherry_door_bell", "required": false }
+  ]
+}

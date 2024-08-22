@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:stone_table", "required": false },
+    { "id": "nfm:andesite_table", "required": false },
+    { "id": "nfm:diorite_table", "required": false },
+    { "id": "nfm:granite_table", "required": false },
+    { "id": "nfm:blackstone_table", "required": false },
+    { "id": "nfm:deepslate_table", "required": false },
+    { "id": "#nfm:modern_tables", "required": false }
+  ]
+}

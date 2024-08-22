@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:oak_chopping_board", "required": false },
+    { "id": "nfm:spruce_chopping_board", "required": false },
+    { "id": "nfm:birch_chopping_board", "required": false },
+    { "id": "nfm:jungle_chopping_board", "required": false },
+    { "id": "nfm:acacia_chopping_board", "required": false },
+    { "id": "nfm:dark_oak_chopping_board", "required": false },
+	{ "id": "nfm:crimson_chopping_board", "required": false },
+	{ "id": "nfm:warped_chopping_board", "required": false },
+	{ "id": "nfm:mangrove_chopping_board", "required": false },
+	{ "id": "nfm:cherry_chopping_board", "required": false }
+  ]
+}
