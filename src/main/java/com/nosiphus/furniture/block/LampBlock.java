@@ -88,13 +88,6 @@ public class LampBlock extends FurnitureBlock
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        BlockState state = super.getStateForPlacement(context);
-        return this.getLampState(state, context.getLevel(), context.getClickedPos());
-    }
-
-    @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player playerEntity, InteractionHand hand, BlockHitResult result)
     {
         if(level.getBlockState(pos.above()).getBlock() instanceof LampBlock) {
@@ -106,7 +99,6 @@ public class LampBlock extends FurnitureBlock
                 level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(true)), 2);
             }
         }
-
         return InteractionResult.SUCCESS;
     }
 
