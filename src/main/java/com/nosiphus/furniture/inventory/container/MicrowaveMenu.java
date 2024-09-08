@@ -3,7 +3,6 @@ package com.nosiphus.furniture.inventory.container;
 import com.nosiphus.furniture.blockentity.MicrowaveBlockEntity;
 import com.nosiphus.furniture.core.ModMenuTypes;
 import com.nosiphus.furniture.inventory.container.slot.MicrowaveSlot;
-import com.nosiphus.furniture.inventory.container.slot.RedstoneSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -31,7 +30,6 @@ public class MicrowaveMenu extends AbstractContainerMenu {
         this.data = data;
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new RedstoneSlot(iItemHandler, 0, 126, 40));
             this.addSlot(new MicrowaveSlot(iItemHandler, 1, 65, 43));
         });
 

@@ -2,7 +2,6 @@ package com.nosiphus.furniture.inventory.container;
 
 import com.nosiphus.furniture.blockentity.OvenBlockEntity;
 import com.nosiphus.furniture.core.ModMenuTypes;
-import com.nosiphus.furniture.inventory.container.slot.RedstoneSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -31,7 +30,6 @@ public class OvenMenu extends AbstractContainerMenu {
         this.data = data;
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new RedstoneSlot(iItemHandler, 0, 34, 106));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 53, 31));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 53, 73));
             this.addSlot(new SlotItemHandler(iItemHandler, 3, 71, 31));

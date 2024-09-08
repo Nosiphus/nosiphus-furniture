@@ -226,9 +226,8 @@ public class OvenBlockEntity extends BlockEntity implements MenuProvider {
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
         inventory.setItem(1, blockEntity.itemHandler.getStackInSlot(inputSlot));
         inventory.setItem(2, blockEntity.itemHandler.getStackInSlot(outputSlot));
-        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory, outputSlot) &&
+        return recipe.isPresent() && canInsertAmountIntoOutputSlot(inventory, outputSlot) &&
                 canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem(null));
     }
 

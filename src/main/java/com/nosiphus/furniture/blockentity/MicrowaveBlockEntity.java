@@ -174,11 +174,9 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasRedstoneBlockInFirstSlot = blockEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE_BLOCK;
-
         Optional<CookingRecipe> recipe = level.getRecipeManager().getRecipeFor(CookingRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRedstoneBlockInFirstSlot && recipe.isPresent();
+        return recipe.isPresent();
     }
 
     public boolean stillValid(Player player) {
