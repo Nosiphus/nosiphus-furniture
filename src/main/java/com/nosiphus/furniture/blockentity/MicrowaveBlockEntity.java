@@ -1,12 +1,17 @@
 package com.nosiphus.furniture.blockentity;
 
+import com.nosiphus.furniture.core.ModSounds;
 import com.nosiphus.furniture.inventory.container.MicrowaveMenu;
 import com.nosiphus.furniture.core.ModBlockEntities;
 import com.nosiphus.furniture.item.crafting.CookingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -28,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.Random;
 
 public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -43,6 +49,9 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 100;
+
+    private static Random random = new Random();
+    private static int timer = 20;
 
     public MicrowaveBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MICROWAVE.get(), pos, state);
@@ -130,18 +139,33 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
 
     public static void tick(Level level, BlockPos pos, BlockState state, MicrowaveBlockEntity blockEntity) {
         if(level != null) {
-            if(level.isClientSide()) {
-                return;
-            }
-
-            if(hasRecipe(blockEntity)) {
+            if (hasRecipe(blockEntity)) {
+                if (level.isClientSide()) {
+                    double posX = (double) pos.getX() + 0.35D + (random.nextDouble() / 3);
+                    double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);
+                    //particle code here
+                }
                 blockEntity.progress++;
                 setChanged(level, pos, state);
-                if(blockEntity.progress >= blockEntity.maxProgress) {
+                if (blockEntity.progress >= blockEntity.maxProgress) {
                     craftItem(blockEntity);
+                    if (!level.isClientSide) {
+                        level.playSound(null, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, ModSounds.BLOCK_MICROWAVE_FINISH.get(), SoundSource.BLOCKS, 0.75F, 1.0F);
+                    }
+                    timer = 0;
+                } else {
+                    if (timer == 20) {
+                        timer = 0;
+                    }
+                    if (timer == 0) {
+                        level.playSound(null, blockEntity.worldPosition.getX() + 0.5, blockEntity.worldPosition.getY(), blockEntity.worldPosition.getZ() + 0.5, ModSounds.BLOCK_MICROWAVE_RUNNING.get(), SoundSource.BLOCKS, 0.75F, 1.0F);
+                    }
+                    timer++;
                 }
+
             } else {
                 blockEntity.resetProgress();
+                timer = 0;
                 setChanged(level, pos, state);
             }
         }
