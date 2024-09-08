@@ -74,6 +74,12 @@ public class ChoppingRecipe implements Recipe<Container> {
         });
     }
 
+    @Override
+    public boolean isSpecial()
+    {
+        return true;
+    }
+
     public static class Serializer implements RecipeSerializer<ChoppingRecipe> {
 
         public static final Serializer INSTANCE = new Serializer();

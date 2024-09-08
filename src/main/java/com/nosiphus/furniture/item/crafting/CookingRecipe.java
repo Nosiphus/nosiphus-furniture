@@ -69,6 +69,12 @@ public class CookingRecipe implements Recipe<SimpleContainer> {
         return output.copy();
     }
 
+    @Override
+    public boolean isSpecial()
+    {
+        return true;
+    }
+
     public static class Type implements RecipeType<CookingRecipe> {
         private Type() {}
         public static final Type INSTANCE = new Type();
