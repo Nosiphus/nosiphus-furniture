@@ -21,11 +21,11 @@ import net.minecraftforge.items.SlotItemHandler;
 public class DishwasherMenu extends AbstractContainerMenu {
 
     public static final ResourceLocation BLOCK_ATLAS = new ResourceLocation("textures/atlas/blocks.png");
-    public static final ResourceLocation EMPTY_TOOL_SLOT_PICKAXE = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_pickaxe");
-    public static final ResourceLocation EMPTY_TOOL_SLOT_SHOVEL = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_shovel");
-    public static final ResourceLocation EMPTY_TOOL_SLOT_SWORD = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_sword");
-    public static final ResourceLocation EMPTY_TOOL_SLOT_AXE = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_axe");
-    public static final ResourceLocation EMPTY_TOOL_SLOT_HOE = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_hoe");
+    public static final ResourceLocation EMPTY_TOOL_SLOT_PICKAXE = new ResourceLocation( "item/empty_slot_pickaxe");
+    public static final ResourceLocation EMPTY_TOOL_SLOT_SHOVEL = new ResourceLocation("item/empty_slot_shovel");
+    public static final ResourceLocation EMPTY_TOOL_SLOT_SWORD = new ResourceLocation( "item/empty_slot_sword");
+    public static final ResourceLocation EMPTY_TOOL_SLOT_AXE = new ResourceLocation( "item/empty_slot_axe");
+    public static final ResourceLocation EMPTY_TOOL_SLOT_HOE = new ResourceLocation( "item/empty_slot_hoe");
     public static final ResourceLocation EMPTY_ARMOR_SLOT_SHIELD = new ResourceLocation("item/empty_armor_slot_shield");
     public static final ResourceLocation EMPTY_TOOL_SLOT_BUCKET = new ResourceLocation(Reference.MOD_ID, "item/empty_tool_slot_bucket");
 
@@ -77,7 +77,8 @@ public class DishwasherMenu extends AbstractContainerMenu {
                     return Pair.of(DishwasherMenu.BLOCK_ATLAS, DishwasherMenu.EMPTY_ARMOR_SLOT_SHIELD);
                 }
             });
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 125, 7));
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 125, 7)
+            );
 
             this.addSlot(new SlotItemHandler(iItemHandler, 6, 125, 7) {
                 public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
