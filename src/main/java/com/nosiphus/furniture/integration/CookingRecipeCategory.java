@@ -14,7 +14,6 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
     public final static ResourceLocation UID = new ResourceLocation(Reference.MOD_ID, "cooking");
@@ -50,7 +49,6 @@ public class CookingRecipeCategory implements IRecipeCategory<CookingRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, CookingRecipe cookingRecipe, IFocusGroup iFocusGroup) {
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 43, 20).addIngredients(cookingRecipe.getIngredients().get(0));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.CATALYST, 104, 40).addItemStack(new ItemStack(Items.REDSTONE_BLOCK));
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 43, 43).addItemStack(cookingRecipe.getResultItem(null));
     }
 }
