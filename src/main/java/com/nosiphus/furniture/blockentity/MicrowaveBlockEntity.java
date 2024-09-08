@@ -140,10 +140,10 @@ public class MicrowaveBlockEntity extends BlockEntity implements MenuProvider {
     public static void tick(Level level, BlockPos pos, BlockState state, MicrowaveBlockEntity blockEntity) {
         if(level != null) {
             if (hasRecipe(blockEntity)) {
-                if (level.isClientSide()) {
+                if (level.isClientSide) {
                     double posX = (double) pos.getX() + 0.35D + (random.nextDouble() / 3);
                     double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);
-                    //particle code here
+                    level.addParticle(ParticleTypes.SMOKE, posX, pos.getY() + 0.065D, posZ, 0.0D, 0.0D, 0.0D);
                 }
                 blockEntity.progress++;
                 setChanged(level, pos, state);
