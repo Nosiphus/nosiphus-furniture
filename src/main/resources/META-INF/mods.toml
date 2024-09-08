@@ -17,7 +17,7 @@ description="Nosiphus Furniture Mod is an addon to MrCrayFish's Furniture Mod th
 [[dependencies.nfm]]
     modId="forge"
     mandatory=true
-    versionRange="[47.0.34,)"
+    versionRange="[47.1.3,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.nfm]]
