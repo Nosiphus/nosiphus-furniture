@@ -2,7 +2,7 @@ package com.nosiphus.furniture.block;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
+import com.mrcrayfish.furniture.block.FurnitureBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,65 +25,44 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CandleBlock extends FurnitureHorizontalBlock
+public class CandleBlock extends FurnitureBlock
 {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
-    public CandleBlock(Properties properties)
-    {
+    public CandleBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH).setValue(LIT, true));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(LIT, true));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
-    private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states)
-    {
-
-        final VoxelShape[] LOWER_BASE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 4.0, 12.0, 1.0, 12.0), Direction.EAST));
-        final VoxelShape[] UPPER_BASE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.0, 1.0, 5.0, 11.0, 2.0, 11.0), Direction.EAST));
-        final VoxelShape[] CENTER_COLUMN = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.0, 2.0, 7.0, 9.0, 13.0, 9.0), Direction.EAST));
-        final VoxelShape[] CROSSBAR_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.0, 7.0, 2.0, 9.0, 9.0, 14.0), Direction.EAST));
-        final VoxelShape[] CROSSBAR_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(2.0, 7.0, 7.0, 14.0, 9.0, 9.0), Direction.EAST));
-        final VoxelShape[] CANDLE_1_SUPPORT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(1.0, 9.0, 6.0, 5.0, 10.0, 10.0), Direction.EAST));
-        final VoxelShape[] CANDLE_2_SUPPORT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(6.0, 9.0, 11.0, 10.0, 10.0, 15.0), Direction.EAST));
-        final VoxelShape[] CANDLE_3_SUPPORT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(6.0, 9.0, 1.0, 10.0, 10.0, 5.0), Direction.EAST));
-        final VoxelShape[] CANDLE_4_SUPPORT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(11.0, 9.0, 6.0, 15.0, 10.0, 10.0), Direction.EAST));
-        final VoxelShape[] CANDLE_5_SUPPORT = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(6.0, 13.0, 6.0, 10.0, 14.0, 10.0), Direction.EAST));
-        final VoxelShape[] CANDLE_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(2.2, 10.0, 7.2, 3.7, 17.0, 8.7), Direction.EAST));
-        final VoxelShape[] CANDLE_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(12.2, 10.0, 7.2, 13.7, 17.0, 8.7), Direction.EAST));
-        final VoxelShape[] CANDLE_3 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.2, 10.0, 12.2, 8.7, 17.0, 13.7), Direction.EAST));
-        final VoxelShape[] CANDLE_4 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.2, 10.0, 2.2, 8.7, 17.0, 3.7), Direction.EAST));
-        final VoxelShape[] CANDLE_5 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(7.2, 14.0, 7.2, 8.7, 21.0, 8.7), Direction.EAST));
-
+    private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states) {
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
         for (BlockState state : states) {
-            Direction direction = state.getValue(DIRECTION);
             List<VoxelShape> shapes = new ArrayList<>();
-            shapes.add(LOWER_BASE[direction.get2DDataValue()]);
-            shapes.add(UPPER_BASE[direction.get2DDataValue()]);
-            shapes.add(CENTER_COLUMN[direction.get2DDataValue()]);
-            shapes.add(CROSSBAR_1[direction.get2DDataValue()]);
-            shapes.add(CROSSBAR_2[direction.get2DDataValue()]);
-            shapes.add(CANDLE_1_SUPPORT[direction.get2DDataValue()]);
-            shapes.add(CANDLE_2_SUPPORT[direction.get2DDataValue()]);
-            shapes.add(CANDLE_3_SUPPORT[direction.get2DDataValue()]);
-            shapes.add(CANDLE_4_SUPPORT[direction.get2DDataValue()]);
-            shapes.add(CANDLE_5_SUPPORT[direction.get2DDataValue()]);
-            shapes.add(CANDLE_1[direction.get2DDataValue()]);
-            shapes.add(CANDLE_2[direction.get2DDataValue()]);
-            shapes.add(CANDLE_3[direction.get2DDataValue()]);
-            shapes.add(CANDLE_4[direction.get2DDataValue()]);
-            shapes.add(CANDLE_5[direction.get2DDataValue()]);
+            shapes.add(Block.box(4.0, 0.0, 4.0, 12.0, 1.0, 12.0));
+            shapes.add(Block.box(5.0, 1.0, 5.0, 11.0, 2.0, 11.0));
+            shapes.add(Block.box(7.0, 2.0, 7.0, 9.0, 13.0, 9.0));
+            shapes.add(Block.box(7.0, 7.0, 2.0, 9.0, 9.0, 14.0));
+            shapes.add(Block.box(2.0, 7.0, 7.0, 14.0, 9.0, 9.0));
+            shapes.add(Block.box(1.0, 9.0, 6.0, 5.0, 10.0, 10.0));
+            shapes.add(Block.box(6.0, 9.0, 11.0, 10.0, 10.0, 15.0));
+            shapes.add(Block.box(6.0, 9.0, 1.0, 10.0, 10.0, 5.0));
+            shapes.add(Block.box(11.0, 9.0, 6.0, 15.0, 10.0, 10.0));
+            shapes.add(Block.box(6.0, 13.0, 6.0, 10.0, 14.0, 10.0));
+            shapes.add(Block.box(2.2, 10.0, 7.2, 3.7, 17.0, 8.7));
+            shapes.add(Block.box(12.2, 10.0, 7.2, 13.7, 17.0, 8.7));
+            shapes.add(Block.box(7.2, 10.0, 12.2, 8.7, 17.0, 13.7));
+            shapes.add(Block.box(7.2, 10.0, 2.2, 8.7, 17.0, 3.7));
+            shapes.add(Block.box(7.2, 14.0, 7.2, 8.7, 21.0, 8.7));
             builder.put(state, VoxelShapeHelper.combineAll(shapes));
         }
         return builder.build();
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context)
-    {
+    public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
         return SHAPES.get(state);
     }
 
@@ -93,8 +72,7 @@ public class CandleBlock extends FurnitureHorizontalBlock
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-    {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(LIT);
     }
