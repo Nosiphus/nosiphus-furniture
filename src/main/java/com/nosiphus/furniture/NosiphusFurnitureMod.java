@@ -25,6 +25,7 @@ public class NosiphusFurnitureMod {
         ModBlocks.BLOCKS.register(eventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(eventBus);
         ModCreativeTabs.CREATIVE_TABS.register(eventBus);
+        ModEntities.ENTITIES.register(eventBus);
         ModFluids.FLUIDS.register(eventBus);
         ModFluidTypes.FLUID_TYPES.register(eventBus);
         ModItems.ITEMS.register(eventBus);

@@ -2,6 +2,7 @@ package com.nosiphus.furniture.client;
 
 import com.nosiphus.furniture.client.event.CreativeScreenEvents;
 import com.nosiphus.furniture.client.gui.screen.inventory.*;
+import com.nosiphus.furniture.client.renderer.SeatRenderer;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.particle.ShowerParticle;
@@ -17,7 +18,6 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
 
 public class ClientHandler {
 
@@ -65,6 +65,7 @@ public class ClientHandler {
         event.registerBlockEntityRenderer(ModBlockEntities.TOASTER.get(), ToasterBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.TOILET.get(), ToiletBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.WATER_TANK.get(), WaterTankBlockEntityRenderer::new);
+        event.registerEntityRenderer(ModEntities.SEAT.get(), SeatRenderer::new);
     }
 
 }

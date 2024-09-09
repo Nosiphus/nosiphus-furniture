@@ -1,20 +1,7 @@
 {
     "variants": {
-        "facing=east": {
-            "model": "nfm:block/magenta_bar_stool",
-            "y": 0
-        },
-        "facing=south": {
-            "model": "nfm:block/magenta_bar_stool",
-            "y": 90
-        },
-        "facing=west": {
-            "model": "nfm:block/magenta_bar_stool",
-            "y": 180
-        },
-        "facing=north": {
-            "model": "nfm:block/magenta_bar_stool",
-            "y": 270
+        "": {
+            "model": "nfm:block/magenta_bar_stool"
         }
     }
 }
