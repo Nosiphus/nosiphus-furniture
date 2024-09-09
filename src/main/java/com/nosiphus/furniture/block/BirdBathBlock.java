@@ -1,5 +1,6 @@
 package com.nosiphus.furniture.block;
 
+import com.mrcrayfish.furniture.block.FurnitureBlock;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.entity.SeatEntity;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
@@ -43,7 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BirdBathBlock extends FurnitureHorizontalBlock implements EntityBlock
+public class BirdBathBlock extends FurnitureBlock implements EntityBlock
 {
 
     public final Map<BlockState, VoxelShape> SHAPES = new HashMap<>();
@@ -62,16 +63,13 @@ public class BirdBathBlock extends FurnitureHorizontalBlock implements EntityBlo
         }
 
         List<VoxelShape> shapes = new ArrayList<>();
-        Direction direction = state.getValue(DIRECTION);
-
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(4.0, 0.0, 4.0, 12.0, 1.6, 12.0), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.0, 1.6, 5.0, 11.0, 11.2, 11.0), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(1.0, 11.2, 1.0, 15.0, 12.8, 15.0), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(0.0, 12.8, 0.0, 1.6, 14.4, 16.0), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(1.6, 12.8, 0.0, 14.4, 14.4, 1.6), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(1.6, 12.8, 14.4, 14.4, 14.4, 16.0), Direction.EAST))[direction.get2DDataValue()]);
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(14.4, 12.8, 0.0, 16.0, 14.4, 16.0), Direction.EAST))[direction.get2DDataValue()]);
-
+        shapes.add(Block.box(4.0, 0.0, 4.0, 12.0, 1.6, 12.0));
+        shapes.add(Block.box(5.0, 1.6, 5.0, 11.0, 11.2, 11.0));
+        shapes.add(Block.box(1.0, 11.2, 1.0, 15.0, 12.8, 15.0));
+        shapes.add(Block.box(0.0, 12.8, 0.0, 1.6, 14.4, 16.0));
+        shapes.add(Block.box(1.6, 12.8, 0.0, 14.4, 14.4, 1.6));
+        shapes.add(Block.box(1.6, 12.8, 14.4, 14.4, 14.4, 16.0));
+        shapes.add(Block.box(14.4, 12.8, 0.0, 16.0, 14.4, 16.0));
         VoxelShape shape = VoxelShapeHelper.combineAll(shapes);
         SHAPES.put(state, shape);
         return shape;
@@ -138,10 +136,9 @@ public class BirdBathBlock extends FurnitureHorizontalBlock implements EntityBlo
                     handler.fill(new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     level.playSound(null, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-                    Direction direction = state.getValue(DIRECTION);
-                    double posX = pos.getX() + 0.5 + direction.getNormal().getX() * 0.1;
+                    double posX = pos.getX() + 0.5 * 0.1;
                     double posY = pos.getY() + 1.15;
-                    double posZ = pos.getZ() + 0.5 + direction.getNormal().getZ() * 0.1;
+                    double posZ = pos.getZ() + 0.5 * 0.1;
                     ((ServerLevel) level).sendParticles(ParticleTypes.FALLING_WATER, posX, posY, posZ, 10, 0.01, 0.01, 0.01, 0);
 
                     int adjacentSources = 0;

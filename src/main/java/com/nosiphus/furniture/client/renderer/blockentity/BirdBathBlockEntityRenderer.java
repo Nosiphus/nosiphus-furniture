@@ -28,8 +28,7 @@ public class BirdBathBlockEntityRenderer implements BlockEntityRenderer<BirdBath
     {
         poseStack.pushPose();
         poseStack.translate(0.5, 0.5, 0.5);
-        Direction direction = tileEntity.getBlockState().getValue(FurnitureHorizontalBlock.DIRECTION);
-        poseStack.mulPose(Axis.YP.rotationDegrees(direction.get2DDataValue() * -90F - 90F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(90 * -90F - 90F));
         poseStack.translate(-0.5, -0.5, -0.5);
         this.drawFluid(tileEntity, poseStack, source, 1.6F * 0.0625F, 12.8F * 0.0625F, 1.6F * 0.0625F, 12.8F * 0.0625F, 0.8F * 0.0625F, 12.8F * 0.0625F, light);
         poseStack.popPose();
