@@ -98,8 +98,8 @@ public class CurtainBlock extends FurnitureHorizontalBlock
         boolean leftClosed = this.isClosedCurtain(level, pos, dir.getCounterClockWise(), dir) || this.isClosedCurtain(level, pos, dir.getCounterClockWise(), dir.getCounterClockWise());
         boolean rightClosed = this.isClosedCurtain(level, pos, dir.getClockWise(), dir) || this.isClosedCurtain(level, pos, dir.getClockWise(), dir.getClockWise());
 
-        boolean left = this.isCurtain(level, pos, dir.getCounterClockWise(), dir) || this.isCurtain(level, pos, dir.getCounterClockWise(), dir.getCounterClockWise());
-        boolean right = this.isCurtain(level, pos, dir.getClockWise(), dir) || this.isCurtain(level, pos, dir.getClockWise(), dir.getClockWise());
+        boolean leftOpen = this.isCurtain(level, pos, dir.getCounterClockWise(), dir) || this.isCurtain(level, pos, dir.getCounterClockWise(), dir.getCounterClockWise());
+        boolean rightOpen = this.isCurtain(level, pos, dir.getClockWise(), dir) || this.isCurtain(level, pos, dir.getClockWise(), dir.getClockWise());
 
         boolean closed = state.getValue(CLOSED);
 
@@ -111,11 +111,11 @@ public class CurtainBlock extends FurnitureHorizontalBlock
             return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_CLOSED);
         } else if (rightClosed) {
             return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_CLOSED);
-        } else if (left && right) {
+        } else if (leftOpen && rightOpen) {
             return state.setValue(TYPE, Type.MIDDLE_WITH_BOTH_NEIGHBORS_OPEN);
-        } else if (left) {
+        } else if (leftOpen) {
             return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
-        } else if (right) {
+        } else if (rightOpen) {
             return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_OPEN);
         } else {
             return state.setValue(TYPE, Type.SINGLE_OPEN);
