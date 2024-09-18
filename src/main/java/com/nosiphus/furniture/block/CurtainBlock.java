@@ -117,9 +117,9 @@ public class CurtainBlock extends FurnitureHorizontalBlock
             return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
         } else if (right) {
             return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_OPEN);
+        } else {
+            return state.setValue(TYPE, Type.SINGLE_OPEN);
         }
-        return state.setValue(TYPE, Type.SINGLE_OPEN);
-
     }
 
     private boolean isCurtain(LevelAccessor level, BlockPos source, Direction direction, Direction targetDirection)
