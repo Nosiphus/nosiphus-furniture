@@ -1,7 +1,7 @@
 package com.nosiphus.furniture.core;
 
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.entity.SeatEntity;
+import com.nosiphus.furniture.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

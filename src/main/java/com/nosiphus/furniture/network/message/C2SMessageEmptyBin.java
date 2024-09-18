@@ -1,12 +1,9 @@
 package com.nosiphus.furniture.network.message;
 
 import com.mrcrayfish.furniture.network.message.IMessage;
-import com.nosiphus.furniture.inventory.container.BinMenu;
 import com.nosiphus.furniture.network.play.ServerPlayHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;

@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
