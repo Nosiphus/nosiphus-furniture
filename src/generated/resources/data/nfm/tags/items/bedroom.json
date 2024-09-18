@@ -3,6 +3,7 @@
   "values": [
     { "id": "#nfm:chairs", "required": false },
 	{ "id": "#nfm:lamps", "required": false },
+	{ "id": "#nfm:curtains", "required": false },
 	{ "id": "#nfm:bedside_cabinets", "required": false },
 	{ "id": "nfm:stereo", "required": false },
 	{ "id": "#nfm:desks", "required": false },

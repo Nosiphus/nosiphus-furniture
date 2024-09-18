@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_curtain", "required": false },
+    { "id": "nfm:white_curtain", "required": false },
+    { "id": "nfm:orange_curtain", "required": false },
+    { "id": "nfm:magenta_curtain", "required": false },
+    { "id": "nfm:light_blue_curtain", "required": false },
+    { "id": "nfm:yellow_curtain", "required": false },
+    { "id": "nfm:lime_curtain", "required": false },
+    { "id": "nfm:pink_curtain", "required": false },
+    { "id": "nfm:gray_curtain", "required": false },
+    { "id": "nfm:light_gray_curtain", "required": false },
+    { "id": "nfm:cyan_curtain", "required": false },
+    { "id": "nfm:purple_curtain", "required": false },
+    { "id": "nfm:blue_curtain", "required": false },
+    { "id": "nfm:brown_curtain", "required": false },
+    { "id": "nfm:green_curtain", "required": false },
+    { "id": "nfm:red_curtain", "required": false },
+    { "id": "nfm:black_curtain", "required": false }
+  ]
+}
