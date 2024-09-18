@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/curtain_single_open",
+    "textures": {
+        "color": "minecraft:block/purple_wool"
+    }
+}

@@ -1,0 +1,204 @@
+{
+	"variants": {
+		"facing=north,type=closed": {
+			"model": "nfm:block/cyan_curtain_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=closed": {
+			"model": "nfm:block/cyan_curtain_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=closed": {
+			"model": "nfm:block/cyan_curtain_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=closed": {
+			"model": "nfm:block/cyan_curtain_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=left_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=left_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=left_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=left_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=left_with_right_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_open",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=left_with_right_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_open",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=left_with_right_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_open",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=left_with_right_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_left_with_right_neighbor_open",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=middle_with_both_neighbors_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=middle_with_both_neighbors_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=middle_with_both_neighbors_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=middle_with_both_neighbors_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=middle_with_both_neighbors_open": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_open",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=middle_with_both_neighbors_open": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_open",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=middle_with_both_neighbors_open": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_open",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=middle_with_both_neighbors_open": {
+			"model": "nfm:block/cyan_curtain_middle_with_both_neighbors_open",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=middle_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=middle_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=middle_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=middle_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=middle_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=middle_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=middle_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=middle_with_right_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_middle_with_right_neighbor_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=right_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=right_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=right_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=right_with_left_neighbor_closed": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_closed",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=right_with_left_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_open",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=right_with_left_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_open",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=right_with_left_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_open",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=right_with_left_neighbor_open": {
+			"model": "nfm:block/cyan_curtain_right_with_left_neighbor_open",
+			"uvlock": true,
+			"y": 180
+		},
+		"facing=north,type=single_open": {
+			"model": "nfm:block/cyan_curtain_single_open",
+			"uvlock": true,
+			"y": 270
+		},
+		"facing=east,type=single_open": {
+			"model": "nfm:block/cyan_curtain_single_open",
+			"uvlock": true,
+			"y": 0
+		},
+		"facing=south,type=single_open": {
+			"model": "nfm:block/cyan_curtain_single_open",
+			"uvlock": true,
+			"y": 90
+		},
+		"facing=west,type=single_open": {
+			"model": "nfm:block/cyan_curtain_single_open",
+			"uvlock": true,
+			"y": 180
+		}
+	}
+}

@@ -267,6 +267,42 @@ public class ModBlocks {
     public static final RegistryObject<Block> BEDSIDE_CABINET_BLACK_MODERN = register("black_modern_bedside_cabinet",
             () -> new BedsideCabinetBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
 
+    //Curtains
+    public static final RegistryObject<Block> CURTAIN_BEIGE = registerOptional("yogmod","beige_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_WOOL.get())));
+    public static final RegistryObject<Block> CURTAIN_WHITE = register("white_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_ORANGE = register("orange_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_MAGENTA = register("magenta_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_LIGHT_BLUE = register("light_blue_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_YELLOW = register("yellow_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_LIME = register("lime_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.LIME_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_PINK = register("pink_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.PINK_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_GRAY = register("gray_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_LIGHT_GRAY = register("light_gray_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_CYAN = register("cyan_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_PURPLE = register("purple_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_BLUE = register("blue_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_BROWN = register("brown_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_GREEN = register("green_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_RED = register("red_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static final RegistryObject<Block> CURTAIN_BLACK = register("black_curtain",
+            () -> new CurtainBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_WOOL)));
+
     //Desk
     public static final RegistryObject<Block> DESK_STONE = register("stone_desk",
             () -> new DeskBlock(BlockBehaviour.Properties.copy(Blocks.STONE), DeskBlock.MaterialType.STONE));

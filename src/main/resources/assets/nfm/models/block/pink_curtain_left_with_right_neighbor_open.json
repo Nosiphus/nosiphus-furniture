@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/curtain_left_with_right_neighbor_open",
+    "textures": {
+        "color": "minecraft:block/pink_wool"
+    }
+}

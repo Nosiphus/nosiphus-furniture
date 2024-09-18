@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/curtain_single_open",
+    "textures": {
+        "color": "yogmod:block/beige_wool"
+    }
+}

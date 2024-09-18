@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/curtain_middle_with_both_neighbors_open",
+    "textures": {
+        "color": "minecraft:block/light_gray_wool"
+    }
+}

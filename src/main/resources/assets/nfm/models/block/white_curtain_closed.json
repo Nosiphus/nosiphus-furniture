@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/curtain_closed",
+    "textures": {
+        "color": "minecraft:block/white_wool"
+    }
+}
