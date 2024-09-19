@@ -102,24 +102,40 @@ public class CurtainBlock extends FurnitureHorizontalBlock
 
         boolean closed = state.getValue(CLOSED);
 
-        if(closed) {
+        if(closed && leftClosed && rightClosed) {
             return state.setValue(TYPE, Type.CLOSED);
-        } else if (leftClosed && rightClosed) {
+        } else if (!closed && leftClosed && rightClosed) {
             return state.setValue(TYPE, Type.MIDDLE_WITH_BOTH_NEIGHBORS_CLOSED);
-        } else if (leftClosed && rightOpen) {
-            return state.setValue(TYPE, Type.MIDDLE_WITH_LEFT_NEIGHBOR_CLOSED);
-        } else if (leftOpen && rightClosed) {
+        } else if (closed && leftOpen && rightClosed) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && leftOpen && rightClosed) {
             return state.setValue(TYPE, Type.MIDDLE_WITH_RIGHT_NEIGHBOR_CLOSED);
-        } else if (leftOpen && rightOpen) {
+        } else if (closed && leftClosed && rightOpen) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && leftClosed && rightOpen) {
+            return state.setValue(TYPE, Type.MIDDLE_WITH_LEFT_NEIGHBOR_CLOSED);
+        } else if (closed && leftOpen && rightOpen) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && leftOpen && rightOpen) {
             return state.setValue(TYPE, Type.MIDDLE_WITH_BOTH_NEIGHBORS_OPEN);
-        } else if (leftOpen) {
-            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
-        } else if (leftClosed) {
-            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_CLOSED);
-        } else if (rightOpen) {
-            return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_OPEN);
-        } else if (rightClosed) {
+        } else if (closed && rightClosed) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && rightClosed) {
             return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_CLOSED);
+        } else if (closed && rightOpen) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && rightOpen) {
+            return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_OPEN);
+        } else if (closed && leftClosed) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && leftClosed) {
+            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_CLOSED);
+        } else if (closed && leftOpen) {
+            return state.setValue(TYPE, Type.CLOSED);
+        } else if (!closed && leftOpen) {
+            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
+        } else if (closed) {
+            return state.setValue(TYPE, Type.CLOSED);
         } else {
             return state.setValue(TYPE, Type.SINGLE_OPEN);
         }
