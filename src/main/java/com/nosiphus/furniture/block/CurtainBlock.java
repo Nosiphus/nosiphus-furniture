@@ -43,15 +43,22 @@ public class CurtainBlock extends FurnitureHorizontalBlock
     private ImmutableMap<BlockState, VoxelShape> generateShapes(ImmutableList<BlockState> states)
     {
         final VoxelShape[] ROD = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(14.0, 14.0, 0.0, 16.0, 16.0, 16.0), Direction.EAST));
-        final VoxelShape[] CURTAIN_AREA = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(15.0, 1.0, 0.0, 16.0, 14.0, 16.0), Direction.EAST));
+        final VoxelShape[] CURTAIN_AREA_OPEN = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(15.0, 2.0, 0.0, 16.0, 14.0, 16.0), Direction.EAST));
+        final VoxelShape[] CURTAIN_AREA_CLOSED = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(15.0, 1.0, 0.0, 16.0, 14.0, 16.0), Direction.EAST));
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = new ImmutableMap.Builder<>();
         for(BlockState state: states)
         {
+            boolean closed = state.getValue(CLOSED);
             Direction direction = state.getValue(DIRECTION);
+
             List<VoxelShape> shapes = new ArrayList<>();
             shapes.add(ROD[direction.get2DDataValue()]);
-            shapes.add(CURTAIN_AREA[direction.get2DDataValue()]);
+            if(closed) {
+                shapes.add(CURTAIN_AREA_CLOSED[direction.get2DDataValue()]);
+            } else {
+                shapes.add(CURTAIN_AREA_OPEN[direction.get2DDataValue()]);
+            }
             builder.put(state, VoxelShapeHelper.combineAll(shapes));
         }
         return builder.build();
@@ -136,9 +143,10 @@ public class CurtainBlock extends FurnitureHorizontalBlock
             return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
         } else if (closed) {
             return state.setValue(TYPE, Type.CLOSED);
-        } else {
+        } else if (!closed) {
             return state.setValue(TYPE, Type.SINGLE_OPEN);
         }
+        return state.setValue(TYPE, Type.SINGLE_OPEN);
     }
 
     private boolean isCurtain(LevelAccessor level, BlockPos source, Direction direction, Direction targetDirection)
