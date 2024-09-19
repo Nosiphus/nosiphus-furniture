@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
 	 { "id": "#nfm:chopping_boards", "required": false },
+	 { "id": "#nfm:curtains", "required": false },
 	 { "id": "#nfm:door_bells", "required": false },
 	 { "id": "nfm:christmas_tree", "required": false },
 	 { "id": "nfm:christmas_tree_bottom", "required": false },
