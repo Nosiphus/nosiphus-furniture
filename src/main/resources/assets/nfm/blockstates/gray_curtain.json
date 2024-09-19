@@ -199,6 +199,90 @@
 			"model": "nfm:block/gray_curtain_single_open",
 			"uvlock": true,
 			"y": 180
+		},
+		"closed=false,facing=south,left_closed=true,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=true,left_exists=false,right_closed=false,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=true,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=false,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=true,left_exists=false,right_closed=false,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=true,left_exists=false,right_closed=true,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=true,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=true,left_exists=false,right_closed=false,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=true,left_exists=false,right_closed=true,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=false,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=false,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=false,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=false,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=false,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=true,left_exists=false,right_closed=false,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=true,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=true,left_exists=false,right_closed=false,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=true,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=true,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=true,left_exists=false,right_closed=false,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=true,left_exists=false,right_closed=false,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=east,left_closed=true,left_exists=true,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=true,left_exists=false,right_closed=false,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=false,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=south,left_closed=true,left_exists=false,right_closed=true,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=west,left_closed=false,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=true,left_exists=false,right_closed=true,right_exists=false": {
+			"model": "nfm:block/unobtainable_block_variant"
+		},
+		"closed=false,facing=north,left_closed=true,left_exists=false,right_closed=true,right_exists=true": {
+			"model": "nfm:block/unobtainable_block_variant"
 		}
 	}
 }
