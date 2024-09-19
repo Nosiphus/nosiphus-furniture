@@ -452,6 +452,8 @@
 	"block.nfm.christmas_tree_bottom": "Christmas Tree",
 	"block.nfm.wreath": "Wreath",
 
+	"block.nfm.electric_fence": "Electric Fence",
+
 	"container.nfm.bedside_cabinet": "Bedside Cabinet",
 	"container.nfm.bin": "Bin",
 	"container.nfm.cabinet": "Cabinet",
@@ -462,6 +464,9 @@
 	"container.nfm.oven": "Oven",
 	"container.nfm.wall_cabinet": "Wall Cabinet",
 	"container.nfm.washing_machine": "Washing Machine",
+
+	"death.attack.electric_fence": "%1$s was zapped to death",
+	"death.attack.electric_fence.player": "%1$s was zapped to death trying to escape %2$s",
 
 	"fluid_type.nfm.soapy_water": "Soapy Water",
 	"fluid_type.nfm.super_soapy_water": "Super Soapy Water",
@@ -495,6 +500,7 @@
 	"subtitle.nfm.close_cabinet": "Cabinet closing",
 	"subtitle.nfm.bounce_inflatable_castle": "Inflatable castle bouncing",
 	"subtitle.nfm.knife_chop": "Knife chopping",
+	"subtitle.nfm.electric_fence_zap": "Electric fence zapping",
 	"subtitle.nfm.fart": "Fart",
 	"subtitle.nfm.finish_microwave": "Microwave beeping",
 	"subtitle.nfm.open_bin": "Bin opening",

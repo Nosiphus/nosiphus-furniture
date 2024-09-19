@@ -15,6 +15,10 @@
         "subtitle": "subtitle.nfm.ring_door_bell",
         "sounds": [ "nfm:block/door_bell/ring" ]
     },
+	"block.electric_fence.zap": {
+        "subtitle": "subtitle.nfm.electric_fence_zap",
+        "sounds": [ "nfm:block/electric_fence/zap" ]
+    },
     "block.inflatable_castle.bounce": {
         "subtitle": "subtitle.nfm.bounce_inflatable_castle",
         "sounds": [ "nfm:block/inflatable_castle/bounce" ]

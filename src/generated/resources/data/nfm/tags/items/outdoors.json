@@ -3,6 +3,7 @@
   "values": [
 	{ "id": "#nfm:bird_baths", "required": false },
 	{ "id": "#nfm:door_bells", "required": false },
+	{ "id": "nfm:electric_fence", "required": false },
 	{ "id": "#nfm:inflatable_castles", "required": false },
 	{ "id": "nfm:castle_netting", "required": false },
 	{ "id": "#nfm:water_tanks", "required": false },

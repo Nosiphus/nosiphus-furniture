@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "IFI",
+    "IRI"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+	"F": {
+      "tag": "cfm:fences/picket"
+    },
+	"R": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "nfm:electric_fence",
+	"count": 8
+  }
+}

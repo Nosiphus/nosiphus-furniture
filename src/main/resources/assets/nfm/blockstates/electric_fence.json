@@ -1,0 +1,48 @@
+{
+	"multipart": [
+		{
+			"apply": {
+				"model": "nfm:block/electric_fence_post"
+			}
+		},
+		{
+			"apply": {
+				"model": "nfm:block/electric_fence_side",
+				"uvlock": true,
+				"y": 90
+			},
+			"when": {
+				"north": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "nfm:block/electric_fence_side",
+				"uvlock": true,
+				"y": 180
+			},
+			"when": {
+				"east": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "nfm:block/electric_fence_side",
+				"uvlock": true,
+				"y": 270
+			},
+			"when": {
+				"south": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "nfm:block/electric_fence_side",
+				"uvlock": true
+			},
+			"when": {
+				"west": "true"
+			}
+		}
+	]
+}

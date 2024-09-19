@@ -929,6 +929,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> WREATH = register("wreath",
             () -> new WreathBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion()));
 
+    //Outdoor
+    public static final RegistryObject<Block> ELECTRIC_FENCE = register("electric_fence",
+            () -> new ElectricFenceBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
+
     //Fluid Blocks
     public static final RegistryObject<LiquidBlock> SOAPY_WATER = registerLiquid("soapy_water",
             () -> new LiquidBlock(ModFluids.SOAPY_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));

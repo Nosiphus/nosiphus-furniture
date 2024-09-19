@@ -1,0 +1,6 @@
+{
+    "parent": "nfm:block/thin_fence_side",
+    "textures": {
+        "texture": "minecraft:block/anvil"
+    }
+}
