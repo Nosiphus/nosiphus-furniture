@@ -6,7 +6,6 @@ import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -29,14 +27,17 @@ import java.util.List;
 public class CurtainBlock extends FurnitureHorizontalBlock
 {
     public static final BooleanProperty CLOSED = BooleanProperty.create("closed");
-    public static final EnumProperty<Type> TYPE = EnumProperty.create("type", Type.class);
+    public static final BooleanProperty LEFT_CLOSED = BooleanProperty.create("left_closed");
+    public static final BooleanProperty LEFT_EXISTS = BooleanProperty.create("left_exists");
+    public static final BooleanProperty RIGHT_CLOSED = BooleanProperty.create("right_closed");
+    public static final BooleanProperty RIGHT_EXISTS = BooleanProperty.create("right_exists");
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
     public CurtainBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.SOUTH).setValue(CLOSED, false).setValue(TYPE, Type.SINGLE_OPEN));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.SOUTH).setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
@@ -87,9 +88,9 @@ public class CurtainBlock extends FurnitureHorizontalBlock
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player playerEntity, InteractionHand hand, BlockHitResult result)
     {
         if(state.getValue(CLOSED)) {
-            level.setBlock(pos, state.setValue(CLOSED, Boolean.valueOf(false)), 2);
+            level.setBlock(pos, state.setValue(CLOSED, false), 2);
         } else {
-            level.setBlock(pos, state.setValue(CLOSED, Boolean.valueOf(true)), 2);
+            level.setBlock(pos, state.setValue(CLOSED, true), 2);
         }
         return InteractionResult.SUCCESS;
     }
@@ -102,76 +103,85 @@ public class CurtainBlock extends FurnitureHorizontalBlock
 
     private BlockState getCurtainState(BlockState state, LevelAccessor level, BlockPos pos, Direction dir)
     {
-        boolean leftOpen = this.isCurtain(level, pos, dir.getCounterClockWise(), dir) || this.isCurtain(level, pos, dir.getCounterClockWise(), dir.getCounterClockWise());
-        boolean rightOpen = this.isCurtain(level, pos, dir.getClockWise(), dir) || this.isCurtain(level, pos, dir.getClockWise(), dir.getClockWise());
-        boolean leftClosed = this.isClosedCurtain(level, pos, dir.getCounterClockWise(), dir) || this.isClosedCurtain(level, pos, dir.getCounterClockWise(), dir.getCounterClockWise());
-        boolean rightClosed = this.isClosedCurtain(level, pos, dir.getClockWise(), dir) || this.isClosedCurtain(level, pos, dir.getClockWise(), dir.getClockWise());
+        boolean leftClosed = false;
+        boolean leftExists = false;
+        boolean rightClosed = false;
+        boolean rightExists = false;
 
         boolean closed = state.getValue(CLOSED);
 
-        if(closed && leftClosed && rightClosed) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftClosed && rightClosed) {
-            return state.setValue(TYPE, Type.MIDDLE_WITH_BOTH_NEIGHBORS_CLOSED);
-        } else if (closed && leftOpen && rightClosed) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftOpen && rightClosed) {
-            return state.setValue(TYPE, Type.MIDDLE_WITH_RIGHT_NEIGHBOR_CLOSED);
-        } else if (closed && leftClosed && rightOpen) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftClosed && rightOpen) {
-            return state.setValue(TYPE, Type.MIDDLE_WITH_LEFT_NEIGHBOR_CLOSED);
-        } else if (closed && leftOpen && rightOpen) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftOpen && rightOpen) {
-            return state.setValue(TYPE, Type.MIDDLE_WITH_BOTH_NEIGHBORS_OPEN);
-        } else if (closed && rightClosed) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && rightClosed) {
-            return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_CLOSED);
-        } else if (closed && rightOpen) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && rightOpen) {
-            return state.setValue(TYPE, Type.LEFT_WITH_RIGHT_NEIGHBOR_OPEN);
-        } else if (closed && leftClosed) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftClosed) {
-            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_CLOSED);
-        } else if (closed && leftOpen) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed && leftOpen) {
-            return state.setValue(TYPE, Type.RIGHT_WITH_LEFT_NEIGHBOR_OPEN);
-        } else if (closed) {
-            return state.setValue(TYPE, Type.CLOSED);
-        } else if (!closed) {
-            return state.setValue(TYPE, Type.SINGLE_OPEN);
-        }
-        return state.setValue(TYPE, Type.SINGLE_OPEN);
-    }
-
-    private boolean isCurtain(LevelAccessor level, BlockPos source, Direction direction, Direction targetDirection)
-    {
-        BlockState state = level.getBlockState(source.relative(direction));
-        if(state.getBlock() == this)
-        {
-            Direction curtainDirection = state.getValue(DIRECTION);
-            return curtainDirection.equals(targetDirection);
-        }
-        return false;
-    }
-
-    private boolean isClosedCurtain(LevelAccessor level, BlockPos source, Direction direction, Direction targetDirection)
-    {
-        BlockState state = level.getBlockState(source.relative(direction));
-        if(state.getBlock() == this)
-        {
-            boolean closed = state.getValue(CLOSED);
-            if(closed) {
-                Direction curtainDirection = state.getValue(DIRECTION);
-                return curtainDirection.equals(targetDirection);
+        BlockState leftState = level.getBlockState(pos.relative(dir.getCounterClockWise(Direction.Axis.Y)));
+        if(leftState.getBlock() instanceof CurtainBlock) {
+            leftExists = true;
+            if(leftState.getValue(CLOSED)) {
+                leftClosed = true;
             }
         }
-        return false;
+
+        BlockState rightState = level.getBlockState(pos.relative(dir.getClockWise(Direction.Axis.Y)));
+        if(rightState.getBlock() instanceof CurtainBlock) {
+            rightExists = true;
+            if(rightState.getValue(CLOSED)) {
+                rightClosed = true;
+            }
+        }
+
+        if(closed && leftClosed && leftExists && rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && leftClosed && leftExists && rightClosed && rightExists) {
+            //middle with both neighbors closed
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (closed && !leftClosed && leftExists && rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && !leftClosed && leftExists && rightClosed && rightExists) {
+            //middle with right neighbor closed
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (closed && leftClosed && leftExists && !rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && leftClosed && leftExists && !rightClosed && rightExists) {
+            //middle with left neighbor closed
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (closed && !leftClosed && leftExists && !rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && !leftClosed && leftExists && !rightClosed && rightExists) {
+            //middle with both neighbors open
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (closed && !leftClosed && !leftExists && rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && !leftClosed && !leftExists && rightClosed && rightExists) {
+            //left with right neighbor closed
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, true).setValue(RIGHT_EXISTS, true);
+        } else if (closed && !leftClosed && !leftExists && !rightClosed && rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (!closed && !leftClosed && !leftExists && !rightClosed && rightExists) {
+            //left with right neighbor open
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, true);
+        } else if (closed && leftClosed && leftExists && !rightClosed && !rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        } else if (!closed && leftClosed && leftExists && !rightClosed && !rightExists) {
+            //right with left neighbor closed
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, true).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        } else if (closed && !leftClosed && leftExists && !rightClosed && !rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        } else if (!closed && !leftClosed && leftExists && !rightClosed && !rightExists) {
+            //right with left neighbor open
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, true).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        } else if (closed && !leftClosed && !leftExists && !rightClosed && !rightExists) {
+            //closed
+            return state.setValue(CLOSED, true).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        } else if (!closed && !leftClosed && !leftExists && !rightClosed && !rightExists) {
+            //single open
+            return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
+        }
+        return state.setValue(CLOSED, false).setValue(LEFT_CLOSED, false).setValue(LEFT_EXISTS, false).setValue(RIGHT_CLOSED, false).setValue(RIGHT_EXISTS, false);
     }
 
     @Override
@@ -179,40 +189,10 @@ public class CurtainBlock extends FurnitureHorizontalBlock
     {
         super.createBlockStateDefinition(builder);
         builder.add(CLOSED);
-        builder.add(TYPE);
-    }
-
-    public enum Type implements StringRepresentable
-    {
-        CLOSED("closed"),
-        LEFT_WITH_RIGHT_NEIGHBOR_CLOSED("left_with_right_neighbor_closed"),
-        LEFT_WITH_RIGHT_NEIGHBOR_OPEN("left_with_right_neighbor_open"),
-        MIDDLE_WITH_BOTH_NEIGHBORS_CLOSED("middle_with_both_neighbors_closed"),
-        MIDDLE_WITH_BOTH_NEIGHBORS_OPEN("middle_with_both_neighbors_open"),
-        MIDDLE_WITH_LEFT_NEIGHBOR_CLOSED("middle_with_left_neighbor_closed"),
-        MIDDLE_WITH_RIGHT_NEIGHBOR_CLOSED("middle_with_right_neighbor_closed"),
-        RIGHT_WITH_LEFT_NEIGHBOR_CLOSED("right_with_left_neighbor_closed"),
-        RIGHT_WITH_LEFT_NEIGHBOR_OPEN("right_with_left_neighbor_open"),
-        SINGLE_OPEN("single_open");
-
-        private final String id;
-
-        Type(String id)
-        {
-            this.id = id;
-        }
-
-        @Override
-        public String getSerializedName()
-        {
-            return id;
-        }
-
-        @Override
-        public String toString()
-        {
-            return id;
-        }
+        builder.add(LEFT_CLOSED);
+        builder.add(LEFT_EXISTS);
+        builder.add(RIGHT_CLOSED);
+        builder.add(RIGHT_EXISTS);
     }
 
 }
