@@ -863,6 +863,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHERRY_WATER_TANK = register("cherry_water_tank",
             () -> new WaterTankBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).noOcclusion()));
 
+    //Outdoors
+    public static final RegistryObject<Block> ELECTRIC_FENCE = register("electric_fence",
+            () -> new ElectricFenceBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
+
     //Appliances
     public static final RegistryObject<Block> BIN_LIGHT = register("bin_light",
             () -> new BinBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
@@ -928,10 +932,6 @@ public class ModBlocks {
             () -> new ChristmasTreeTopBlock(Block.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion(), () -> ModBlocks.CHRISTMAS_TREE_BOTTOM), block -> new BlockSupplierItem(new Item.Properties(), block.get(), ModBlocks.CHRISTMAS_TREE_BOTTOM));
     public static final RegistryObject<Block> WREATH = register("wreath",
             () -> new WreathBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_LEAVES).noOcclusion()));
-
-    //Outdoor
-    public static final RegistryObject<Block> ELECTRIC_FENCE = register("electric_fence",
-            () -> new ElectricFenceBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
 
     //Fluid Blocks
     public static final RegistryObject<LiquidBlock> SOAPY_WATER = registerLiquid("soapy_water",
