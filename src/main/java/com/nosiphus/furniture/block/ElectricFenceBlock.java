@@ -31,7 +31,7 @@ public class ElectricFenceBlock extends FenceBlock {
 
     public ElectricFenceBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any());
+        this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
