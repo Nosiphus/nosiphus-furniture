@@ -120,7 +120,25 @@
     "block.nfm.green_modern_bedside_cabinet": "Зелёный современный прикроватный шкаф",
     "block.nfm.red_modern_bedside_cabinet": "Красный современный прикроватный шкаф",
     "block.nfm.black_modern_bedside_cabinet": "Чёрный современный прикроватный шкаф",
-       
+
+    "block.nfm.beige_curtain": "Бежевая занавеска",
+    "block.nfm.white_curtain": "Белая занавеска",
+    "block.nfm.orange_curtain": "Оранжевая занавеска",
+    "block.nfm.magenta_curtain": "Пурпурная занавеска",
+    "block.nfm.light_blue_curtain": "Голубая занавеска",
+    "block.nfm.yellow_curtain": "Жёлтая занавеска",
+    "block.nfm.lime_curtain": "Лаймовая занавеска",
+    "block.nfm.pink_curtain": "Розовая занавеска",
+    "block.nfm.gray_curtain": "Серая занавеска",
+    "block.nfm.light_gray_curtain": "Светло-серая занавеска",
+    "block.nfm.cyan_curtain": "Бирюзовая занавеска",
+    "block.nfm.purple_curtain": "Фиолетовая занавеска",
+    "block.nfm.blue_curtain": "Синяя занавеска",
+    "block.nfm.brown_curtain": "Коричневая занавеска",
+    "block.nfm.green_curtain": "Зеленая занавеска",
+    "block.nfm.red_curtain": "Красная занавеска",
+    "block.nfm.black_curtain": "Черная занавеска",
+    
     "block.nfm.stone_desk": "Каменный письменный стол",
     "block.nfm.andesite_desk": "Андезитовый письменный стол",
     "block.nfm.diorite_desk": "Диоритовый письменный стол",
@@ -433,7 +451,9 @@
     "block.nfm.christmas_tree": "Рождественская ёлка",
     "block.nfm.christmas_tree_bottom": "Рождественская ёлка",
     "block.nfm.wreath": "Венок",
-       
+
+    "block.nfm.electric_fence": "Электрический забор",
+    
     "container.nfm.bedside_cabinet": "Прикроватный шкаф",
     "container.nfm.bin": "Мусорное ведро",
     "container.nfm.cabinet": "Шкаф",
@@ -444,7 +464,10 @@
     "container.nfm.oven": "Духовка",
     "container.nfm.wall_cabinet": "Навесной шкаф",
     "container.nfm.washing_machine": "Стиральная машина",
-   
+
+    "death.attack.electric_fence": "%1$s был электризован до смерти",
+    "death.attack.electric_fence.player": "%1$s был электризован до смерти, пытаясь сбежать от %2$s",
+    
     "fluid_type.nfm.soapy_water": "Мыльная вода",
     "fluid_type.nfm.super_soapy_water": "Супер мыльная вода",
    
@@ -477,6 +500,7 @@
     "subtitle.nfm.close_cabinet": "Шкаф закрывается",
     "subtitle.nfm.bounce_inflatable_castle": "Надувной замок подпрыгивает",
     "subtitle.nfm.knife_chop": "Нож режет",
+    "subtitle.nfm.electric_fence_zap": "Электрический забор электризует",
     "subtitle.nfm.fart": "Пук",
     "subtitle.nfm.finish_microwave": "Микроволновая печь пищит",
     "subtitle.nfm.open_bin": "Мусорное ведро открывается",
