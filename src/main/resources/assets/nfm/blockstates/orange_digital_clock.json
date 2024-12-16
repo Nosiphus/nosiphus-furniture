@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "nfm:block/orange_digital_clock",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "nfm:block/orange_digital_clock",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "nfm:block/orange_digital_clock",
+            "y": 270
+        },
+        "facing=north": {
+            "model": "nfm:block/orange_digital_clock",
+            "y": 0
+        }
+    }
+}

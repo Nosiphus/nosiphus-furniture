@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "nfm:beige_digital_clock", "required": false },
+    { "id": "nfm:white_digital_clock", "required": false },
+    { "id": "nfm:orange_digital_clock", "required": false },
+    { "id": "nfm:magenta_digital_clock", "required": false },
+    { "id": "nfm:light_blue_digital_clock", "required": false },
+    { "id": "nfm:yellow_digital_clock", "required": false },
+    { "id": "nfm:lime_digital_clock", "required": false },
+    { "id": "nfm:pink_digital_clock", "required": false },
+    { "id": "nfm:gray_digital_clock", "required": false },
+    { "id": "nfm:light_gray_digital_clock", "required": false },
+    { "id": "nfm:cyan_digital_clock", "required": false },
+    { "id": "nfm:purple_digital_clock", "required": false },
+    { "id": "nfm:blue_digital_clock", "required": false },
+    { "id": "nfm:brown_digital_clock", "required": false },
+    { "id": "nfm:green_digital_clock", "required": false },
+    { "id": "nfm:red_digital_clock", "required": false },
+    { "id": "nfm:black_digital_clock", "required": false }
+  ]
+}

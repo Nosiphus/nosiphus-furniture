@@ -923,6 +923,42 @@ public class ModBlocks {
     public static final RegistryObject<Block> WASHING_MACHINE_DARK = register("washing_machine_dark",
             () -> new WashingMachineBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).noOcclusion()));
 
+    //Digital Clocks
+    public static final RegistryObject<Block> DIGITAL_CLOCK_BEIGE = registerOptional("yogmod","beige_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_WHITE = register("white_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_ORANGE = register("orange_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_MAGENTA = register("magenta_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_LIGHT_BLUE = register("light_blue_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_YELLOW = register("yellow_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_LIME = register("lime_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.LIME_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_PINK = register("pink_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.PINK_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_GRAY = register("gray_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_LIGHT_GRAY = register("light_gray_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_CYAN = register("cyan_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_PURPLE = register("purple_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_BLUE = register("blue_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_BROWN = register("brown_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_GREEN = register("green_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_RED = register("red_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.RED_CONCRETE)));
+    public static final RegistryObject<Block> DIGITAL_CLOCK_BLACK = register("black_digital_clock",
+            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_CONCRETE)));
+
     //Festive
     public static final RegistryObject<Block> CANDLE = register("candle",
             () -> new CandleBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).lightLevel((getLightValueLit(13))).noOcclusion()));

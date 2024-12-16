@@ -12,6 +12,7 @@
 	{ "id": "nfm:blender_light", "required": false },
     { "id": "nfm:blender_dark", "required": false },
 	{ "id": "nfm:dishwasher_light", "required": false },
-    { "id": "nfm:dishwasher_dark", "required": false }
+    { "id": "nfm:dishwasher_dark", "required": false },
+	{ "id": "#nfm:digital_clocks", "required": false }
   ]
 }
