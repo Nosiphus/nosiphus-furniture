@@ -44,6 +44,7 @@
     { "id": "nfm:toilet_dark", "required": false },
     { "id": "nfm:washing_machine_light", "required": false },
     { "id": "nfm:washing_machine_dark", "required": false },
+	{ "id": "#nfm:digital_clocks", "required": false },
     { "id": "nfm:candle", "required": false },
 	{ "id": "nfm:electric_fence", "required": false }
   ]
