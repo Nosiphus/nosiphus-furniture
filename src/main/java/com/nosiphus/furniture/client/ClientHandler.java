@@ -5,6 +5,7 @@ import com.nosiphus.furniture.client.gui.screen.inventory.*;
 import com.nosiphus.furniture.client.renderer.SeatRenderer;
 import com.nosiphus.furniture.client.renderer.blockentity.*;
 import com.nosiphus.furniture.client.renderer.blockentity.yogmod.YogDigitalClockBlockEntityRenderer;
+import com.nosiphus.furniture.client.renderer.blockentity.yogmod.YogModernKitchenSinkBlockEntityRenderer;
 import com.nosiphus.furniture.core.*;
 import com.nosiphus.furniture.particle.ShowerParticle;
 import net.minecraft.client.Minecraft;
@@ -71,6 +72,7 @@ public class ClientHandler {
         event.registerEntityRenderer(ModEntities.SEAT.get(), SeatRenderer::new);
         if(ModList.get().isLoaded("yogmod")) {
             event.registerBlockEntityRenderer(ModBlockEntities.YOGMOD_DIGITAL_CLOCK.get(), YogDigitalClockBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.YOGMOD_MODERN_KITCHEN_SINK.get(), YogModernKitchenSinkBlockEntityRenderer::new);
         }
     }
 }

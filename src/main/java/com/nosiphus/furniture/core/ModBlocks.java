@@ -5,6 +5,7 @@ import com.mrcrayfish.furniture.item.BlockSupplierItem;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.block.*;
 import com.nosiphus.furniture.block.yogmod.YogDigitalClockBlock;
+import com.nosiphus.furniture.block.yogmod.YogModernKitchenSinkBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -618,7 +619,7 @@ public class ModBlocks {
 
     //Kitchen Sinks
     public static final RegistryObject<Block> KITCHEN_SINK_BEIGE_MODERN = registerOptional("yogmod","beige_modern_kitchen_sink",
-            () -> new ModernKitchenSinkBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()), false));
+            () -> new YogModernKitchenSinkBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get()), false));
     public static final RegistryObject<Block> KITCHEN_SINK_WHITE_MODERN = register("white_modern_kitchen_sink",
             () -> new ModernKitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE), false));
     public static final RegistryObject<Block> KITCHEN_SINK_ORANGE_MODERN = register("orange_modern_kitchen_sink",

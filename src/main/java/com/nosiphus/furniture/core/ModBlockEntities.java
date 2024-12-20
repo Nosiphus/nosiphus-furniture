@@ -4,6 +4,7 @@ import com.mrcrayfish.furniture.tileentity.*;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.*;
 import com.nosiphus.furniture.blockentity.yogmod.YogDigitalClockBlockEntity;
+import com.nosiphus.furniture.blockentity.yogmod.YogModernKitchenSinkBlockEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -46,7 +47,7 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<DeskCabinetBlockEntity>> YOGMOD_DESK_CABINET = registerOptional("yogmod", "yogmod_desk_cabinet", DeskCabinetBlockEntity::new, () -> new Block[]{ModBlocks.DESK_CABINET_BEIGE_MODERN.get()});
     public static final RegistryObject<BlockEntityType<YogDigitalClockBlockEntity>> YOGMOD_DIGITAL_CLOCK = registerOptional("yogmod", "yogmod_digital_clock", YogDigitalClockBlockEntity::new, () -> new Block[]{ModBlocks.DIGITAL_CLOCK_BEIGE.get()});
     public static final RegistryObject<BlockEntityType<KitchenDrawerBlockEntity>> YOGMOD_KITCHEN_DRAWER = registerOptional("yogmod", "yogmod_kitchen_drawer", KitchenDrawerBlockEntity::new, () -> new Block[]{ModBlocks.KITCHEN_DRAWER_BEIGE_MODERN.get()});
-    public static final RegistryObject<BlockEntityType<ModernKitchenSinkBlockEntity>> YOGMOD_MODERN_KITCHEN_SINK = registerOptional("yogmod", "yogmod_modern_kitchen_sink", ModernKitchenSinkBlockEntity::new, () -> new Block[]{ModBlocks.KITCHEN_SINK_BEIGE_MODERN.get()});
+    public static final RegistryObject<BlockEntityType<YogModernKitchenSinkBlockEntity>> YOGMOD_MODERN_KITCHEN_SINK = registerOptional("yogmod", "yogmod_modern_kitchen_sink", YogModernKitchenSinkBlockEntity::new, () -> new Block[]{ModBlocks.KITCHEN_SINK_BEIGE_MODERN.get()});
     public static final RegistryObject<BlockEntityType<WallCabinetBlockEntity>> YOGMOD_WALL_CABINET = registerOptional("yogmod", "yogmod_wall_cabinet", WallCabinetBlockEntity::new, () -> new Block[]{ModBlocks.WALL_CABINET_BEIGE.get()});
 
     private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String name, BlockEntityType.BlockEntitySupplier<T> supplier, Supplier<Block[]> validBlocksSupplier)
