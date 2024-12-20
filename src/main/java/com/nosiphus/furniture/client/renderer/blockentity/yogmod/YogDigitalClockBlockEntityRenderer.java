@@ -2,13 +2,17 @@ package com.nosiphus.furniture.client.renderer.blockentity.yogmod;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import com.nosiphus.furniture.block.DigitalClockBlock;
 import com.nosiphus.furniture.block.yogmod.YogDigitalClockBlock;
+import com.nosiphus.furniture.blockentity.DigitalClockBlockEntity;
 import com.nosiphus.furniture.blockentity.yogmod.YogDigitalClockBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.network.chat.Style;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class YogDigitalClockBlockEntityRenderer implements BlockEntityRenderer<YogDigitalClockBlockEntity> {
@@ -37,7 +41,7 @@ public class YogDigitalClockBlockEntityRenderer implements BlockEntityRenderer<Y
             poseStack.scale(0.010416667F, -0.010416667F, 0.010416667F);
             poseStack.scale(1.5F, 1.5F, 1.5F);
 
-            this.font.drawInBatch(YogDigitalClockBlockEntity.getFormattedTime(Minecraft.getInstance().level.getDayTime()), 0, 0, overlay, false, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
+            this.font.drawInBatch(FormattedCharSequence.forward(YogDigitalClockBlockEntity.getFormattedTime(Minecraft.getInstance().level.getDayTime()), Style.EMPTY.withColor(blockEntity.getFromColor(blockEntity.getTextColor()))), 0, 0, overlay, false, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
 
             poseStack.popPose();
 
