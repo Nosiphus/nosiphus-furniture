@@ -59,7 +59,7 @@ public class DigitalClockBlockEntity extends BlockEntity {
 
     public void sync() {
         BlockEntityUtil.sendUpdatePacket(this);
-        getUpdatePacket();
+        setChanged();
     }
 
     public DyeColor getTextColor() {
