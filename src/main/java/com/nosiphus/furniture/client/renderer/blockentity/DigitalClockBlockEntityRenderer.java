@@ -9,9 +9,13 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+
+import javax.swing.text.AttributeSet;
 
 public class DigitalClockBlockEntityRenderer implements BlockEntityRenderer<DigitalClockBlockEntity> {
 
@@ -39,7 +43,7 @@ public class DigitalClockBlockEntityRenderer implements BlockEntityRenderer<Digi
             poseStack.scale(0.010416667F, -0.010416667F, 0.010416667F);
             poseStack.scale(1.5F, 1.5F, 1.5F);
 
-            this.font.drawInBatch(blockEntity.getColor() + DigitalClockBlockEntity.getFormattedTime(Minecraft.getInstance().level.getDayTime()), 0, 0, overlay, false, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
+            this.font.drawInBatch(FormattedCharSequence.forward(DigitalClockBlockEntity.getFormattedTime(Minecraft.getInstance().level.getDayTime()), Style.EMPTY.withColor(blockEntity.getFromColor(blockEntity.getTextColor()))), 0, 0, overlay, false, poseStack.last().pose(), source, Font.DisplayMode.NORMAL, 0, light);
 
             poseStack.popPose();
 
