@@ -26,12 +26,14 @@ public class DigitalClockBlockEntity extends BlockEntity {
         super.load(tag);
         if(tag.contains("textColor", CompoundTag.TAG_BYTE)) {
             this.textColor = DyeColor.byId(tag.getByte("textColor"));
+            System.out.println("Loaded dye color " + textColor.getName());
         }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         tag.putByte("textColor", (byte) textColor.getId());
+        System.out.println("Saved dye color " + textColor.getName());
         super.saveAdditional(tag);
     }
 
