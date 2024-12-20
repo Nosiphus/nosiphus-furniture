@@ -4,6 +4,7 @@ import com.mrcrayfish.furniture.block.*;
 import com.mrcrayfish.furniture.item.BlockSupplierItem;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.block.*;
+import com.nosiphus.furniture.block.yogmod.YogDigitalClockBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -925,7 +926,7 @@ public class ModBlocks {
 
     //Digital Clocks
     public static final RegistryObject<Block> DIGITAL_CLOCK_BEIGE = registerOptional("yogmod","beige_digital_clock",
-            () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
+            () -> new YogDigitalClockBlock(BlockBehaviour.Properties.copy(com.nosiphus.yogmod.world.level.block.ModBlocks.BEIGE_CONCRETE.get())));
     public static final RegistryObject<Block> DIGITAL_CLOCK_WHITE = register("white_digital_clock",
             () -> new DigitalClockBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
     public static final RegistryObject<Block> DIGITAL_CLOCK_ORANGE = register("orange_digital_clock",
