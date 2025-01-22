@@ -19,6 +19,10 @@
         "subtitle": "subtitle.nfm.electric_fence_zap",
         "sounds": [ "nfm:block/electric_fence/zap" ]
     },
+	"block.fire_alarm.beep": {
+        "subtitle": "subtitle.nfm.fire_alarm_beep",
+        "sounds": [ "nfm:block/fire_alarm/beep" ]
+    },
     "block.inflatable_castle.bounce": {
         "subtitle": "subtitle.nfm.bounce_inflatable_castle",
         "sounds": [ "nfm:block/inflatable_castle/bounce" ]
