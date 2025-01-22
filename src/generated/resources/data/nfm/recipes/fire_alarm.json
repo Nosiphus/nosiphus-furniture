@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "IRI",
+    "INI"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+	"N": {
+      "item": "minecraft:note_block"
+    },
+	"R": {
+      "item": "minecraft:redstone_dust"
+    }
+  },
+  "result": {
+    "item": "nfm:yellow_bar_stool"
+  }
+}

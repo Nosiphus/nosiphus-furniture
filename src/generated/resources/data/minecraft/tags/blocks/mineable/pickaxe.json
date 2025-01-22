@@ -25,6 +25,7 @@
     { "id": "nfm:blender_dark", "required": false },
     { "id": "nfm:dishwasher_light", "required": false },
     { "id": "nfm:dishwasher_dark", "required": false },
+	{ "id": "nfm:fire_alarm", "required": false },
     { "id": "nfm:microwave_light", "required": false },
     { "id": "nfm:microwave_dark", "required": false },
     { "id": "nfm:oven_light", "required": false },

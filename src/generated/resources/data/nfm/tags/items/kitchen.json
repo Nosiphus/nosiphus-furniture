@@ -5,6 +5,7 @@
     { "id": "nfm:oven_dark", "required": false },
     { "id": "nfm:oven_range_hood_light", "required": false },
     { "id": "nfm:oven_range_hood_dark", "required": false },
+	{ "id": "nfm:fire_alarm", "required": false },
 	{ "id": "nfm:bin_light", "required": false },
     { "id": "nfm:bin_dark", "required": false },
 	{ "id": "nfm:toaster_light", "required": false },

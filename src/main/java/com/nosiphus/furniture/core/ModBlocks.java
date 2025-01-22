@@ -882,6 +882,8 @@ public class ModBlocks {
             () -> new DishwasherBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
     public static final RegistryObject<Block> DISHWASHER_DARK = register("dishwasher_dark",
             () -> new DishwasherBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).noOcclusion()));
+    public static final RegistryObject<Block> FIRE_ALARM = register("fire_alarm",
+            () -> new FireAlarmBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE)));
     public static final RegistryObject<Block> MICROWAVE_LIGHT = register("microwave_light",
             () -> new MicrowaveBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).noOcclusion()));
     public static final RegistryObject<Block> MICROWAVE_DARK = register("microwave_dark",

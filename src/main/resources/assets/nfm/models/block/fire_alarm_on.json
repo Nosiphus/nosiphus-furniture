@@ -1,0 +1,7 @@
+{
+    "parent": "nfm:block/fire_alarm",
+    "textures": {
+        "led": "minecraft:block/red_concrete",
+        "base": "minecraft:block/white_concrete"
+    }
+}

@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     { "id": "#nfm:door_bells", "required": false },
+	{ "id": "nfm:fire_alarm", "required": false },
 	{ "id": "nfm:stereo", "required": false },
 	{ "id": "nfm:toaster_light", "required": false },
     { "id": "nfm:toaster_dark", "required": false },
