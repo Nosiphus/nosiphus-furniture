@@ -91,10 +91,10 @@ public class ShowerHeadBlock extends FurnitureHorizontalBlock implements EntityB
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if(state.getValue(ACTIVATED)) {
-            level.setBlock(pos, state.setValue(ACTIVATED, Boolean.valueOf(false)), 2);
+            level.setBlockAndUpdate(pos, state.setValue(ACTIVATED, false));
             level.playSound(null,pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.6F);
         } else {
-            level.setBlock(pos, state.setValue(ACTIVATED, Boolean.valueOf(true)), 2);
+            level.setBlockAndUpdate(pos, state.setValue(ACTIVATED, true));
             level.playSound(null,pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.5F);
         }
         return InteractionResult.SUCCESS;
