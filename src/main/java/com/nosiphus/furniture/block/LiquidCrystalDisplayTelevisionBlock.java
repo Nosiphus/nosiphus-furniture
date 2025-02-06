@@ -131,18 +131,15 @@ public class LiquidCrystalDisplayTelevisionBlock extends FurnitureHorizontalBloc
         return SHAPES.get(state);
     }
 
-    /*
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = super.getStateForPlacement(context);
-        Direction facing = context.getHorizontalDirection();
+        Direction facing = context.getClickedFace();
         if(facing.getAxis().isHorizontal()) {
             state = state.setValue(MOUNTED, true);
         }
         return state;
     }
-    
-     */
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
