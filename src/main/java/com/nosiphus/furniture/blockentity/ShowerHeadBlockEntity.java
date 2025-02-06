@@ -24,7 +24,7 @@ public class ShowerHeadBlockEntity extends BlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, ShowerHeadBlockEntity entity) {
         if(level != null) {
-            if(state.getValue(ShowerHeadBlock.ACTIVATED) == true) {
+            if(state.getValue(ShowerHeadBlock.ACTIVATED)) {
                 if(level.isClientSide) {
                     double posX = (double) pos.getX() + 0.35D + (random.nextDouble() / 3);
                     double posZ = (double) pos.getZ() + 0.35D + (random.nextDouble() / 3);

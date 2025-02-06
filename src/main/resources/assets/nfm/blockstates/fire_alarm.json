@@ -29,7 +29,7 @@
             "y": 270
         },
 		"activated=true,facing=north": {
-            "model": "nfm:block/fire_alarm_off",
+            "model": "nfm:block/fire_alarm_on",
             "y": 270
         }
     }

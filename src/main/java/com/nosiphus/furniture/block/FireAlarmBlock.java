@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.mrcrayfish.furniture.block.FurnitureHorizontalBlock;
 import com.mrcrayfish.furniture.util.VoxelShapeHelper;
+import com.nosiphus.furniture.blockentity.FireAlarmBlockEntity;
+import com.nosiphus.furniture.core.ModBlockEntities;
+import com.nosiphus.furniture.core.ModBlocks;
 import com.nosiphus.furniture.core.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,28 +20,32 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FireAlarmBlock extends FurnitureHorizontalBlock
+public class FireAlarmBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
 
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
-    public static final BooleanProperty ENABLED = BooleanProperty.create("enabled");
 
     public final ImmutableMap<BlockState, VoxelShape> SHAPES;
 
     public FireAlarmBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH).setValue(ACTIVATED, false).setValue(ENABLED, true));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(DIRECTION, Direction.NORTH).setValue(ACTIVATED, false));
         SHAPES = this.generateShapes(this.getStateDefinition().getPossibleStates());
     }
 
@@ -76,48 +83,23 @@ public class FireAlarmBlock extends FurnitureHorizontalBlock
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(ACTIVATED);
-        builder.add(ENABLED);
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if(state.getValue(ENABLED)) {
-            level.setBlockAndUpdate(pos, state.setValue(ACTIVATED, false).setValue(ENABLED, false));
-        } else {
-            level.setBlockAndUpdate(pos, state.setValue(ENABLED, true));
+        if(state.getValue(ACTIVATED)) {
+            level.setBlockAndUpdate(pos, state.setValue(ACTIVATED, false));
         }
         return InteractionResult.SUCCESS;
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource source) {
-        level.scheduleTick(pos, this, this.tickRate(state, level));
-
-        if(state.getValue(FireAlarmBlock.ENABLED)) {
-            int radius = 9;
-            boolean foundFire = false;
-            for (int x = 0; x < radius; x++) {
-                for (int y = 0; y < radius; y++) {
-                    for (int z = 0; z < radius; z++) {
-                        if (level.getBlockState(pos.offset(-4 + x, -4 + y, -4 + z)).is(Blocks.FIRE)) {
-                            level.playSound(null, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, ModSounds.BLOCK_FIRE_ALARM_BEEP.get(), SoundSource.BLOCKS, 5.0F, 1.0F);
-                            level.setBlockAndUpdate(pos, state.setValue(ACTIVATED, true));
-                            foundFire = true;
-                            break;
-                        }
-                    }
-                    if (foundFire) break;
-                }
-                if (foundFire) break;
-            }
-        } else {
-            level.playSound(null, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, ModSounds.BLOCK_FIRE_ALARM_BEEP.get(), SoundSource.BLOCKS, 5.0F, 1.0F);
-            level.scheduleTick(pos, this, 34);
-        }
-
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new FireAlarmBlockEntity(pos, state);
     }
 
-    private int tickRate(BlockState state, ServerLevel level) {
-        return 34;
+    @Nullable
+    @Override
+    public <T extends BlockEntity>BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, ModBlockEntities.FIRE_ALARM.get(), FireAlarmBlockEntity::tick);
     }
-
 }
