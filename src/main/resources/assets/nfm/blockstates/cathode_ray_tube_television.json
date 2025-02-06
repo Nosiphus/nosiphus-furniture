@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "nfm:block/cathode_ray_tube_television",
+			"y": 270
+        },
+		"facing=east": {
+            "model": "nfm:block/cathode_ray_tube_television"
+        },
+		"facing=south": {
+            "model": "nfm:block/cathode_ray_tube_television",
+			"y": 90
+        },
+		"facing=west": {
+            "model": "nfm:block/cathode_ray_tube_television",
+			"y": 180
+        }
+    }
+}

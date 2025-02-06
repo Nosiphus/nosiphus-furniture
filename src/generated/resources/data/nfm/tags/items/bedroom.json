@@ -5,6 +5,7 @@
 	{ "id": "#nfm:lamps", "required": false },
 	{ "id": "#nfm:curtains", "required": false },
 	{ "id": "#nfm:bedside_cabinets", "required": false },
+	{ "id": "nfm:cathode_ray_tube_television", "required": false },
 	{ "id": "nfm:stereo", "required": false },
 	{ "id": "#nfm:desks", "required": false },
     { "id": "#nfm:desk_cabinets", "required": false },

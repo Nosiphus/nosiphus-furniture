@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    { "id": "nfm:cathode_ray_tube_television", "required": false },
     { "id": "#nfm:door_bells", "required": false },
 	{ "id": "nfm:fire_alarm", "required": false },
 	{ "id": "nfm:stereo", "required": false },
