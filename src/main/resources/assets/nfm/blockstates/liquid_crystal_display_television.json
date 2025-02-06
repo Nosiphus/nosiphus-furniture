@@ -1,0 +1,36 @@
+{
+    "variants": {
+        "facing=north,mounted=true": {
+            "model": "nfm:block/liquid_crystal_display_television_mounted",
+            "y": 0
+        },
+        "facing=north,mounted=false": {
+            "model": "nfm:block/liquid_crystal_display_television",
+            "y": 0
+        },
+        "facing=east,mounted=true": {
+            "model": "nfm:block/liquid_crystal_display_television_mounted",
+            "y": 90
+        },
+        "facing=east,mounted=false": {
+            "model": "nfm:block/liquid_crystal_display_television",
+            "y": 90
+        },
+        "facing=south,mounted=true": {
+            "model": "nfm:block/liquid_crystal_display_television_mounted",
+            "y": 180
+        },
+        "facing=south,mounted=false": {
+            "model": "nfm:block/liquid_crystal_display_television",
+            "y": 180
+        },
+        "facing=west,mounted=true": {
+            "model": "nfm:block/liquid_crystal_display_television_mounted",
+            "y": 270
+        },
+        "facing=west,mounted=false": {
+            "model": "nfm:block/liquid_crystal_display_television",
+            "y": 270
+        }
+    }
+}
