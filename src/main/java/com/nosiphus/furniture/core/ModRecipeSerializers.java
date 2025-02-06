@@ -2,7 +2,9 @@ package com.nosiphus.furniture.core;
 
 import com.mrcrayfish.furniture.item.crafting.SimpleCookingSerializer;
 import com.nosiphus.furniture.Reference;
-import com.nosiphus.furniture.item.crafting.*;
+import com.nosiphus.furniture.item.crafting.ChoppingRecipe;
+import com.nosiphus.furniture.item.crafting.CookingRecipe;
+import com.nosiphus.furniture.item.crafting.ToastingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;

@@ -2,9 +2,7 @@ package com.nosiphus.furniture.client.renderer.blockentity.yogmod;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.nosiphus.furniture.block.DigitalClockBlock;
 import com.nosiphus.furniture.block.yogmod.YogDigitalClockBlock;
-import com.nosiphus.furniture.blockentity.DigitalClockBlockEntity;
 import com.nosiphus.furniture.blockentity.yogmod.YogDigitalClockBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

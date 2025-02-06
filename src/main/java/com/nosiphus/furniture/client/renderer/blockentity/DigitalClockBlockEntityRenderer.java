@@ -10,12 +10,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-
-import javax.swing.text.AttributeSet;
 
 public class DigitalClockBlockEntityRenderer implements BlockEntityRenderer<DigitalClockBlockEntity> {
 

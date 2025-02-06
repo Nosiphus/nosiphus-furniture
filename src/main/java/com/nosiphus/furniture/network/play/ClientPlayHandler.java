@@ -1,9 +1,11 @@
 package com.nosiphus.furniture.network.play;
 
-import com.nosiphus.furniture.blockentity.*;
-import com.nosiphus.furniture.inventory.container.*;
+import com.nosiphus.furniture.blockentity.DishwasherBlockEntity;
+import com.nosiphus.furniture.blockentity.WashingMachineBlockEntity;
+import com.nosiphus.furniture.inventory.container.DishwasherMenu;
 import com.nosiphus.furniture.inventory.container.WashingMachineMenu;
-import com.nosiphus.furniture.network.message.*;
+import com.nosiphus.furniture.network.message.S2CMessageDishwasherSync;
+import com.nosiphus.furniture.network.message.S2CMessageWashingMachineSync;
 import net.minecraft.client.Minecraft;
 
 public class ClientPlayHandler {

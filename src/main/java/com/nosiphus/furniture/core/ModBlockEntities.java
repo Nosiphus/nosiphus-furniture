@@ -1,6 +1,9 @@
 package com.nosiphus.furniture.core;
 
-import com.mrcrayfish.furniture.tileentity.*;
+import com.mrcrayfish.furniture.tileentity.BedsideCabinetBlockEntity;
+import com.mrcrayfish.furniture.tileentity.CabinetBlockEntity;
+import com.mrcrayfish.furniture.tileentity.DeskCabinetBlockEntity;
+import com.mrcrayfish.furniture.tileentity.KitchenDrawerBlockEntity;
 import com.nosiphus.furniture.Reference;
 import com.nosiphus.furniture.blockentity.*;
 import com.nosiphus.furniture.blockentity.yogmod.YogDigitalClockBlockEntity;

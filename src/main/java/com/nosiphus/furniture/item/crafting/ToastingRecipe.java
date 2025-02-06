@@ -5,7 +5,10 @@ import com.nosiphus.furniture.core.ModRecipeSerializers;
 import com.nosiphus.furniture.core.ModRecipeTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
 public class ToastingRecipe extends AbstractCookingRecipe {
 

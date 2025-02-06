@@ -35,7 +35,10 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ModernKitchenSinkBlock extends FurnitureHorizontalBlock implements EntityBlock
 {
