@@ -11,6 +11,7 @@
 	{ "id": "nfm:cooked_sausage", "required": false },
 	{ "id": "nfm:kebab", "required": false },
 	{ "id": "nfm:cooked_kebab", "required": false },
-	{ "id": "nfm:crowbar", "required": false }
+	{ "id": "nfm:crowbar", "required": false },
+	{ "id": "nfm:television_remote", "required": false }
   ]
 }

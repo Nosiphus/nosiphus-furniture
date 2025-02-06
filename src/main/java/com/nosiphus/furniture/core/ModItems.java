@@ -71,6 +71,8 @@ public class ModItems {
             () -> new BucketItem(ModFluids.SOAPY_WATER, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUPER_SOAPY_WATER_BUCKET = register("super_soapy_water_bucket",
             () -> new BucketItem(ModFluids.SUPER_SOAPY_WATER, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> TELEVISION_REMOTE = register("television_remote",
+            () -> new Item(new Item.Properties()));
 
     //Methods
     private static RegistryObject<Item> register(String name, Supplier<Item> item)

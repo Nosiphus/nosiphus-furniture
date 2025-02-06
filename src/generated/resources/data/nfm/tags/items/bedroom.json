@@ -6,10 +6,12 @@
 	{ "id": "#nfm:curtains", "required": false },
 	{ "id": "#nfm:bedside_cabinets", "required": false },
 	{ "id": "nfm:cathode_ray_tube_television", "required": false },
+	{ "id": "nfm:liquid_crystal_display_television", "required": false },
 	{ "id": "nfm:stereo", "required": false },
 	{ "id": "#nfm:desks", "required": false },
     { "id": "#nfm:desk_cabinets", "required": false },
 	{ "id": "#nfm:digital_clocks", "required": false },
-	{ "id": "#nfm:television_stands", "required": false }
+	{ "id": "#nfm:television_stands", "required": false },
+	{ "id": "nfm:television_remote", "required": false }
   ]
 }
