@@ -43,12 +43,7 @@ public class LiquidCrystalDisplayTelevisionBlock extends FurnitureHorizontalBloc
         final VoxelShape[] SCREEN_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 7.5, 13.0, 16.0, 8.3), Direction.SOUTH));
         final VoxelShape[] SCREEN_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(13.0, 4.0, 7.5, 19.0, 16.0, 8.3), Direction.SOUTH));
         final VoxelShape[] CONNECTION = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(5.5, 5.0, 6.7, 10.5, 7.0, 7.3), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 6.5, 13.0, 16.0, 7.5), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(13.0, 4.0, 6.5, 19.0, 16.0, 7.5), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_3 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 16.0, 6.5, 13.0, 17.4, 7.5), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_4 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(10.0, 16.0, 6.5, 19.0, 17.4, 7.5), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_5 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 2.6, 6.5, 10.0, 4.0, 7.5), Direction.SOUTH));
-        final VoxelShape[] BACK_COVER_6 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(10.0, 2.6, 6.5, 19.0, 4.0, 7.5), Direction.SOUTH));
+        final VoxelShape[] BACK_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 6.5, 19.0, 16.0, 7.5), Direction.SOUTH));
         final VoxelShape[] BASE = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(2.0, 0.0, 5.0, 14.0, 1.0, 11.0), Direction.SOUTH));
         final VoxelShape[] STAND = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(6.0, 1.0, 6.8, 10.0, 4.0, 7.3), Direction.SOUTH));
 
@@ -61,12 +56,7 @@ public class LiquidCrystalDisplayTelevisionBlock extends FurnitureHorizontalBloc
         final VoxelShape[] MOUNTED_FRAME_6 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(19.0, 4.0, 2.5, 20.0, 16.0, 3.5), Direction.SOUTH));
         final VoxelShape[] MOUNTED_SCREEN_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 2.5, 13.0, 16.0, 3.3), Direction.SOUTH));
         final VoxelShape[] MOUNTED_SCREEN_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(13.0, 4.0, 2.5, 19.0, 16.0, 3.3), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 1.5, 13.0, 16.0, 2.5), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(13.0, 4.0, 1.5, 19.0, 16.0, 2.5), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_3 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 16.0, 1.5, 10.0, 17.4, 2.5), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_4 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(10.0, 16.0, 1.5, 19.0, 17.4, 2.5), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_5 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 2.6, 1.5, 10.0, 4.0, 2.5), Direction.SOUTH));
-        final VoxelShape[] MOUNTED_BACK_COVER_6 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(10.0, 2.6, 1.5, 19.0, 4.0, 2.5), Direction.SOUTH));
+        final VoxelShape[] MOUNTED_BACK_COVER = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(-3.0, 4.0, 1.5, 19.0, 16.0, 2.5), Direction.SOUTH));
         final VoxelShape[] WALL_MOUNT_1 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(0.0, 5.0, 0.0, 1.0, 15.0, 1.5), Direction.SOUTH));
         final VoxelShape[] WALL_MOUNT_2 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(15.0, 5.0, 0.0, 16.0, 15.0, 1.5), Direction.SOUTH));
         final VoxelShape[] WALL_MOUNT_3 = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(1.0, 9.5, 0.3, 15.0, 10.5, 1.3), Direction.SOUTH));
@@ -86,12 +76,7 @@ public class LiquidCrystalDisplayTelevisionBlock extends FurnitureHorizontalBloc
                 shapes.add(MOUNTED_FRAME_6[direction.get2DDataValue()]);
                 shapes.add(MOUNTED_SCREEN_1[direction.get2DDataValue()]);
                 shapes.add(MOUNTED_SCREEN_2[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_1[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_2[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_3[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_4[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_5[direction.get2DDataValue()]);
-                shapes.add(MOUNTED_BACK_COVER_6[direction.get2DDataValue()]);
+                shapes.add(MOUNTED_BACK_COVER[direction.get2DDataValue()]);
                 shapes.add(WALL_MOUNT_1[direction.get2DDataValue()]);
                 shapes.add(WALL_MOUNT_2[direction.get2DDataValue()]);
                 shapes.add(WALL_MOUNT_3[direction.get2DDataValue()]);
@@ -105,12 +90,7 @@ public class LiquidCrystalDisplayTelevisionBlock extends FurnitureHorizontalBloc
                 shapes.add(SCREEN_1[direction.get2DDataValue()]);
                 shapes.add(SCREEN_2[direction.get2DDataValue()]);
                 shapes.add(CONNECTION[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_1[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_2[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_3[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_4[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_5[direction.get2DDataValue()]);
-                shapes.add(BACK_COVER_6[direction.get2DDataValue()]);
+                shapes.add(BACK_COVER[direction.get2DDataValue()]);
                 shapes.add(BASE[direction.get2DDataValue()]);
                 shapes.add(STAND[direction.get2DDataValue()]);
             }
